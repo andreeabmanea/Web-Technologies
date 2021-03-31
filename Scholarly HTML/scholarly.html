@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            img {
+                width: 75%;
+            }
+        </style>
+        <title>Scholarly HTML</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="IEEE System Requirements Specification">
+        <meta name = "authors" content="Manea Andreea, Vezeteu Alin, Junica Rares">
+    </head>
+
+    <body>
+        <h1> Parcel Shipping Simulator</h1>
+        <h2> Table of contents</h2>
+        <ul> 
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#overall">Overall Description</a> 
+                <ol>
+                    <li><a href="#product-perspective">Product Perspective</a></li>
+                    <li><a href="#product-functions">Product Functions</a></li>
+                    <li><a href="#user-classes">User Classes and Characteristics</a></li>
+                    <li><a href="#operating-env">Operating Environment</a></li>
+                    <li><a href="#constraints">Design and Implementation Constraints</a></li>
+                </ol>
+            </li>
+            
+            <li><a href="#interface">External Interface Requirements</a></li>
+            <li><a href="#features">System Features</a></li>
+
+        </ul>
+        
+        <h3 id="introduction">Introduction</h3>
+        <p>This website offers parcel shipping services all across Romania, being useful to every citizen. Our platform provides logistics operations for home deliveries with high efficiency and flexibility.
+        </p>
+
+        <h3 id="overall">Overall Description</h3>
+        <ol>
+            <li id="product-perspective"><h4>Product Perspective</h4></li>
+            <img src="Use Case.png">
+            <li id="product-functions"><h4>Product Functions</h4></li>
+                <p>The following major functions are identified:</p>
+                <ul>
+                    <li>Schedule, postpone and cancel deliveries</li>
+                    <li>Pick-up parcels from given address</li>
+                    <li>Compute scales in the most efficient way</li>
+                    <li>Take into consideration external factors that might affect deliveries</li>
+                    <li>Track AWB</li>
+                    <li>Provide textual and visual statistics about deliveries' status in a speicific area</li>
+                    <li>Give notifications via email and RSS flux</li>
+                </ul>
+            <li id="user-classes"><h4>User Classes and Characteristics</h4></li>
+                <p>Our website has four major users:</p>
+                <ul>
+                    <li>The <b>administrator</b> manages employees' acccounts and has access to their data. They can see weekly or monthly statistics on deliveries executed by their company in a specific area.</li>
+                    <li>The <b>operators</b> are given accounts which gives them access to the administrative part of the site. They deal with logistics, manipulate shipping's details and respond to customers' requests.</li> 
+                    <li>The <b>couriers</b> are assigned to given areas and have accounts where they can see their daily planned deliveries along with a list of locations. The numbers of working drivers in a day is given by the amount of requests.</li>
+                    <li>The <b>clients</b> log into their accounts in order to receive support for different actions regarding the delivery, such as accessing information about its status and contacting the driver.</li>
+                </ul>
+            <li id ="operating-env"><h4>Operating Environment</h4></li>
+                <ul>
+                    <li>XAMPP server</li>
+                    <li>operating system: Windows</li>
+                    <li>database: SQL database</li>
+                    <li>platform: HTML/CSS/PHP</li>
+                </ul>
+            <li id="constraints"><h4>Design and Implementation Constraints</h4></li>
+                <ul>
+                    <li>The website will be offline, on a local server on our computer.</li>
+                    <li>We use an open source license.</li>
+                    <li>The website is built without any frameworks on front-end and back-end levels.</li>
+                </ul>
+        </ol>         
+        <h3 id="interface">External Interface Requirements</h3>
+        <p>The website has the following Sitemap:</p>
+        <img src="Site map.png">
+        <h3 id="features">System Features</h3>
+    
+    </body>
+
+</html>
