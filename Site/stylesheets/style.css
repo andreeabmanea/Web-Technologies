@@ -8,11 +8,12 @@ body {
 }
 .nav-button {
     text-decoration: none;
-    background:    #3C887E;
-    border-radius: 11px;
-    padding:       10px 20px;
-    color:         #EBE4D8;
+    background:    #3c887e;
+    border-radius: 7px;
+    width:         100px;
+    height:        40px;
+    color:         #ebe4d8;
     display:       inline-block;
-    font:          normal normal 13px/1 "Calibri", sans-serif;
+    font:          normal normal 17px/40px "Ubuntu", sans-serif;
     text-align:    center;
 }
