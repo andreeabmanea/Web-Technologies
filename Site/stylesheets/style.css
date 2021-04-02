@@ -1,10 +1,11 @@
 body {
     background-image: url('../resources/Background.png');
     background-size: cover;
+    background-repeat: no-repeat;
 }
 .logo {
-    background-image: url('../resources/Logo.png');
-    height:100px;
+    display: block;
+    margin-left: 50%;
 }
 .nav-button {
     text-decoration: none;
@@ -16,4 +17,11 @@ body {
     display:       inline-block;
     font:          normal normal 17px/40px "Ubuntu", sans-serif;
     text-align:    center;
+
+}
+.nav-bar {
+    background-color: rgba(235, 228, 216, 0.7);
+    margin-top: -8px;
+    margin-left: -8px;
+    margin-right: -8px;
 }
