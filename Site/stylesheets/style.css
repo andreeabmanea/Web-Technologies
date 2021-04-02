@@ -1,6 +1,18 @@
-.img-logo {
-    text-align: center;
+body {
+    background-image: url('../resources/Background.png');
+    background-size: cover;
 }
-h1 {
-    color: #3C887E
+.logo {
+    background-image: url('../resources/Logo.png');
+    height:100px;
+}
+.nav-button {
+    text-decoration: none;
+    background:    #3C887E;
+    border-radius: 11px;
+    padding:       10px 20px;
+    color:         #EBE4D8;
+    display:       inline-block;
+    font:          normal normal 13px/1 "Calibri", sans-serif;
+    text-align:    center;
 }
