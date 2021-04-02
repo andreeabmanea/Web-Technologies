@@ -7,7 +7,9 @@ body {
     float: none;
     position: absolute;
     left: 50%;
-    transform: translate(-50%, -80%);
+    transform: translate(-50%, 0%);
+    top: 0;
+    position: fixed;
 }
 .nav-button-left {
     text-decoration: none;
@@ -38,8 +40,10 @@ body {
 }
 .nav-bar {
     position: relative;
-    background-color: rgba(235, 228, 216, 0.7);
-    border-radius: 7px;
+    background-color: rgba(235, 228, 216, 0.8);
     overflow: hidden;
     padding: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
