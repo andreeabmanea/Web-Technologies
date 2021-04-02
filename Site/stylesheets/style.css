@@ -47,3 +47,21 @@ body {
     top: 0;
     width: 100%;
 }
+
+
+footer {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.column {
+    background-color: rgba(235, 228, 216, 0.7);
+    float:left;
+    width: 25%;
+    font: normal normal 17px/40px "Ubuntu", sans-serif;
+    text-decoration: none;
+    color: black;
+   
+}
