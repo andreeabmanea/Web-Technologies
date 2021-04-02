@@ -6,35 +6,28 @@ body {
 .logo {
     float: none;
     position: absolute;
-    left: 50%;
+    left: 52%;
     transform: translate(-50%, 0%);
     top: 0;
     position: fixed;
 }
-.nav-button-left {
+.button {
     text-decoration: none;
     background:    #3c887e;
     border-radius: 7px;
     width:         100px;
     height:        40px;
     color:         #ebe4d8;
-    display:       inline-block;
     font:          normal normal 17px/40px "Ubuntu", sans-serif;
     text-align:    center;
+    display:       inline-block;
+}
+.nav-left {
     margin-left: 5%;
     margin-right: 5%;
 }
-.nav-button-right {
+.nav-right {
     float: right;
-    text-decoration: none;
-    background:    #3c887e;
-    border-radius: 7px;
-    width:         100px;
-    height:        40px;
-    color:         #ebe4d8;
-    display:       inline-block;
-    font:          normal normal 17px/40px "Ubuntu", sans-serif;
-    text-align:    center;
     margin-left: 5%;
     margin-right: 5%;
 }
@@ -63,5 +56,4 @@ footer {
     font: normal normal 17px/40px "Ubuntu", sans-serif;
     text-decoration: none;
     color: black;
-   
 }
