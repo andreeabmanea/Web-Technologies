@@ -3,6 +3,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
 .logo {
     float: none;
     position: absolute;
@@ -41,74 +42,38 @@ body {
     width: 100%;
 }
 
-
-footer {
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-.column {
-    background-color: rgba(235, 228, 216, 0.7);
-    float:left;
-    width: 25%;
-    font: normal normal 17px/40px "Ubuntu", sans-serif;
-    text-decoration: none;
-    color: black;
-}
-
-.home {
+.middle-box {
     position: relative;
     padding-top: 10%;
-    font: normal normal "Ubuntu", sans-serif;
     font-size: 25px;
-    
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
 }
-#about {
+.starter {
+    background-color: rgba(235, 228, 216, 0.7);
+    border-color:  #3c887e;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 1%;
+}
+#title {
+    font: normal normal 17px/40px "Ubuntu", sans-serif;
     font-size: 30px;
     text-align: center;
+    margin-top: 0%;
 }
-.about-us{
-   
-    font-size: 18px; 
-    font-style: normal; 
-    font-variant: normal;
-    background-color: rgba(235, 228, 216, 0.7);
-    width: 75%;
-    margin-left: auto;
-    margin-right: auto;
-    border-color:  #52a79b;
-    border-style: solid;
-    border-radius: 10px;
-
-
-}
-
-.faq {
-    font-size: 18px; 
-    font-style: normal; 
-    font-variant: normal;
-    background-color: rgba(235, 228, 216, 0.7);
-    width: 75%;
-    margin-left: auto;
-    margin-right: auto;
-    border-color:  #52a79b;
-    border-style: solid;
-    border-radius: 10px;
-
-}
-
-.grid-about {
-    display:grid;
+.grid-box {
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    width:100%;
+    width: 100%;
     grid-gap: 20px;
 }
-
-.grid-item {
+.text-box {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 17px;
     border-radius: 10px;
-    border-color:#73c9bd;
+    border-color:#3c887e;
     border-style: solid;
     padding-left:10%;
     padding-right: 10%;
@@ -116,5 +81,19 @@ footer {
     padding-bottom: 5%;
     margin-left: 5%;
     margin-right: 5%;
+}
 
+footer {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.column {
+    background-color: rgba(235, 228, 216, 0.8);
+    float: left;
+    width: 50%;
+    font: normal normal 17px/40px "Ubuntu", sans-serif;
+    text-decoration: none;
+    color: black;
 }
