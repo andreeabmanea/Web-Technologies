@@ -1,13 +1,15 @@
 body {
     background-image: url('../resources/Background.png');
-    background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 .logo {
-    display: block;
-    margin-left: 50%;
+    float: none;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -80%);
 }
-.nav-button {
+.nav-button-left {
     text-decoration: none;
     background:    #3c887e;
     border-radius: 7px;
@@ -17,11 +19,27 @@ body {
     display:       inline-block;
     font:          normal normal 17px/40px "Ubuntu", sans-serif;
     text-align:    center;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.nav-button-right {
+    float: right;
+    text-decoration: none;
+    background:    #3c887e;
+    border-radius: 7px;
+    width:         100px;
+    height:        40px;
+    color:         #ebe4d8;
+    display:       inline-block;
+    font:          normal normal 17px/40px "Ubuntu", sans-serif;
+    text-align:    center;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 .nav-bar {
+    position: relative;
     background-color: rgba(235, 228, 216, 0.7);
-    margin-top: -8px;
-    margin-left: -8px;
-    margin-right: -8px;
-    display: block;
+    border-radius: 7px;
+    overflow: hidden;
+    padding: 10px;
 }
