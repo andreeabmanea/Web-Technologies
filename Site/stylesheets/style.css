@@ -30,15 +30,6 @@ body {
 .button:hover {
     cursor: pointer;
 }
-.nav-left {
-    margin-left: 5%;
-    margin-right: 5%;
-}
-.nav-right {
-    float: right;
-    margin-left: 5%;
-    margin-right: 5%;
-}
 .nav-bar {
     background-color: rgba(235, 228, 216, 0.8);
     overflow: hidden;
@@ -48,6 +39,25 @@ body {
     width: 100%;
     z-index: +1;
 }
+.nav-left {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.nav-right {
+    float: right;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.nav-bar-center {
+    
+}
+
+
+
+
+
+
+
 .middle-box {
     position: relative;
     padding-top: 10%;
