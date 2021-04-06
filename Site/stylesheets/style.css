@@ -139,21 +139,18 @@ label {
     text-align: center;
     margin: 24px 0 12px 0;
     position: relative;
-  }
-  
+} 
 img.avatar {
     width: 20%;
     border-radius: 50%;
-  }
-  
+}
 .container {
     padding: 16px;
-  }
-  
+}
 span.psw {
     float: right;
     padding-top: 16px;
-  }  
+}  
 .modal {
     display: none;
     position: fixed; 
@@ -165,7 +162,7 @@ span.psw {
     overflow: auto; 
     padding-top: 60px;
     background-color: rgba(0,0,0,0.4); 
-  }
+}
 .modal-content {
     background-color: #fefefe;
     margin: 5% auto 15% auto; 
@@ -258,8 +255,13 @@ input[type=text], input[type=password] {
     font-size: 15px;
     left: 40%;
 }
-
-
+.report-form {
+    padding: 2%;
+}
+#mini-title {
+    font-size: 25px;
+    color: #3c887e;
+}
 
 
 footer {

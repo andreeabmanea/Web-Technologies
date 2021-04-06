@@ -53,7 +53,7 @@
                     <th>Hours</th>
                 </tr>
                 <tr>
-                    <td><button type="button">Edit delivery hour</button></td>
+                    <td>Edit delivery hour</td>
                     <td>19/08/2019</td>
                     <td>
                         <select name="shour" id="shour" class="selector">
@@ -75,11 +75,48 @@
 
             <table>
                 <tr>
+                    <th>Don't want it anymore?</th>
+                    <th>
+                        <a class="button" onclick="document.getElementById('cancel-delivery').style.display='block'">Cancel</a>
+                    </th>
+                <tr>
                     <th>Issues with the package?</th>
-                    <th><button type="button">Cancel</button></th>
-                    <th><button type="button">Report</button></th>
+                    <th>
+                        <a class="button" onclick="document.getElementById('report-delivery').style.display='block'">Report</a>
+                    </th>
                 </tr>
             </table>
+        </div>
+    </div>
+
+    <div id="cancel-delivery" class="modal">
+        <div class="modal-content">
+            <p id="title">Are you sure you want to cancel the package?</p>
+            <nav class="container">
+                <a class="button" style="margin-left:40%" onclick="document.getElementById('cancel-delivery').style.display='none'" class="close" title="Close">Yes!</a>
+                <a class="button" onclick="document.getElementById('cancel-delivery').style.display='none'" class="close" title="Close">No!</a>
+            </nav>
+        </div>
+    </div>
+
+    <div id="report-delivery" class="modal">
+        <div class="modal-content">
+            <span onclick="document.getElementById('report-delivery').style.display='none'" class="close" title="Close">&times;</span>
+            <form class="report-form">
+                <p id="mini-title">Is the package damaged?</p>
+                <input type="radio" name="damage">Yes<br>
+                <input type="radio" name="damage">No<br>
+            </form>
+            <form class="report-form">
+                <p id="mini-title">Is there any other content than what you ordered?</p>
+                <input type="radio" name="damage">Yes<br>
+                <input type="radio" name="damage">No<br>
+            </form>
+            <form class="report-form">
+                <p id="mini-title">Any another comments?</p>
+                <input type="text" id="fcomments" name="fawb" style="text-align: left"><br>
+                <input type="submit" value="Submit" class="button">
+            </form>
         </div>
     </div>
 
