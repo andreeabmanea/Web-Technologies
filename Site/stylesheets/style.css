@@ -18,12 +18,12 @@ body {
     text-decoration: none;
     background:    #3c887e;
     border-radius: 7px;
-    width:         100px;
-    height:        40px;
-    color:         #ebe4d8;
-    font:          normal normal 17px/40px "Ubuntu", sans-serif;
-    text-align:    center;
-    display:       inline-block;
+    width: 100px;
+    height: 40px;
+    color: #ebe4d8;
+    font: normal normal 17px/40px "Ubuntu", sans-serif;
+    text-align: center;
+    display: inline-block;
 }
 .button:focus, 
 .button:hover {
@@ -73,6 +73,21 @@ body {
     padding: 1%;
     margin-bottom: 2%;
 }
+button {
+    text-decoration: none;
+    background-color: #3c887e;
+    border-radius: 7px;
+    width: 100px;
+    height: 40px;
+    color: #ebe4d8;
+    font: normal normal 17px/40px "Ubuntu", sans-serif;
+    text-align: center;
+    display: inline-block;
+    margin: 8px 0;
+    cursor: pointer;
+    width: 100%;
+    font-size: 15px;
+}
 #title {
     font: normal normal 17px/40px "Ubuntu", sans-serif;
     font-size: 30px;
@@ -118,12 +133,6 @@ td, th {
     border-color:#3c887e;
     border-style: solid;
 }
-footer {
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
 .column {
     background-color: rgba(235, 228, 216, 0.8);
     float: left;
@@ -136,17 +145,6 @@ label {
     font-family: "Ubuntu", sans-serif;
     color: #3c887e;
 }
-button {
-    background-color: #3c887e;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    font-family: "Ubuntu", sans-serif;
-    font-size: 15px;
-  }
 .imgcontainer {
     text-align: center;
     margin: 24px 0 12px 0;
@@ -200,7 +198,7 @@ span.psw {
 
 
 
-input[type=text], input[type=password]{
+input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -251,4 +249,14 @@ input[type=text], input[type=password]{
     color: #ebe4d8;
     font-size: 15px;
     left: 40%;
+}
+
+
+
+
+footer {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
