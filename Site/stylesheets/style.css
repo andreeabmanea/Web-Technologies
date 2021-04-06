@@ -100,7 +100,6 @@ body {
     text-align: center;
 }
 
-
 button {
     text-decoration: none;
     background-color: #3c887e;
@@ -204,6 +203,8 @@ h1.sign-up-text {
     width: 24.5%;
     column-gap: 2%;
 }
+
+
 
 input[type=text], input[type=password] {
     width: 100%;
