@@ -23,12 +23,12 @@
         <div class="starter">
             <p id="title">Enter your AWB:</p>
             <form class="awb-form">
-                <input type="text" id="fawb" name="fawb"><br>
+                <input type="text" placeholder="AWB" id="fawb" name="fawb"><br>
                 <input type="submit" value="Submit" class="button">
             </form>
         </div>
         <div class="starter">
-            <p id="title">Detailes about your package:</p>
+            <p id="title">Status:</p>
             <div id="myProgress">
                 <p class="procces-text">Your package is getting ready..</p>
                 <div id="myBar1"></div>
@@ -45,9 +45,34 @@
                 <p class="procces-text">Your package arrived!</p>
                 <div id="myBar4"></div>
             </div>
-            <p>Delivery hour</p>
-            <p>Number of courier:</p>
-            <p>Issues with the package?</p>
+            <table>
+                <caption id="title">Detailes about your package:</caption>
+                <tr>
+                    <th>Delivery</th>
+                    <th>Date</th>
+                    <th>Hours</th>
+                </tr>
+                <tr>
+                    <td><button type="button">Edit delivery hour</button></td>
+                    <td>19/08/2019</td>
+                    <td>9:00-16:00</td>
+                </tr>
+            </table>
+
+            <table>
+                <tr>
+                    <th>Phone number of courier</th>
+                    <th>0232 231 629</th>
+                </tr>
+            </table>
+
+            <table>
+                <tr>
+                    <th>Issues with the package?</th>
+                    <th><button type="button">Cancel</button></th>
+                    <th><button type="button">Report</button></th>
+                </tr>
+            </table>
         </div>
     </div>
 
