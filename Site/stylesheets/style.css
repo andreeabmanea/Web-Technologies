@@ -73,21 +73,6 @@ body {
     padding: 1%;
     margin-bottom: 2%;
 }
-button {
-    text-decoration: none;
-    background-color: #3c887e;
-    border-radius: 7px;
-    width: 100px;
-    height: 40px;
-    color: #ebe4d8;
-    font: normal normal 17px/40px "Ubuntu", sans-serif;
-    text-align: center;
-    display: inline-block;
-    margin: 8px 0;
-    cursor: pointer;
-    width: 100%;
-    font-size: 15px;
-}
 #title {
     font: normal normal 17px/40px "Ubuntu", sans-serif;
     font-size: 30px;
@@ -117,7 +102,21 @@ button {
 
 
 
-
+button {
+    text-decoration: none;
+    background-color: #3c887e;
+    border-radius: 7px;
+    width: 100px;
+    height: 40px;
+    color: #ebe4d8;
+    font: normal normal 17px/40px "Ubuntu", sans-serif;
+    text-align: center;
+    display: inline-block;
+    margin: 8px 0;
+    cursor: pointer;
+    width: 100%;
+    font-size: 15px;
+}
 table {
     border-collapse:collapse;
     width: 75%;
