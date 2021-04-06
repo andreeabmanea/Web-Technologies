@@ -101,7 +101,6 @@ body {
 }
 
 
-
 button {
     text-decoration: none;
     background-color: #3c887e;
@@ -197,7 +196,14 @@ span.psw {
 h1.sign-up-text {
     font-size: 30px;
 }
-
+.nav-buttons{
+    width: 100%;
+    overflow: auto;
+}
+.nav-buttons a{
+    width: 24.5%;
+    column-gap: 2%;
+}
 
 input[type=text], input[type=password] {
     width: 100%;
