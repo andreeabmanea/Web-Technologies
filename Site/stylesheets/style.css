@@ -132,14 +132,6 @@ td, th {
     border-color:#3c887e;
     border-style: solid;
 }
-.column {
-    background-color: rgba(235, 228, 216, 0.8);
-    float: left;
-    width: 50%;
-    font: normal normal 17px/40px "Ubuntu", sans-serif;
-    text-decoration: none;
-    color: black;
-}
 label {
     font-family: "Ubuntu", sans-serif;
     color: #3c887e;
@@ -193,7 +185,9 @@ span.psw {
 .close:focus {
     cursor: pointer;
 }
-
+::placeholder {
+    color:rgba(235, 228, 216, 0.7);
+}
 
 
 
@@ -258,4 +252,12 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+.column {
+    background-color: rgba(235, 228, 216, 0.8);
+    float: left;
+    width: 50%;
+    font: normal normal 17px/40px "Ubuntu", sans-serif;
+    text-decoration: none;
+    color: black;
 }
