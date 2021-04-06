@@ -12,7 +12,7 @@
         <div class="nav-bar">
             <a class="nav-left button" href="map.html">Map</a>
             <a class="nav-left button" href="services.html">Services</a>
-            <a class="nav-right button" href="#login">Login</a>
+            <a class="nav-right button" onclick="document.getElementById('login-account').style.display='block'">Login</a>
             <a class="nav-right button" href="#signup">Sign Up</a>
         </div>
         <div class="logo">
@@ -100,6 +100,40 @@
         </div>
     </div>
  
+  
+<div id="login-account" class="modal">
+  
+    <form class="modal-content" method="post">
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('login-account').style.display='none'" class="close" title="Close">&times;</span>
+        <img src="../resources/user.png" alt="Avatar" class="avatar">
+      </div>
+  
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" required>
+  
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+          
+        <button type="submit">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+      </div>
+  
+    </form>
+  </div>
+  
+  <script>
+  var modal = document.getElementById('login-account');
+  
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
+  </script>
     <footer>
         <div class="container">
             <a class="column">Call us: 0232 231 629</a> 

@@ -25,6 +25,10 @@ body {
     text-align:    center;
     display:       inline-block;
 }
+.button:focus, 
+.button:hover {
+    cursor: pointer;
+}
 .nav-left {
     margin-left: 5%;
     margin-right: 5%;
@@ -115,3 +119,76 @@ footer {
     text-decoration: none;
     color: black;
 }
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-family: "Ubuntu", sans-serif;
+  }
+label {
+    font-family: "Ubuntu", sans-serif;
+    color: #3c887e;
+}
+button {
+    background-color: #3c887e;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 15px;
+  }
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+  }
+  
+img.avatar {
+    width: 20%;
+    border-radius: 50%;
+  }
+  
+.container {
+    padding: 16px;
+  }
+  
+span.psw {
+    float: right;
+    padding-top: 16px;
+  }  
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    padding-top: 60px;
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 70%; /* Could be more or less, depending on screen size */
+}
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+  }
+.close:hover,
+.close:focus {
+    cursor: pointer;
+  }
