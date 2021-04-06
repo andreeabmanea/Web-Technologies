@@ -165,13 +165,13 @@ span.psw {
     height: 100%; 
     overflow: auto; 
     padding-top: 60px;
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0.4); 
   }
 .modal-content {
     background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: 5% auto 15% auto; 
     border: 1px solid #888;
-    width: 70%; /* Could be more or less, depending on screen size */
+    width: 70%;
 }
 .close {
     position: absolute;
@@ -188,7 +188,14 @@ span.psw {
 ::placeholder {
     color:rgba(235, 228, 216, 0.7);
 }
+.sign-up-text {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 17px;
+}
 
+h1.sign-up-text {
+    font-size: 30px;
+}
 
 
 input[type=text], input[type=password] {
