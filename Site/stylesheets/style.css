@@ -200,9 +200,10 @@ h1.sign-up-text {
     width: 24.5%;
     column-gap: 2%;
 }
-
-
-
+p.included-services {
+    font-size: 13px;
+    color: #505050;
+}
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
