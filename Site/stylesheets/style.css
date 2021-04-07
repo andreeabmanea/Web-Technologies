@@ -5,7 +5,6 @@ body {
     margin-bottom: 50px;
     margin-top: 100px;
 }
-
 .logo {
     float: none;
     left: 52%;
@@ -29,7 +28,6 @@ body {
 .button:hover {
     cursor: pointer;
 }
-
 .nav-bar {
     background-color: rgba(235, 228, 216, 0.8);
     overflow: hidden;
@@ -52,10 +50,6 @@ body {
     float: right;
     margin-right: 20%
 }
-
-
-
-
 .middle-box {
     position: relative;
     padding-top: 10%;
@@ -262,6 +256,15 @@ input[type=text], input[type=password] {
 #mini-title {
     font-size: 25px;
     color: #3c887e;
+}
+
+.courier-awb {
+    width: 100%;
+    overflow: auto;
+    margin: auto;
+}
+.courier-awb a{
+    width: 49.5%;
 }
 
 footer {
