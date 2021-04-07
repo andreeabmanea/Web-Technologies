@@ -28,8 +28,14 @@
             </li>
             
             <li><a href="#interface">External Interface Requirements</a></li>
-            <li><a href="#features">System Features</a></li>
-
+            <li><a href="#features">System Features</a>
+                <ol>
+                    <li><a href="#operator">Operator</a></li>
+                    <li><a href="#client">Client</a></li>
+                    <li><a href="#courier">Courier</a></li>
+                    <li><a href="#administrator">Administrator</a></li>
+                </ol>
+            </li>
         </ul>
         
         <h3 id="introduction">Introduction</h3>
@@ -39,7 +45,7 @@
         <ol>
             <li id="product-perspective"><h4>Product Perspective</h4></li>
             <img src="UseCase.png" alt="UseCaseImage">
-            <li id="product-functions"><h4>Product Functions</h4></li>
+            <li id="product-functions"><h4>Product Functions</h4>
                 <p>The following major functions are identified:</p>
                 <ul>
                     <li>Schedule, postpone and cancel deliveries</li>
@@ -50,7 +56,8 @@
                     <li>Provide textual and visual statistics about deliveries' status in a speicific area</li>
                     <li>Give notifications via email and RSS flux</li>
                 </ul>
-            <li id="user-classes"><h4>User Classes and Characteristics</h4></li>
+            </li>
+            <li id="user-classes"><h4>User Classes and Characteristics</h4>
                 <p>Our website has four major users:</p>
                 <ul>
                     <li>The <strong>administrator</strong> manages employees' acccounts and has access to their data. They can see weekly or monthly statistics on deliveries executed by their company in a specific area.</li>
@@ -58,19 +65,22 @@
                     <li>The <strong>couriers</strong> are assigned to given areas and have accounts where they can see their daily planned deliveries along with a list of locations. The numbers of working drivers in a day is given by the amount of requests.</li>
                     <li>The <strong>clients</strong> log into their accounts in order to receive support for different actions regarding the delivery, such as accessing information about its status and contacting the driver.</li>
                 </ul>
-            <li id="operating-env"><h4>Operating Environment</h4></li>
+            </li>
+            <li id="operating-env"><h4>Operating Environment</h4>
                 <ul>
                     <li>XAMPP server</li>
                     <li>operating system: Windows</li>
                     <li>database: SQL database</li>
                     <li>platform: HTML/CSS/PHP</li>
                 </ul>
-            <li id="constraints"><h4>Design and Implementation Constraints</h4></li>
+            </li>
+            <li id="constraints"><h4>Design and Implementation Constraints</h4>
                 <ul>
                     <li>The website will be offline, on a local server on our computer.</li>
                     <li>We use an open source license.</li>
                     <li>The website is built without any frameworks on front-end and back-end levels.</li>
                 </ul>
+            </li>
         </ol>
 
         <h3 id="interface">External Interface Requirements</h3>
@@ -78,20 +88,32 @@
         <img src="SiteMap.png" alt="SiteMapImage">
 
         <h3 id="features">System Features</h3>
-        <p>Manage delivery details (client) <strong>Description and Priority:</strong></p>
-        <p style="margin-left: 2%;">The client is able to enter the AWB corresponding to their delivery and track its status in real-time. They can also modify details such as prefered delivery hour, contact the driver, cancel/postpone delivery and ask for a return if the package has issues. This feature has rather high priority, since the client’s requests must be honoured as efficiently as possible.</p> 
-
-        <p>Manage logistics (operator) <strong>Description and Priority:</strong></p>
-        <p style="margin-left: 2%;">The operator manages orders’ flow, introduces details of delivery (pick-up/drop-off address, client’s personal information, generates AWB), sends notifications to clients and responds to clients’ requests.</p>
-        <p style="margin-left: 2%;">This feature is of high priority, because it is essential for operators to easily use the Web application. </p>
-
-        <p>View daily schedule (courier) <strong>Description and Priority:</strong></p>
-        <p style="margin-left: 2%;">The courier has access to a list of deliveries that needs to be honoured in a day, being given the pick-up and drop-off locations. Based on it, he figures the scales in the most efficient possible way.</p>
-        <p style="margin-left: 2%;">This feature also has high priority since the driver needs to be well-informed about all the important details in order to best manage the deliveries. </p>
-    
-        <p>Manage employees and view statistics (administrator) <strong>Description and Priority:</strong></p>
-        <p style="margin-left: 2%;">text</p>
-    
+        <ol>
+            <li id="operator"><strong>Manage logistics (operator)</strong>
+                <ul>
+                    <li><strong>Description: </strong>The operator manages orders' flow, introduces details of delivery (pick-up/drop-off address, client's personal information, generates AWB), sends notifications to clients via email and RSS and responds to clients' requests.</li>
+                    <li><strong>Priority: </strong>This feature's implementation is of high priority, because it is essential for operators to easily use the Web application.</li>
+                </ul>
+            </li>
+            <li id="client"><strong>See and modify delivery details (client)</strong>
+                <ul>
+                    <li><strong>Description: </strong>The client is able to enter the AWB corresponding to their delivery and track its status in real-time. They can also modify details such as prefered delivery hour, contact the driver, cancel/postpone delivery and ask for a return if the package has issues.</li>
+                    <li><strong>Priority: </strong>This feature has rather high priority, since the client's requests must be honoured as efficiently as possible.</li>
+                </ul>
+            </li>
+            <li id="courier"><strong>View daily schedule (courier)</strong>
+                <ul>
+                    <li><strong>Description: </strong>The courier has access to a list of deliveries that needs to be honoured in a day, being given the pick-up and drop-off location. Based on it, he figures the scales in the most efficient possible way.</li>
+                    <li><strong>Priority: </strong>This feature also has high priority since the driver needs to be well-informed about all the important details in order to best manage the deliveries.</li>
+                </ul>
+            </li>
+            <li id="administrator"><strong>Manage employees and view statistics (administrator)</strong>
+                <ul>
+                    <li><strong>Description: </strong>The administrator has access to the database where all the employees (couriers and operators) are registred. He also has access to all the orders, where he can see weekly/monthly statistics about the company's deliveries in different areas.</li>
+                    <li><strong>Priority: </strong>This feature is important at an organizational level, since the administrator must know who his employees are and be aware of the flow of deliveries.</li>
+                </ul>
+            </li>
+        </ol>
     </body>
 
 </html>
