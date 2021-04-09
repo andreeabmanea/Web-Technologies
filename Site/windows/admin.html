@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../stylesheets/style.css">
-    <title>Document</title>
+    <title>Administrator</title>
 </head>
 <body>
     <header role="banner">
@@ -19,5 +19,88 @@
         </div>
     </header>
     
+    <div class="middle-box">
+        <div class="starter">
+            <p id="title">Weekly Statistics</p>
+            <div class="text-box">
+                <p>Select an area:
+                    <select name="area" id="area" class="selector">
+                        <option value="Pacurari">Pacurari</option>
+                        <option value="Bucium">Bucium</option>
+                        <option value="Dacia">Dacia</option>
+                        <option value="Podu Ros">Podu Ros</option>
+                        <option value="Podu de Piatra">Podu de Piatra</option>
+                        <option value="Bularga">Bularga</option>
+                        <option value="Valea Lupului">Valea Lupului</option>
+                        <option value="Dancu">Dancu</option>
+                    </select>
+                </p>
+                <canvas id="week-statistics"></canvas>
+            </div>
+        </div>
+        <div class ="starter">
+            <p id="title">Monthly Statistics</p>
+            <div class="text-box">
+                <p>Select an area:
+                    <select name="area" id="area" class="selector">
+                        <option value="Pacurari">Pacurari</option>
+                        <option value="Bucium">Bucium</option>
+                        <option value="Dacia">Dacia</option>
+                        <option value="Podu Ros">Podu Ros</option>
+                        <option value="Podu de Piatra">Podu de Piatra</option>
+                        <option value="Bularga">Bularga</option>
+                        <option value="Valea Lupului">Valea Lupului</option>
+                        <option value="Dancu">Dancu</option>
+                    </select>
+                </p>
+                <canvas id="month-statistics"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src = "https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      var week = document.getElementById('week-statistics').getContext('2d');
+      var weeklyStatistics = new Chart(week, {
+          type: 'bar',
+          data: {
+            labels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+            datasets: [{
+                label: '# of Orders',
+                data: [55, 30, 40, 65, 32, 60, 45],
+                backgroundColor: '#3c887e',
+            }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+    });
+
+    var month = document.getElementById('month-statistics').getContext('2d');
+      var monthlyStatistics = new Chart(month, {
+          type: 'bar',
+          data: {
+            labels: ['January','February','March','April','May','June', 'July', 'August','September','October','November','December'],
+            datasets: [{
+                label: '# of Orders',
+                data: [1800, 1567, 1987, 1200, 1546, 1928, 1234, 1657, 1345, 1765, 1453, 1506],
+                backgroundColor: '#3c887e',
+            }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+    });
+    </script>
+
 </body>
 </html>
