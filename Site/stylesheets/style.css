@@ -125,6 +125,22 @@ td, th {
     border-color:#3c887e;
     border-style: solid;
 }
+.operator-reports{
+    border-collapse:collapse;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 17px;
+    margin-top: 1%;
+    width: 85%;
+}
+.operator-reports td, .operator-reports th {
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+    border-color:#3c887e;
+    border-style: solid;
+}
 label {
     font-family: "Ubuntu", sans-serif;
     color: #3c887e;
@@ -279,4 +295,9 @@ footer {
     font: normal normal 17px/40px "Ubuntu", sans-serif;
     text-decoration: none;
     color: black;
+}
+#submit-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
