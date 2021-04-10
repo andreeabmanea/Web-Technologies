@@ -272,6 +272,7 @@ input[type=text], input[type=password] {
 #mini-title {
     font-size: 25px;
     color: #3c887e;
+    font-family: "Ubuntu", sans-serif;
 }
 
 .courier-awb {
