@@ -18,6 +18,82 @@
             <img src="../resources/Logo.png" width="182" height="82" alt="Logo"/>
         </div>
     </header>
+
+    <div class="middle-box">
+        <div class="starter">
+            <p id="title">Manage accounts:</p>
+            <div class="text-buttons">
+                <a class="button" onclick="
+                document.getElementById('clients-list').style.display='none';
+                document.getElementById('couriers-list').style.display='none'; 
+                document.getElementById('operators-list').style.display='block'">
+                Operators</a>
+                <a class="button" onclick="
+                document.getElementById('clients-list').style.display='none';
+                document.getElementById('couriers-list').style.display='block'; 
+                document.getElementById('operators-list').style.display='none'">
+                Couriers</a>
+                <a class="button" onclick="
+                document.getElementById('clients-list').style.display='block';
+                document.getElementById('couriers-list').style.display='none'; 
+                document.getElementById('operators-list').style.display='none'">
+                Clients</a>
+            </div>
+            
+            <table id="operators-list" class="accounts-list">
+                <tr>
+                    <td>Maria Pelaru</td>
+                    <td><a class=button onclick="document.getElementById('Maria-Pelaru-details').style.display='block'">View Details</a></td>
+                    <td><a class=button onclick="document.getElementById('operators-list').style.display='none'">Remove</a></td>
+                </tr>
+            </table>
+
+            <table id="couriers-list" class="accounts-list">
+                <tr>
+                    <td>Silviu Manolache</td>
+                    <td><a class=button onclick="document.getElementById('Silviu-Manolache-details').style.display='block'">View Details</a></td>
+                    <td><a class=button onclick="document.getElementById('couriers-list').style.display='none'">Remove</a></td>
+                </tr>
+            </table>
+        
+            <table id="clients-list" class="accounts-list">
+                <tr>
+                    <td>Ioana Ursachi</td>
+                    <td><a class=button onclick="document.getElementById('Ioana-Ursachi-details').style.display='block'">View Details</a></td>
+                    <td><a class=button onclick="document.getElementById('clients-list').style.display='none'">Remove</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <div id="Maria-Pelaru-details" class="modal details-pop">
+        <div class="modal-content">
+            <p id="mini-title"> Name: Maria Georgiana Pelaru</p>
+            <p id="mini-title"> Email: maria.pelaru@yahoo.com</p>
+            <p id="mini-title"> CNP: 123456789</p>
+            <p id="mini-title"> Phone number: 0765 758 746</p>
+            <a class=button onclick="document.getElementById('Maria-Pelaru-details').style.display='none'">Done</a>
+        </div>
+    </div>
+
+    <div id="Silviu-Manolache-details" class="modal details-pop">
+        <div class="modal-content">
+            <p id="mini-title"> Name: Silviu Constantin Manolache</p>
+            <p id="mini-title"> Email: silviu.manolache@yahoo.com</p>
+            <p id="mini-title"> CNP: 987654321</p>
+            <p id="mini-title"> Phone number: 0776 745 847</p>
+            <a class=button onclick="document.getElementById('Silviu-Manolache-details').style.display='none'">Done</a>
+        </div>
+    </div>
+
+    <div id="Ioana-Ursachi-details" class="modal details-pop">
+        <div class="modal-content">
+            <p id="mini-title"> Name: Ioana Ursachi</p>
+            <p id="mini-title"> Email: ioana.ursachi@yahoo.com</p>
+            <p id="mini-title"> Phone number: 0765 798 937</p>
+            <a class=button onclick="document.getElementById('Ioana-Ursachi-details').style.display='none'">Done</a>
+        </div>
+    </div>
     
     <div class="middle-box">
         <div class="starter">
