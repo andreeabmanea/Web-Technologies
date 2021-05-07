@@ -2,10 +2,10 @@
 -- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Gazdă: 127.0.0.1
--- Timp de generare: mai 07, 2021 la 03:36 PM
--- Versiune server: 10.4.18-MariaDB
--- Versiune PHP: 8.0.3
+-- Host: 127.0.0.1
+-- Generation Time: May 07, 2021 at 05:29 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Bază de date: `jmv_pass`
+-- Database: `jmv_pass`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structură tabel pentru tabel `areas`
+-- Table structure for table `areas`
 --
 
 CREATE TABLE `areas` (
@@ -33,7 +33,7 @@ CREATE TABLE `areas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Eliminarea datelor din tabel `areas`
+-- Dumping data for table `areas`
 --
 
 INSERT INTO `areas` (`id_courier`, `area`) VALUES
@@ -45,7 +45,7 @@ INSERT INTO `areas` (`id_courier`, `area`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structură tabel pentru tabel `orders`
+-- Table structure for table `orders`
 --
 
 CREATE TABLE `orders` (
@@ -65,18 +65,18 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Eliminarea datelor din tabel `orders`
+-- Dumping data for table `orders`
 --
 
 INSERT INTO `orders` (`id`, `name`, `phone_number`, `address`, `weight`, `content`, `standard/express`, `cash/account_reimbursement`, `area`, `status`, `delivery_date`, `delivery_hour`, `id_client`) VALUES
-(1, 'Ioana Ursachi', '0765798937', 'Street Nicolina 6, block B2, B, floor 5, apartment 3', '3kg', 'toys', 'standard', 'cash', 'Podu-Ros', 'deposited', '2019-02-03', '13:00-15:00', 7),
-(2, 'Gabriel Florescu', '0765798937', 'Street Vasile Lupu, block G1, floor 3, apartment 2', '2,3kg', 'bike parts', 'express', 'account reimbursemen', 'Tatarasi', 'deposited', '2019-02-01', '09:00-11:00', NULL),
-(3, 'Costin Pelescu', '0748496715', 'Boulevard Tudor Vladimirescu 105, block A7, floor 3, apartment 3', '5kg', 'rocks', 'standard', 'cash', 'Tudor_Vladimirescu', 'arrived', '2019-01-28', '11:00-13:00', 3);
+(1, 'Ioana Ursachi', '0765798937', 'Street Nicolina 6, block B2, B, floor 5, apartment 3', '3kg', 'toys', 'standard', 'cash', 'Podu-Ros', 'deposited', '2021-05-08', '13:00-15:00', 7),
+(2, 'Gabriel Florescu', '0765798937', 'Street Vasile Lupu, block G1, floor 3, apartment 2', '2,3kg', 'bike parts', 'express', 'account reimbursemen', 'Tatarasi', 'deposited', '2021-05-07', '09:00-11:00', NULL),
+(3, 'Costin Pelescu', '0748496715', 'Boulevard Tudor Vladimirescu 105, block A7, floor 3, apartment 3', '5kg', 'rocks', 'standard', 'cash', 'Tudor_Vladimirescu', 'arrived', '2021-05-07', '11:00-13:00', 3);
 
 -- --------------------------------------------------------
 
 --
--- Structură tabel pentru tabel `reports`
+-- Table structure for table `reports`
 --
 
 CREATE TABLE `reports` (
@@ -87,7 +87,7 @@ CREATE TABLE `reports` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Eliminarea datelor din tabel `reports`
+-- Dumping data for table `reports`
 --
 
 INSERT INTO `reports` (`id_order`, `damage`, `other_content`, `comment`) VALUES
@@ -96,7 +96,7 @@ INSERT INTO `reports` (`id_order`, `damage`, `other_content`, `comment`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structură tabel pentru tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -112,7 +112,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Eliminarea datelor din tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `last_name`, `first_name`, `email`, `password`, `role`, `phone_number`, `cnp`) VALUES
@@ -126,68 +126,68 @@ INSERT INTO `users` (`id`, `username`, `last_name`, `first_name`, `email`, `pass
 (8, 'tataru.paul', 'Tataru', 'Paul', 'tataru.paul98@gmail.com', '12345678', 'courier', '0765981031', 4567890123);
 
 --
--- Indexuri pentru tabele eliminate
+-- Indexes for dumped tables
 --
 
 --
--- Indexuri pentru tabele `areas`
+-- Indexes for table `areas`
 --
 ALTER TABLE `areas`
   ADD KEY `id_courier` (`id_courier`);
 
 --
--- Indexuri pentru tabele `orders`
+-- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_client` (`id_client`);
 
 --
--- Indexuri pentru tabele `reports`
+-- Indexes for table `reports`
 --
 ALTER TABLE `reports`
   ADD KEY `id_order` (`id_order`);
 
 --
--- Indexuri pentru tabele `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT pentru tabele eliminate
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pentru tabele `orders`
+-- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT pentru tabele `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- Constrângeri pentru tabele eliminate
+-- Constraints for dumped tables
 --
 
 --
--- Constrângeri pentru tabele `areas`
+-- Constraints for table `areas`
 --
 ALTER TABLE `areas`
   ADD CONSTRAINT `id_courier` FOREIGN KEY (`id_courier`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constrângeri pentru tabele `orders`
+-- Constraints for table `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `id_client` FOREIGN KEY (`id_client`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constrângeri pentru tabele `reports`
+-- Constraints for table `reports`
 --
 ALTER TABLE `reports`
   ADD CONSTRAINT `id_order` FOREIGN KEY (`id_order`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
