@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gazdă: 127.0.0.1
--- Timp de generare: mai 07, 2021 la 12:27 PM
+-- Timp de generare: mai 07, 2021 la 03:36 PM
 -- Versiune server: 10.4.18-MariaDB
 -- Versiune PHP: 8.0.3
 
@@ -24,12 +24,34 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structură tabel pentru tabel `areas`
+--
+
+CREATE TABLE `areas` (
+  `id_courier` int(11) NOT NULL,
+  `area` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Eliminarea datelor din tabel `areas`
+--
+
+INSERT INTO `areas` (`id_courier`, `area`) VALUES
+(6, 'Tatarasi'),
+(8, 'Podu-Ros'),
+(8, 'Nicolina'),
+(6, 'Tudor_Vladimirescu');
+
+-- --------------------------------------------------------
+
+--
 -- Structură tabel pentru tabel `orders`
 --
 
 CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `phone_number` int(30) NOT NULL,
+  `phone_number` varchar(30) NOT NULL,
   `address` varchar(100) NOT NULL,
   `weight` varchar(30) NOT NULL,
   `content` varchar(100) NOT NULL,
@@ -37,16 +59,39 @@ CREATE TABLE `orders` (
   `cash/account_reimbursement` varchar(25) NOT NULL,
   `area` varchar(20) NOT NULL,
   `status` varchar(10) NOT NULL,
-  `id` int(255) DEFAULT NULL
+  `delivery_date` date NOT NULL,
+  `delivery_hour` varchar(15) NOT NULL,
+  `id_client` int(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Eliminarea datelor din tabel `orders`
 --
 
-INSERT INTO `orders` (`name`, `phone_number`, `address`, `weight`, `content`, `standard/express`, `cash/account_reimbursement`, `area`, `status`, `id`) VALUES
-('Ioana Ursachi', 765798937, 'Strada Nicolina 6, bloc B2, scara B, etaj 5, apartament 3', '3kg', 'toys', 'standard', 'cash', 'Podu-ros', 'deposited', 7),
-('Gabriel Florescu', 754977629, 'Street Vasile Lupu, bloc G1, floor 3, apartment 2', '2,3kg', 'bike parts', 'express', 'account reimbursemen', 'Tatarasi', 'deposited', NULL);
+INSERT INTO `orders` (`id`, `name`, `phone_number`, `address`, `weight`, `content`, `standard/express`, `cash/account_reimbursement`, `area`, `status`, `delivery_date`, `delivery_hour`, `id_client`) VALUES
+(1, 'Ioana Ursachi', '0765798937', 'Street Nicolina 6, block B2, B, floor 5, apartment 3', '3kg', 'toys', 'standard', 'cash', 'Podu-Ros', 'deposited', '2019-02-03', '13:00-15:00', 7),
+(2, 'Gabriel Florescu', '0765798937', 'Street Vasile Lupu, block G1, floor 3, apartment 2', '2,3kg', 'bike parts', 'express', 'account reimbursemen', 'Tatarasi', 'deposited', '2019-02-01', '09:00-11:00', NULL),
+(3, 'Costin Pelescu', '0748496715', 'Boulevard Tudor Vladimirescu 105, block A7, floor 3, apartment 3', '5kg', 'rocks', 'standard', 'cash', 'Tudor_Vladimirescu', 'arrived', '2019-01-28', '11:00-13:00', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Structură tabel pentru tabel `reports`
+--
+
+CREATE TABLE `reports` (
+  `id_order` int(255) NOT NULL,
+  `damage` varchar(5) NOT NULL,
+  `other_content` varchar(5) NOT NULL,
+  `comment` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Eliminarea datelor din tabel `reports`
+--
+
+INSERT INTO `reports` (`id_order`, `damage`, `other_content`, `comment`) VALUES
+(3, 'no', 'yes', 'I found toys in my parcel!');
 
 -- --------------------------------------------------------
 
@@ -62,7 +107,7 @@ CREATE TABLE `users` (
   `email` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
   `role` varchar(10) NOT NULL,
-  `phone_number` int(30) NOT NULL,
+  `phone_number` varchar(30) NOT NULL,
   `cnp` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -71,23 +116,37 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `last_name`, `first_name`, `email`, `password`, `role`, `phone_number`, `cnp`) VALUES
-(1, 'alin.vezeteu', 'Vezeteu', 'Alexandru-Alin', 'alin.vezeteu@yahoo.ro', '12345678', 'admin', 742395715, 1234567890),
-(2, 'andreea.manea', 'Manea', 'Andreea Beatrice', 'andreeamanea66@gmail.com', '87654321', 'admin', 732395842, 9876543210),
-(3, 'costin_pelescu', 'Pelescu', 'Costin', 'costin43@gmail.com', '12345678', 'client', 748496715, NULL),
-(4, 'maria.pelaru', 'Pelaru', 'Maria Georgiana', 'maria.pelaru@yahoo.com', '12345678', 'operator', 765758746, 1465309278),
-(5, 'horia.mihai', 'Horia', 'Mihai', 'mihai.horia@yahoo.com', '12345678', 'operator', 775937029, 6789123453),
-(6, 'silviu.manolache66', 'Manolache', 'Silviu Constantin', 'silviu.manolache@yahoo.com', '12345678', 'courier', 776745847, 987654321),
-(7, 'ursachi.ioana45', 'Ursachi', 'Ioana', 'ioana.ursachi@yahoo.com', '12345678', 'client', 765798937, NULL);
+(1, 'alin.vezeteu', 'Vezeteu', 'Alexandru-Alin', 'alin.vezeteu@yahoo.ro', '12345678', 'admin', '0742395715', 1234567890),
+(2, 'andreea.manea', 'Manea', 'Andreea Beatrice', 'andreeamanea66@gmail.com', '12345678', 'admin', '0732395842', 9876543210),
+(3, 'costin_pelescu', 'Pelescu', 'Costin', 'costin43@gmail.com', '12345678', 'client', '0748496715', NULL),
+(4, 'maria.pelaru', 'Pelaru', 'Maria Georgiana', 'maria.pelaru@yahoo.com', '12345678', 'operator', '0765758746', 1465309278),
+(5, 'horia.mihai', 'Horia', 'Mihai', 'mihai.horia@yahoo.com', '12345678', 'operator', '0775937029', 6789123453),
+(6, 'silviu.manolache66', 'Manolache', 'Silviu Constantin', 'silviu.manolache@yahoo.com', '12345678', 'courier', '0776745847', 987654321),
+(7, 'ursachi.ioana45', 'Ursachi', 'Ioana', 'ioana.ursachi@yahoo.com', '12345678', 'client', '0765798937', NULL),
+(8, 'tataru.paul', 'Tataru', 'Paul', 'tataru.paul98@gmail.com', '12345678', 'courier', '0765981031', 4567890123);
 
 --
 -- Indexuri pentru tabele eliminate
 --
 
 --
+-- Indexuri pentru tabele `areas`
+--
+ALTER TABLE `areas`
+  ADD KEY `id_courier` (`id_courier`);
+
+--
 -- Indexuri pentru tabele `orders`
 --
 ALTER TABLE `orders`
-  ADD KEY `id_client` (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_client` (`id_client`);
+
+--
+-- Indexuri pentru tabele `reports`
+--
+ALTER TABLE `reports`
+  ADD KEY `id_order` (`id_order`);
 
 --
 -- Indexuri pentru tabele `users`
@@ -100,20 +159,38 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT pentru tabele `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT pentru tabele `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constrângeri pentru tabele eliminate
 --
 
 --
+-- Constrângeri pentru tabele `areas`
+--
+ALTER TABLE `areas`
+  ADD CONSTRAINT `id_courier` FOREIGN KEY (`id_courier`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constrângeri pentru tabele `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `id_client` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `id_client` FOREIGN KEY (`id_client`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constrângeri pentru tabele `reports`
+--
+ALTER TABLE `reports`
+  ADD CONSTRAINT `id_order` FOREIGN KEY (`id_order`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
