@@ -15,25 +15,18 @@ if (isset($_GET['logout'])) {
             <?php display_courier_schedule($_SESSION['username'])?>
         </table>
     </div>
+
     <div class="starter">
         <p id="title">Enter Delivery Number:</p>
         <div class="courier-awb">
+            <form method = "post" action="">
             <input type="text" placeholder="AWB" id="fawb" name="fawb">
-            <a class="button" onclick="document.getElementById('mark-as-done').style.display='block'">Mark as done</a>
+            <a class="button" onclick="markAsDone()" name = "delivery_done">Mark as done</a>
             <a class="button" onclick="document.getElementById('ask-for-support').style.display='block'">Ask for support</a>
+            </form>
         </div>
     </div>
-</div>
 
-<div id="mark-as-done" class="modal">
-    <div class="modal-content">
-        <p id="title">Enter client's signature:</p>
-        <div class="text-box"></div>
-        <p id="title">Are you sure you want to report delivery as done?</p>
-        <nav class="container">
-            <a class="button" style="margin-left:44%" onclick="document.getElementById('mark-as-done').style.display='none'" class="close" title="Close">Confirm</a>
-        </nav>
-    </div>
 </div>
 
 <div id="ask-for-support" class="modal">
@@ -48,3 +41,19 @@ if (isset($_GET['logout'])) {
 <?php
 require_once '../includes/footer.php';
 ?>
+<script>
+    function markAsDone() {
+        var awb = document.getElementById('fawb').value;
+        console.log(awb);
+        var xhttp;
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+            }
+        };
+        xhttp.open("POST", "../Database/mark_as_done.php", true);
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhttp.send('fawb='+awb);
+    }
+</script>

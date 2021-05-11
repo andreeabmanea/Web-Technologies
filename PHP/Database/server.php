@@ -62,30 +62,30 @@
 function display_courier_schedule($username)
 {
     global $mysql;
-    $query = "select name, address, phone_number from orders where area in (select area from areas join users on id_courier = id where username = ?) and delivery_date = CURRENT_DATE();";
+    $query = "select name, address, phone_number, awb, amount from orders where area in (select area from areas join users on id_courier = id where username = ?) and status!='arrived' and delivery_date = CURRENT_DATE();";
     if ($stmt = $mysql->prepare($query)) {
         $stmt->bind_param('s', $username);
         $stmt->execute();
-        $stmt->bind_result($name, $address, $number);
+        $stmt->bind_result($name, $address, $number, $awb, $amount);
     }
     echo '<table id="courier-schedule">
             <tr>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Contact Number</th>
-                <th>Delivery Number</th>
-                <th>Anything to pay?</th>
+                <th style = "padding:10px">Name</th>
+                <th style = "padding:10px">Address</th>
+                <th style = "padding:10px">Contact Number</th>
+                <th style = "padding:10px">Delivery Number</th>
+                <th style = "padding:10px">Anything to pay?</th>
             </tr>';
     while ($stmt->fetch()) {
         echo '<tr>';
-        echo '<td>' . $name . '</td>';
-        echo '<td>' . $address .'</td>';
-        echo '<td>' . $number .'</td>';
-        echo '<td>' . 'TBA' . '</td>';
-        echo '<td>' . 'TBA' . '</td>';
-        //TODO: awb and payment from db
+        echo '<td style = "padding:10px">' . $name . '</td>';
+        echo '<td style = "padding:10px">' . $address .'</td>';
+        echo '<td style = "padding:10px">' . $number .'</td>';
+        echo '<td style = "padding:10px">' . $awb . '</td>';
+            if ($amount != null)
+        echo '<td style = "padding:10px">' . $amount . '</td>';
+            else echo  '<td style = "padding:10px">' . "NO" . '</td>';
         echo '</tr>';
     }
 
 }
-
