@@ -21,12 +21,11 @@ if (isset($_GET['logout'])) {
         <div class="courier-awb">
             <form method = "post" action="">
             <input type="text" placeholder="AWB" id="fawb" name="fawb">
-            <a class="button" onclick="markAsDone()" name = "delivery_done">Mark as done</a>
+            <a class="button" onclick="markAsDoneSubmit()" name = "delivery_done">Mark as done</a>
             <a class="button" onclick="document.getElementById('ask-for-support').style.display='block'">Ask for support</a>
             </form>
         </div>
     </div>
-
 </div>
 
 <div id="ask-for-support" class="modal">
@@ -34,7 +33,7 @@ if (isset($_GET['logout'])) {
         <p id="title">Enter your request:</p>
         <div class="container">
             <input type="text" placeholder="e.g. postpone delivery due to bad weather, report damage within transportation">
-            <a class="button" style="margin-left:44%" onclick="document.getElementById('ask-for-support').style.display='none'" class="close" title="Close">Confirm</a>
+            <a class="button" style="margin-left:44%" onclick="askForSupport(); document.getElementById('ask-for-support').style.display='none';" class="close" title="Close">Confirm</a>
         </div>
     </div>
 </div>
@@ -49,10 +48,43 @@ require_once '../includes/footer.php';
         xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText);
+               //console.log(this.responseText);
             }
         };
         xhttp.open("POST", "../Database/mark_as_done.php", true);
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhttp.send('fawb='+awb);
+    }
+
+    function updateCourierSchedule() {
+        var xhttp;
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200){
+                console.log(this.responseText);
+                document.getElementById("courier-schedule").innerHTML = this.responseText;
+            }
+        }
+        xhttp.open("GET", "../Database/update_courier_schedule.php", true);
+        xhttp.send();
+    }
+
+    function markAsDoneSubmit() {
+        markAsDone();
+        updateCourierSchedule();
+    }
+
+    function askForSupport() {
+        var awb = document.getElementById('fawb').value;
+        var xhttp;
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status == 200) {
+                //console.log(this.responseText);
+                console.log(awb);
+            }
+        };
+        xhttp.open("POST", "../Database/ask_for_support.php", true);
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhttp.send('fawb='+awb);
     }

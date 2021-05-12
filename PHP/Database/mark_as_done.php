@@ -1,11 +1,9 @@
 <?php
-include("../courier/index.php");
 require_once("../Database/server.php");
 $awb = "";
 if (isset($_POST['fawb'])){
     $awb = $_POST['fawb'];
     }
-echo $awb;
 global $mysql;
 $query = "update orders set status = 'arrived' where awb = ?";
 if ($stmt = $mysql->prepare($query)) {
