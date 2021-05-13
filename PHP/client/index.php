@@ -1,37 +1,22 @@
 <?php
 $title = 'Client Account';
 require_once "../includes/header_for_accounts.php";
+require_once "../Database/server.php";
+include "../Database/find_my_awb.php";
 ?>
 <div class="middle-box">
     <div class="starter">
-        <p id="title">Enter your AWB:</p>
+        <p id="title">Hello <?php echo $_SESSION['username'];?>! Enter your AWB:</p>
         <form class="awb-form">
             <input type="text" placeholder="AWB" id="fawb" name="fawb"><br>
             <div id="submit-button">
-                <input type="submit" value="Submit" class="button">
+                <a class="button" onclick="displayParcelInfo()">Submit</a>
             </div>
         </form>
     </div>
-    <div class="starter">
-        <p id="title">Status:</p>
-        <div id="myProgress">
-            <p class="procces-text">Your package is getting ready..</p>
-            <div id="myBar1"></div>
-        </div>
-        <div id="myProgress">
-            <p class="procces-text">Your package is ready!</p>
-            <div id="myBar2"></div>
-        </div>
-        <div id="myProgress">
-            <p class="procces-text">Your package is on your way!</p>
-            <div id="myBar3"></div>
-        </div>
-        <div id="myProgress">
-            <p class="procces-text">Your package arrived!</p>
-            <div id="myBar4"></div>
-        </div>
+    <div class="starter" id="info-parcel">
         <table>
-            <caption id="title">Detailes about your package:</caption>
+            <caption id="title">Details about your package:</caption>
             <tr>
                 <th>Delivery</th>
                 <th>Date</th>
@@ -107,3 +92,27 @@ require_once "../includes/header_for_accounts.php";
 <?php
 require_once '../includes/footer.php';
 ?>
+
+<script>
+    function displayParcelInfo() {
+        // if the AWB is matching with one from our data base
+        const awb = document.getElementById('fawb').value;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById('info-parcel').style.display='block';
+                document.getElementById('info-parcel').innerHTML = this.responseText;
+            }
+        };
+
+        xhttp.open("GET", "../Database/find_my_awb.php?fawb="+awb, true);
+        xhttp.send();
+        //TODO: if statusul => document.getElementById('bar1/2/3/4').style.display='block'
+
+        //TODO: update tabel cu data, ora si numar curier in functie de cartier
+
+        //TODO:
+
+    }
+
+</script>

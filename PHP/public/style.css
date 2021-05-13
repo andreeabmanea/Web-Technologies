@@ -160,7 +160,10 @@ img.avatar {
 span.psw {
     float: right;
     padding-top: 16px;
-}  
+}
+#info-parcel {
+    display: none;
+}
 .modal {
     display: none;
     position: fixed;
