@@ -32,7 +32,7 @@ if (isset($_GET['logout'])) {
     <div class="modal-content">
         <p id="title">Enter your request:</p>
         <div class="container">
-            <input type="text" placeholder="e.g. postpone delivery due to bad weather, report damage within transportation">
+            <input type="text" name = "courier-request" id = "courier-request" placeholder="e.g. postpone delivery due to bad weather, report damage within transportation">
             <a class="button" style="margin-left:44%" onclick="askForSupport(); document.getElementById('ask-for-support').style.display='none';" class="close" title="Close">Confirm</a>
         </div>
     </div>
@@ -75,6 +75,7 @@ require_once '../includes/footer.php';
     }
 
     function askForSupport() {
+        var request = document.getElementById('courier-request').value;
         var awb = document.getElementById('fawb').value;
         var xhttp;
         xhttp = new XMLHttpRequest();
@@ -86,6 +87,6 @@ require_once '../includes/footer.php';
         };
         xhttp.open("POST", "../Database/ask_for_support.php", true);
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhttp.send('fawb='+awb);
+        xhttp.send('fawb='+awb+'&courier-request='+request);
     }
 </script>

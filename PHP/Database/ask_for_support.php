@@ -3,6 +3,8 @@ require_once("../Database/server.php");
 global $mysql;
 if (isset($_POST['fawb']))
     $awb = $_POST['fawb'];
+if (isset($_POST['courier-request']))
+    $request = $_POST['courier-request'];
 
 $username = $_SESSION['username'];
 $stmt_courier = $mysql->prepare("select id from users where username = ?");
@@ -17,7 +19,6 @@ $stmt_order->execute();
 $result_order = $stmt_order->get_result();
 $info_order = $result_order->fetch_assoc();
 
-$request = "bad weather";
 
     $insert = "insert into courier_requests (courier_id, order_id, request) values (?, ?, ?)";
     if ($stmt3 = $mysql->prepare($insert)) {
