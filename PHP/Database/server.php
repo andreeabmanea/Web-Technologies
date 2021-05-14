@@ -93,7 +93,7 @@
     function display_order(){
         echo '<div id="bar2">
             <div id="myProgress">
-                <p class="procces-text">Your package is ready!</p>
+                <p class="process-text">Your package is ready!</p>
                 <div id="myBar2"></div>
             </div>
         </div>';

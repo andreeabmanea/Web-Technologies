@@ -14,17 +14,16 @@ include "../Database/find_my_awb.php";
             </div>
         </form>
     </div>
+
     <div class="starter" id="info-parcel">
+
+    </div>
+
+    <div class="starter" id="problems">
+        <p id = "title">Reports and preferred hours:</p>
         <table>
-            <caption id="title">Details about your package:</caption>
             <tr>
-                <th>Delivery</th>
-                <th>Date</th>
-                <th>Hours</th>
-            </tr>
-            <tr>
-                <td>Edit delivery hour</td>
-                <td>19/08/2019</td>
+                <th>Want to change delivery hour?</th>
                 <td>
                     <select name="shour" id="shour" class="selector">
                         <option value="9:00-11:00">09:00-11:00</option>
@@ -34,16 +33,6 @@ include "../Database/find_my_awb.php";
                     </select>
                 </td>
             </tr>
-        </table>
-
-        <table>
-            <tr>
-                <th>Phone number of courier</th>
-                <th>0232 231 629</th>
-            </tr>
-        </table>
-
-        <table>
             <tr>
                 <th>Don't want it anymore?</th>
                 <th>
@@ -102,16 +91,17 @@ require_once '../includes/footer.php';
             if (this.readyState == 4 && this.status == 200) {
                 document.getElementById('info-parcel').style.display='block';
                 document.getElementById('info-parcel').innerHTML = this.responseText;
+                document.getElementById('problems').style.display='block';
             }
         };
 
         xhttp.open("GET", "../Database/find_my_awb.php?fawb="+awb, true);
         xhttp.send();
-        //TODO: if statusul => document.getElementById('bar1/2/3/4').style.display='block'
 
         //TODO: update tabel cu data, ora si numar curier in functie de cartier
 
         //TODO:
+
 
     }
 
