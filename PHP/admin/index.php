@@ -98,15 +98,19 @@ include("../includes/header_for_accounts.php");
         <div class="text-box">
             <form action="../Database/import_data.php" method="POST" enctype="multipart/form-data">
                 <input type="file" name="file" required="">
-                <input type="submit" name="import" class="button" value="Upload">
+                <input type="submit" name="import-users" class="button" value="Upload">
             </form>
             <form action="../Database/export_data.php" method="POST">
                 <input type="submit" class="button" name="export-users" value="Export">
             </form>
         </div>
         <br>
-        <p id="title">Export Orders</p>
+        <p id="title">Import/Export Orders</p>
         <div class="text-box">
+            <form action="../Database/import_data.php" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" required="">
+                <input type="submit" name="import-orders" class="button" value="Upload">
+            </form>
             <form action="../Database/export_data.php" method="POST">
                 <input type="submit" class="button" name="export-orders" value="Export">
             </form>
