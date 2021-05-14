@@ -94,6 +94,11 @@ include("../includes/header_for_accounts.php");
 
 <div class="middle-box">
     <div class="starter">
+        <p id="title">Upload records to database</p>
+    </div>
+</div>
+<div class="middle-box">
+    <div class="starter">
         <p id="title">Weekly Statistics</p>
         <div class="text-box">
             <p>Select an area:
