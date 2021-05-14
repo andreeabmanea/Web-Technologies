@@ -1,6 +1,9 @@
 <?php
-    $title = 'Services';
-    require_once '../includes/header.php';
+$title = 'Services';
+include('../includes/header.php');
+include('../database/server.php');
+require('../public/errors.php');
+
 ?>
 
 <div class="middle-box">
@@ -90,19 +93,12 @@
             <span onclick="document.getElementById('login-account').style.display='none'" class="close" title="Close">&times;</span>
             <img src="../resources/User.png" alt="Avatar" class="avatar">
         </div>
-
         <div class="container">
             <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
+            <input type="text" name="username" placeholder="Enter Username">
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
-            <button type="submit">Login</button>
-            <div class="nav-buttons">
-                <a class="button" href="admin.html">Admin</a>
-                <a class="button" href="courier.html">Courier</a>
-                <a class="button" href="client.html">Client</a>
-                <a class="button" href="operator.html">Operator</a>
-            </div>
+            <input type="password" placeholder="Enter Password" name="password" required>
+            <button type="submit" name="login">Login</button>
             <label>
                 <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>

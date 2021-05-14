@@ -1,8 +1,10 @@
 <?php
 $title = 'Home';
 include('../includes/header.php');
-
-?><div class="middle-box">
+include('../database/server.php');
+require('../public/errors.php');
+?>
+<div class="middle-box">
     <div class="starter">
         <p id="title">About us</p>
         <div class="grid-box">
@@ -47,10 +49,6 @@ include('../includes/header.php');
             <span onclick="document.getElementById('login-account').style.display='none'" class="close" title="Close">&times;</span>
             <img src="../resources/User.png" alt="Avatar" class="avatar">
         </div>
-        <?php
-        include('../database/server.php');
-        require('../public/errors.php');
-        ?>
         <div class="container">
             <label for="uname"><b>Username</b></label>
             <input type="text" name="username" placeholder="Enter Username">

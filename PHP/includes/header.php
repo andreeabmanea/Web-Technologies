@@ -16,7 +16,7 @@
         <a class="nav-right button" onclick="document.getElementById('sign-up').style.display='block'">Sign Up</a>
     </div>
     <div class="logo">
-        <a href="main.html">
+        <a href="../public/index.php">
             <img src="../resources/Logo.png" width="182" height="82" alt="Logo"/>
         </a>
     </div>
