@@ -1,9 +1,16 @@
 <?php
 $title = 'Admin Account';
 include("../includes/header_for_accounts.php");
+include("../Database/server.php");
 ?><div class="middle-box">
     <div class="starter">
-        <p id="title">Manage accounts:</p>
+        <div class="text-box">
+            <p id="title">Hello, <?php echo $_SESSION['username']; ?>!</p>
+            <p id="title">Glad to have you back. Here you can manage your company's relevant information and see the orders' flow.</p>
+        </div>
+    </div>
+    <div class="starter">
+        <p id="title">Manage accounts</p>
         <div class="text-buttons">
             <a class="button" onclick="
                 document.getElementById('clients-list').style.display='none';
