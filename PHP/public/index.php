@@ -24,7 +24,7 @@ require('../public/errors.php');
         <div class="grid-box">
             <div class="text-box">
                 <strong>How should I pack? Do you offer packaging?</strong>
-                <p>In order for your package to be adequately protected during transport, it is very important that you follow the packaging recommendations <a href="../windows/services.html#package-rules">(see here)</a>.</p>
+                <p>In order for your package to be adequately protected during transport, it is very important that you follow the packaging recommendations <a href="services.php#package-rules">(see here)</a>.</p>
             </div>
             <div class="text-box">
                 <strong>How could I check the status of a shipment?</strong>
