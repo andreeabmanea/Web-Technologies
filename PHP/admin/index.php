@@ -94,7 +94,16 @@ include("../includes/header_for_accounts.php");
 
 <div class="middle-box">
     <div class="starter">
-        <p id="title">Upload records to database</p>
+        <p id="title">Import/Export Employees</p>
+        <div class="text-box">
+            <form action="../Database/import_data.php" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" required="">
+                <input type="submit" name="import" class="button" value="Upload">
+            </form>
+            <form action="../Database/export_data.php" method="POST">
+                <input type="submit" class="button" name="export" value="Export">
+            </form>
+        </div>
     </div>
 </div>
 <div class="middle-box">

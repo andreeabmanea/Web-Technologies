@@ -1,6 +1,6 @@
 <?php
 $title = 'Courier Account';
-include("../database/server.php");
+include("../Database/functions.php");
 require_once "../includes/header_for_accounts.php";
 if (isset($_GET['logout'])) {
     session_destroy();
