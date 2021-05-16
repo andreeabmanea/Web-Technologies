@@ -32,7 +32,6 @@ if ($stmt->num_rows!=0) {
         }
     }
     echo '</div>
-        <div class="starter" id="info">
             <table>
                 <caption id="title">Details about your package:</caption>
                 <tr>
@@ -57,8 +56,7 @@ if ($stmt->num_rows!=0) {
                     <th>Phone number of courier</th>
                     <th>' . $number . '</th>
                 </tr>
-            </table>
-        </div>';
+            </table>';
 }
 else echo '<p id="title">Please enter a valid AWB!</p>';
 //TODO: se afiseaza asta de 2 ori (odata sus, unde nu ar trebui)

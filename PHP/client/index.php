@@ -1,8 +1,14 @@
 <?php
 $title = 'Client Account';
 require_once "../includes/header_for_accounts.php";
-require_once "../Database/server.php";
 include "../Database/find_my_awb.php";
+include "../Database/send_hour.php";
+
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['username']);
+    header("location: ../public/index.php");
+}
 ?>
 <div class="middle-box">
     <div class="starter">
@@ -25,7 +31,7 @@ include "../Database/find_my_awb.php";
             <tr>
                 <th>Want to change delivery hour?</th>
                 <td>
-                    <select name="shour" id="shour" class="selector">
+                    <select name="shour" class="selector" onchange="reportHour(this.value)">
                         <option value="9:00-11:00">09:00-11:00</option>
                         <option value="11:00-13:00">11:00-13:00</option>
                         <option value="13:00-15:00">13:00-15:00</option>
@@ -95,14 +101,20 @@ require_once '../includes/footer.php';
             }
         };
 
-        xhttp.open("GET", "../Database/find_my_awb.php?fawb="+awb, true);
+        xhttp.open("GET", "../Database/find_my_awb.php?fawb=" + awb, true);
         xhttp.send();
-
-        //TODO: update tabel cu data, ora si numar curier in functie de cartier
-
-        //TODO:
-
-
     }
 
+    function reportHour(str) {
+        var xhttp = new XMLHttpRequest();
+        const awb = document.getElementById('fawb').value;
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+
+            }
+        };
+        xhttp.open("POST", "../Database/send_hour.php", true);
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhttp.send('fawb=' + awb + '&new-hour=' + str);
+    }
 </script>
