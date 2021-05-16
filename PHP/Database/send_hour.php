@@ -19,7 +19,7 @@ if ($stmt_id = $mysql->prepare("SELECT id FROM orders WHERE awb = ?")) {
     $info_id = $result_id->fetch_assoc();
 }
 // get initial hour of order
-if ($stmt_hour = $mysql->prepare("SELECT delivery_hour FROM orders WHERE orders.awb = ?")) {
+if ($stmt_hour = $mysql->prepare("SELECT delivery_hour FROM orders WHERE awb = ?")) {
     $stmt_hour->bind_param('s', $awb);
     $stmt_hour->execute();
     $result_hour = $stmt_hour->get_result();

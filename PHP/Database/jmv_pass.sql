@@ -2,10 +2,10 @@
 -- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 13, 2021 at 09:28 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Gazdă: 127.0.0.1
+-- Timp de generare: mai 16, 2021 la 03:45 PM
+-- Versiune server: 10.4.18-MariaDB
+-- Versiune PHP: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `jmv_pass`
+-- Bază de date: `jmv_pass`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `areas`
+-- Structură tabel pentru tabel `areas`
 --
 
 CREATE TABLE `areas` (
@@ -33,7 +33,7 @@ CREATE TABLE `areas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `areas`
+-- Eliminarea datelor din tabel `areas`
 --
 
 INSERT INTO `areas` (`id_courier`, `area`) VALUES
@@ -45,7 +45,7 @@ INSERT INTO `areas` (`id_courier`, `area`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `courier_requests`
+-- Structură tabel pentru tabel `courier_requests`
 --
 
 CREATE TABLE `courier_requests` (
@@ -56,16 +56,43 @@ CREATE TABLE `courier_requests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `courier_requests`
+-- Eliminarea datelor din tabel `courier_requests`
 --
 
 INSERT INTO `courier_requests` (`id`, `courier_id`, `order_id`, `request`) VALUES
-(1, 6, 2, 'postpone delivery by one day');
+(1, 6, 2, 'postpone delivery by one day'),
+(18, 0, 0, 'ok'),
+(26, 2147483647, 2147483647, '2233489997454'),
+(27, 2147483647, 2147483647, '2233489997454'),
+(28, 2147483647, 2147483647, '2233489997454'),
+(29, 2147483647, 2147483647, '2233489997454');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Structură tabel pentru tabel `hour_change`
+--
+
+CREATE TABLE `hour_change` (
+  `id` int(11) NOT NULL,
+  `id_order` int(11) NOT NULL,
+  `initial_hour` varchar(15) NOT NULL,
+  `new_hour` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Eliminarea datelor din tabel `hour_change`
+--
+
+INSERT INTO `hour_change` (`id`, `id_order`, `initial_hour`, `new_hour`) VALUES
+(1, 1, '13:00-15:00', '11:00-13:00'),
+(2, 1, '13:00-15:00', '09:00-11:00'),
+(3, 2, '09:00-11:00', '11:00-13:00');
+
+-- --------------------------------------------------------
+
+--
+-- Structură tabel pentru tabel `orders`
 --
 
 CREATE TABLE `orders` (
@@ -87,18 +114,18 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `orders`
+-- Eliminarea datelor din tabel `orders`
 --
 
 INSERT INTO `orders` (`id`, `name`, `phone_number`, `address`, `weight`, `content`, `standard/express`, `cash/account_reimbursement`, `amount`, `area`, `status`, `delivery_date`, `delivery_hour`, `AWB`, `id_client`) VALUES
-(1, 'Ioana Ursachi', '0765798937', 'Street Nicolina 6, block B2, B, floor 5, apartment 3', '3kg', 'toys', 'standard', 'cash', 49.99, 'Podu-Ros', 'deposited', '2021-05-12', '13:00-15:00', '2233489997453', 7),
+(1, 'Ioana Ursachi', '0765798937', 'Street Nicolina 6, block B2, B, floor 5, apartment 3', '3kg', 'toys', 'standard', 'cash', 49.99, 'Podu-Ros', 'processed', '2021-05-12', '13:00-15:00', '2233489997453', 7),
 (2, 'Gabriel Florescu', '0765798937', 'Street Vasile Lupu, block G1, floor 3, apartment 2', '2,3kg', 'bike parts', 'express', 'account reimbursemen', NULL, 'Tatarasi', 'arrived', '2021-05-12', '09:00-11:00', '2233489997454', NULL),
 (3, 'Costin Pelescu', '0748496715', 'Boulevard Tudor Vladimirescu 105, block A7, floor 3, apartment 3', '5kg', 'rocks', 'standard', 'cash', 62.5, 'Tudor_Vladimirescu', 'deposited', '2021-05-12', '11:00-13:00', '2233489997451', 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reports`
+-- Structură tabel pentru tabel `reports`
 --
 
 CREATE TABLE `reports` (
@@ -109,7 +136,7 @@ CREATE TABLE `reports` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `reports`
+-- Eliminarea datelor din tabel `reports`
 --
 
 INSERT INTO `reports` (`id_order`, `damage`, `other_content`, `comment`) VALUES
@@ -118,7 +145,7 @@ INSERT INTO `reports` (`id_order`, `damage`, `other_content`, `comment`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structură tabel pentru tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -134,7 +161,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Eliminarea datelor din tabel `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `last_name`, `first_name`, `email`, `password`, `role`, `phone_number`, `cnp`) VALUES
@@ -148,80 +175,99 @@ INSERT INTO `users` (`id`, `username`, `last_name`, `first_name`, `email`, `pass
 (8, 'tataru.paul', 'Tataru', 'Paul', 'tataru.paul98@gmail.com', '12345678', 'courier', '0765981031', 4567890123);
 
 --
--- Indexes for dumped tables
+-- Indexuri pentru tabele eliminate
 --
 
 --
--- Indexes for table `areas`
+-- Indexuri pentru tabele `areas`
 --
 ALTER TABLE `areas`
   ADD KEY `id_courier` (`id_courier`);
 
 --
--- Indexes for table `courier_requests`
+-- Indexuri pentru tabele `courier_requests`
 --
 ALTER TABLE `courier_requests`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `orders`
+-- Indexuri pentru tabele `hour_change`
+--
+ALTER TABLE `hour_change`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `hour_order` (`id_order`);
+
+--
+-- Indexuri pentru tabele `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_client` (`id_client`);
 
 --
--- Indexes for table `reports`
+-- Indexuri pentru tabele `reports`
 --
 ALTER TABLE `reports`
   ADD KEY `id_order` (`id_order`);
 
 --
--- Indexes for table `users`
+-- Indexuri pentru tabele `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pentru tabele eliminate
 --
 
 --
--- AUTO_INCREMENT for table `courier_requests`
+-- AUTO_INCREMENT pentru tabele `courier_requests`
 --
 ALTER TABLE `courier_requests`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT pentru tabele `hour_change`
+--
+ALTER TABLE `hour_change`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT pentru tabele `orders`
 --
 ALTER TABLE `orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT pentru tabele `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- Constraints for dumped tables
+-- Constrângeri pentru tabele eliminate
 --
 
 --
--- Constraints for table `areas`
+-- Constrângeri pentru tabele `areas`
 --
 ALTER TABLE `areas`
   ADD CONSTRAINT `id_courier` FOREIGN KEY (`id_courier`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `orders`
+-- Constrângeri pentru tabele `hour_change`
+--
+ALTER TABLE `hour_change`
+  ADD CONSTRAINT `hour_order` FOREIGN KEY (`id_order`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constrângeri pentru tabele `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `id_client` FOREIGN KEY (`id_client`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `reports`
+-- Constrângeri pentru tabele `reports`
 --
 ALTER TABLE `reports`
   ADD CONSTRAINT `id_order` FOREIGN KEY (`id_order`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
