@@ -56,7 +56,9 @@ if ($stmt->num_rows!=0) {
                     <th>Phone number of courier</th>
                     <th>' . $number . '</th>
                 </tr>
-            </table>';
+            </table>
+        <p id="title" style="margin-top: 2%">Change hours, cancel or report?</p>
+        <a class="button" style="margin-left: 45%" onclick="displayReport()">Please click!</a>';
 
 }
 

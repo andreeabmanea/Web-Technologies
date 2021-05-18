@@ -24,33 +24,32 @@ if (isset($_GET['logout'])) {
         <div id="info-parcel">
 
         </div>
-        <div id="problems" style="display: block">
-        <p id = "title" style="margin-top: 2%">Reports and preferred hours:</p>
-        <table>
-            <tr>
-                <th>Want to change delivery hour?</th>
-                <td>
-                    <select name="shour" class="selector" onchange="reportHour(this.value)">
-                        <option value="9:00-11:00">09:00-11:00</option>
-                        <option value="11:00-13:00">11:00-13:00</option>
-                        <option value="13:00-15:00">13:00-15:00</option>
-                        <option value="15:00-17:00">15:00-17:00</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <th>Don't want it anymore?</th>
-                <th>
-                    <a class="button" onclick="document.getElementById('cancel-delivery').style.display='block'">Cancel</a>
-                </th>
-            </tr>
-            <tr>
-                <th>Issues with the package?</th>
-                <th>
-                    <a class="button" onclick="document.getElementById('report-delivery').style.display='block'">Report</a>
-                </th>
-            </tr>
-        </table>
+        <div id="problems" style="display: none">
+            <table>
+                <tr>
+                    <th>Want to change delivery hour?</th>
+                    <td>
+                        <select name="shour" class="selector" onchange="reportHour(this.value)">
+                            <option value="9:00-11:00">09:00-11:00</option>
+                            <option value="11:00-13:00">11:00-13:00</option>
+                            <option value="13:00-15:00">13:00-15:00</option>
+                            <option value="15:00-17:00">15:00-17:00</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Don't want it anymore?</th>
+                    <th>
+                        <a class="button" onclick="document.getElementById('cancel-delivery').style.display='block'">Cancel</a>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Issues with the package?</th>
+                    <th>
+                        <a class="button" onclick="document.getElementById('report-delivery').style.display='block'">Report</a>
+                    </th>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
@@ -100,12 +99,15 @@ require_once '../includes/footer.php';
                 document.getElementById('infos').style.display='block';
                 document.getElementById('info-parcel').style.display='block';
                 document.getElementById('info-parcel').innerHTML = this.responseText;
-                // document.getElementById('problems').style.display='block';
             }
         };
 
         xhttp.open("GET", "../Database/find_my_awb.php?fawb=" + awb, true);
         xhttp.send();
+    }
+
+    function displayReport() {
+        document.getElementById('problems').style.display = 'block';
     }
 
     // for changing hours
