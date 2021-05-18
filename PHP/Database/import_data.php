@@ -3,48 +3,48 @@ include("server.php");
 global $mysql;
 if (isset($_POST['import-users'])) {
 
-    $fileName = $_FILES["file"]["users_temp"];
+    $fileName = $_FILES["file"]["tmp_name"];
 
     if ($_FILES['file']['size'] > 0) {
 
         $file = fopen($fileName, "r");
 
-        while (($importData = fgetcsv($file, 10000, ",")) !== FALSE) {
+        while (($importDataUser = fgetcsv($file, 1000000, ",")) !== FALSE) {
 
             $username = "";
-            if (isset($importData[0])) {
-                $username = mysqli_real_escape_string($mysql, $importData[0]);
+            if (isset($importDataUser[0])) {
+                $username = mysqli_real_escape_string($mysql, $importDataUser[0]);
             }
             $last_name = "";
-            if (isset($importData[1])) {
-                $last_name = mysqli_real_escape_string($mysql, $importData[1]);
+            if (isset($importDataUser[1])) {
+                $last_name = mysqli_real_escape_string($mysql, $importDataUser[1]);
             }
             $first_name = "";
-            if (isset($importData[2])) {
-                $first_name = mysqli_real_escape_string($mysql, $importData[2]);
+            if (isset($importDataUser[2])) {
+                $first_name = mysqli_real_escape_string($mysql, $importDataUser[2]);
             }
             $email = "";
-            if (isset($importData[3])) {
-                $email = mysqli_real_escape_string($mysql, $importData[3]);
+            if (isset($importDataUser[3])) {
+                $email = mysqli_real_escape_string($mysql, $importDataUser[3]);
             }
             $password = "";
-            if (isset($importData[4])) {
-                $password = mysqli_real_escape_string($mysql, $importData[4]);
+            if (isset($importDataUser[4])) {
+                $password = mysqli_real_escape_string($mysql, $importDataUser[4]);
             }
             $role = "";
-            if (isset($importData[5])) {
-                $password = mysqli_real_escape_string($mysql, $importData[5]);
+            if (isset($importDataUser[5])) {
+                $password = mysqli_real_escape_string($mysql, $importDataUser[5]);
             }
             $phone_number = "";
-            if (isset($importData[6])) {
-                $password = mysqli_real_escape_string($mysql, $importData[6]);
+            if (isset($importDataUser[6])) {
+                $password = mysqli_real_escape_string($mysql, $importDataUser[6]);
             }
             $cnp = "";
-            if (isset($importData[7])) {
-                $cnp = mysqli_real_escape_string($mysql, $importData[7]);
+            if (isset($importDataUser[7])) {
+                $cnp = mysqli_real_escape_string($mysql, $importDataUser[7]);
             }
 
-            $query = "INSERT INTO users (username, last_name, first_name, email, password, role, phone_number, cnp) 
+            $query = "INSERT INTO users (username, last_name, first_name, email, password, role, phone_number, cnp)
                 VALUES('".$username."','".$last_name."','".$first_name."','".$email."','".$password."','".$role."','".$phone_number."','".$cnp."')";
 
             $result = mysqli_query($mysql, $query);
@@ -67,13 +67,14 @@ if (isset($_POST['import-users'])) {
 
 if (isset($_POST['import-orders'])) {
 
-    $fileName = $_FILES["file"]["orders_temp"];
+    $fileName = $_FILES["file"]["tmp_name"];
+
 
     if ($_FILES['file']['size'] > 0) {
 
         $file = fopen($fileName, "r");
 
-        while (($importData = fgetcsv($file, 10000, ",")) !== FALSE) {
+        while (($importData = fgetcsv($file, 100000000, ",")) !== FALSE) {
 
             $name = "";
             if (isset($importData[0])) {
@@ -132,8 +133,7 @@ if (isset($_POST['import-orders'])) {
                 $id_client = mysqli_real_escape_string($mysql, $importData[13]);
             }
 
-            $query = "INSERT INTO orders (name, phone_number, address, weight, content, standard/express, cash/account_reimbursement, amount, area, status, delivery_date, delivery_hour, awb, id_client) 
-                VALUES('".$name."','".$phone_number."','".$address."','".$weight."','".$content."','".$type."','".$payment."','".$amount."','".$date."','".$hour."','".$awb."','".$id_client."')";
+            $query = "INSERT INTO `orders` VALUES ('', ".$name."','".$phone_number."','".$address."','".$weight."','".$content."','".$type."','".$payment."','".$amount."','".$date."',".$hour."','".$awb."','".$id_client."')";
 
             $result = mysqli_query($mysql, $query);
 
@@ -150,5 +150,5 @@ if (isset($_POST['import-orders'])) {
             }
         }
         fclose($file);
-    }
+}
 }
