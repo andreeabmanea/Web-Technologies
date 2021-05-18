@@ -13,3 +13,4 @@ while ($stmt->fetch()) {
     <td><a class=button onclick="removeAccount(' . $id . '), document.location.reload(true)">Remove</a></td>
 </tr>';
 }
+$stmt->close();

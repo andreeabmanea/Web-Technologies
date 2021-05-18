@@ -63,8 +63,6 @@ if ($stmt->num_rows!=0) {
 }
 
 else {
-    ?>
-    <script>document.getElementById('problems').style.display = 'none';</script>
-    <?php
     echo '<p id="title">Please enter a valid AWB!</p>';
 }
+$stmt->close();
