@@ -3,7 +3,13 @@ require_once("../Database/server.php");
 function display_operator_reports($AWB)
 {
     global $mysql;
-    $query = "select id_order, AWB, damage, other_content, comment from reports";
+    if ($stmt_id = $mysql->prepare("SELECT id FROM orders WHERE awb = ?")) {
+        $stmt_id->bind_param('s', $awb);
+        $stmt_id->execute();
+        $result_id = $stmt_id->get_result();
+        $info_id = $result_id->fetch_assoc();
+    }
+    $query = "select id_order, ?, damage, other_content, comment from reports";
     if ($stmt = $mysql->prepare($query)) {
         $stmt->execute();
         $stmt->bind_result($id_order,$AWB, $damage, $other_content, $comment);
