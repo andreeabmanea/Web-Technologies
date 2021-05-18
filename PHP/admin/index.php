@@ -11,92 +11,21 @@ include("../Database/server.php");
     </div>
     <div class="starter">
         <p id="title">Manage accounts</p>
+
         <div class="text-buttons">
-            <a class="button" onclick="
-                document.getElementById('clients-list').style.display='none';
-                document.getElementById('couriers-list').style.display='none';
-                document.getElementById('operators-list').style.display='block'">
-                Operators</a>
-            <a class="button" onclick="
-                document.getElementById('clients-list').style.display='none';
-                document.getElementById('couriers-list').style.display='block';
-                document.getElementById('operators-list').style.display='none'">
-                Couriers</a>
-            <a class="button" onclick="
-                document.getElementById('clients-list').style.display='block';
-                document.getElementById('couriers-list').style.display='none';
-                document.getElementById('operators-list').style.display='none'">
-                Clients</a>
+            <a class="button" onclick="getOperators()">Operators</a>
+            <a class="button" onclick="getCouriers()">Couriers</a>
+            <a class="button" onclick="getClients()">Clients</a>
         </div>
 
-        <table id="operators-list" class="accounts-list">
-            <tr id="Maria-Pelaru">
-                <td>Maria Pelaru</td>
-                <td><a class=button onclick="document.getElementById('Maria-Pelaru-details').style.display='block'">View Details</a></td>
-                <td><a class=button onclick="document.getElementById('Maria-Pelaru').style.display='none'">Remove</a></td>
-            </tr>
-            <tr id="Mihai-Horia">
-                <td>Mihai Horia</td>
-                <td><a class=button onclick="document.getElementById('Mihai-Horia-details').style.display='block'">View Details</a></td>
-                <td><a class=button onclick="document.getElementById('Mihai-Horia').style.display='none'">Remove</a></td>
-            </tr>
-        </table>
-
-        <table id="couriers-list" class="accounts-list">
-            <tr id="Silviu-Manolache">
-                <td>Silviu Manolache</td>
-                <td><a class=button onclick="document.getElementById('Silviu-Manolache-details').style.display='block'">View Details</a></td>
-                <td><a class=button onclick="document.getElementById('Silviu-Manolache').style.display='none'">Remove</a></td>
-            </tr>
-        </table>
-
-        <table id="clients-list" class="accounts-list">
-            <tr id="Ioana-Ursachi">
-                <td>Ioana Ursachi</td>
-                <td><a class=button onclick="document.getElementById('Ioana-Ursachi-details').style.display='block'">View Details</a></td>
-                <td><a class=button onclick="document.getElementById('Ioana-Ursachi').style.display='none'">Remove</a></td>
-            </tr>
-        </table>
+        <table id="operators-list" class="accounts-list" style="display: none"></table>
+        <table id="couriers-list" class="accounts-list"></table>
+        <table id="clients-list" class="accounts-list"></table>
     </div>
 </div>
 
-<div id="Maria-Pelaru-details" class="modal details-pop">
-    <div class="modal-content">
-        <p id="mini-title"> Name: Maria Georgiana Pelaru</p>
-        <p id="mini-title"> Email: maria.pelaru@yahoo.com</p>
-        <p id="mini-title"> CNP: 123456789</p>
-        <p id="mini-title"> Phone number: 0765 758 746</p>
-        <a class=button onclick="document.getElementById('Maria-Pelaru-details').style.display='none'">Done</a>
-    </div>
-</div>
-
-<div id="Mihai-Horia-details" class="modal details-pop">
-    <div class="modal-content">
-        <p id="mini-title"> Name: Mihai Horia</p>
-        <p id="mini-title"> Email: mihai.horia@yahoo.com</p>
-        <p id="mini-title"> CNP: 678912345</p>
-        <p id="mini-title"> Phone number: 0775 937 029</p>
-        <a class=button onclick="document.getElementById('Mihai-Horia-details').style.display='none'">Done</a>
-    </div>
-</div>
-
-<div id="Silviu-Manolache-details" class="modal details-pop">
-    <div class="modal-content">
-        <p id="mini-title"> Name: Silviu Constantin Manolache</p>
-        <p id="mini-title"> Email: silviu.manolache@yahoo.com</p>
-        <p id="mini-title"> CNP: 987654321</p>
-        <p id="mini-title"> Phone number: 0776 745 847</p>
-        <a class=button onclick="document.getElementById('Silviu-Manolache-details').style.display='none'">Done</a>
-    </div>
-</div>
-
-<div id="Ioana-Ursachi-details" class="modal details-pop">
-    <div class="modal-content">
-        <p id="mini-title"> Name: Ioana Ursachi</p>
-        <p id="mini-title"> Email: ioana.ursachi@yahoo.com</p>
-        <p id="mini-title"> Phone number: 0765 798 937</p>
-        <a class=button onclick="document.getElementById('Ioana-Ursachi-details').style.display='none'">Done</a>
-    </div>
+<div id="pop-up" class="modal details-pop" style="display: none;">
+    <div id="details" class="modal-content"></div>
 </div>
 
 <div class="middle-box">
@@ -205,6 +134,73 @@ include("../Database/server.php");
             }
         }
     });
+
+    function getOperators() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById('operators-list').style.display = 'block';
+                document.getElementById('clients-list').style.display = 'none';
+                document.getElementById('couriers-list').style.display = 'none';
+                document.getElementById('operators-list').innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", "../Database/find_accounts.php?role=operator", true);
+        xhttp.send();
+    }
+    function getCouriers() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById('operators-list').style.display = 'none';
+                document.getElementById('clients-list').style.display = 'none';
+                document.getElementById('couriers-list').style.display = 'block';
+                document.getElementById('couriers-list').innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", "../Database/find_accounts.php?role=courier", true);
+        xhttp.send();
+    }
+    function getClients() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById('operators-list').style.display = 'none';
+                document.getElementById('clients-list').style.display = 'block';
+                document.getElementById('couriers-list').style.display = 'none';
+                document.getElementById('clients-list').innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", "../Database/find_accounts.php?role=client", true);
+        xhttp.send();
+    }
+
+    function removeAccount(id) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+
+            }
+        };
+        xhttp.open("POST", "../Database/remove_account.php", true);
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhttp.send('id=' + id);
+    }
+    function detailsAccount(id) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById('pop-up').style.display = 'block';
+                document.getElementById('details').innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", "../Database/details_account.php?id=" + id, true);
+        xhttp.send();
+    }
+
+    function closeDetailsWindow() {
+        document.getElementById('pop-up').style.display = 'none';
+    }
 </script>
 <?php
 require_once '../includes/footer.php';
