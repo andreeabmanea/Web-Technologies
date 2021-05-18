@@ -1,38 +1,18 @@
 <?php
 $title = 'Operator Account';
 require_once '../includes/header_for_accounts.php';
+include("../Database/display_operator_reports.php");
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['username']);
+    header("location: ../public/index.php");
+}
 ?>
 <div class="middle-box">
     <div class="starter">
-        <p id="title">Here are today's reports:</p>
-        <table class="operator-reports">
-            <tr>
-                <th>AWB</th>
-                <th>Customer Name</th>
-                <th>Address</th>
-                <th>Contact Number</th>
-                <th>Is the package damaged?</th>
-                <th>Did you get something other than what you ordered?</th>
-                <th>Other comments</th>
-            </tr>
-            <tr>
-                <td>2402002350971</td>
-                <td>Ioana Ursachi</td>
-                <td>Soseaua Pacurari 13, 700535, Bl. 541</td>
-                <td>0732398476</td>
-                <td>YES</td>
-                <td>-</td>
-                <td>I did not receive the package in a decent shape so that is why i filled this report.</td>
-            </tr>
-            <tr>
-                <td>2403212350971</td>
-                <td>Costin Pelescu</td>
-                <td>Strada Canta 41, 700432</td>
-                <td>0745362712</td>
-                <td>-</td>
-                <td>YES</td>
-                <td>I received a package which was not for me.</td>
-            </tr>
+        <p id="title">Hello, <?php echo $_SESSION['username'];?>. Here are today's reports:</p>
+        <table id="operator-reports">
+            <?php display_operator_reports($_SESSION['username'])?>
         </table>
     </div>
     <div class="starter">
