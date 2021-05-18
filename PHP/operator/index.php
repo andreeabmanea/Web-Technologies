@@ -38,7 +38,7 @@ require_once '../includes/header_for_accounts.php';
     <div class="starter">
         <div id="plan-order">
             <p id="title">Place an order:</p>
-            <form id="order-form">
+            <form class="order-form">
                 <input type="text" placeholder="NAME" id="name" name="name"><br>
                 <input type="text" placeholder="PHONE NUMBER" id="phone" name="phone"><br>
                 <input type="text" placeholder="ADDRESS" id="address" name="address"><br>
@@ -46,9 +46,12 @@ require_once '../includes/header_for_accounts.php';
                 <input type="text" placeholder="CONTENT" id="content" name="content"><br>
                 <input type="text" placeholder="STANDARD/EXPRESS" id="type" name="type"><br>
                 <input type="text" placeholder="CASH/ACCOUNT REIMBURSEMENT" id="reimbursement" name="reimbursement"><br>
+                <div id="submit-button">
+                    <input type="submit" value="Submit" class="button">
+                </div>
             </form>
-            <div id="submit-button">
-                <input type="submit" value="Submit" class="button">
+            <div id="modify-button">
+                <input type="submit" value="Modify Order" class="button">
             </div>
         </div>
     </div>
