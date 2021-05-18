@@ -57,6 +57,12 @@ if ($stmt->num_rows!=0) {
                     <th>' . $number . '</th>
                 </tr>
             </table>';
+
 }
-else echo '<p id="title">Please enter a valid AWB!</p>';
-//TODO: se afiseaza asta de 2 ori (odata sus, unde nu ar trebui)
+
+else {
+    ?>
+    <script>document.getElementById('problems').style.display = 'none';</script>
+    <?php
+    echo '<p id="title">Please enter a valid AWB!</p>';
+}

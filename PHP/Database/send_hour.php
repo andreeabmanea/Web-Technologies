@@ -27,6 +27,6 @@ if ($stmt_hour = $mysql->prepare("SELECT delivery_hour FROM orders WHERE awb = ?
 }
 // insert new hour report
 if ($stmt = $mysql->prepare("INSERT INTO `hour_change` (`id`, `id_order`, `initial_hour`, `new_hour`) VALUES (NULL, ?, ?, ?);")) {
-    $stmt->bind_param('sss', $info_id['id'], $info_hour['delivery_hour'], $new);
+    $stmt->bind_param('iss', $info_id['id'], $info_hour['delivery_hour'], $new);
     $stmt->execute();
 }

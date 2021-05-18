@@ -13,6 +13,9 @@ body {
     position: fixed;
     z-index: +1;
 }
+#problems {
+    display: none;
+}
 .button {
     text-decoration: none;
     background:    #3c887e;
@@ -24,7 +27,7 @@ body {
     text-align: center;
     display: inline-block;
 }
-.button:focus, 
+.button:focus,
 .button:hover {
     cursor: pointer;
 }
@@ -149,7 +152,7 @@ label {
     text-align: center;
     margin: 24px 0 12px 0;
     position: relative;
-} 
+}
 img.avatar {
     width: 20%;
     border-radius: 50%;
@@ -164,9 +167,6 @@ span.psw {
 #info-parcel {
     display: none;
 }
-#problems {
-    display: none;
-}
 .modal {
     display: none;
     position: fixed;
@@ -177,11 +177,11 @@ span.psw {
     height: 100%;
     overflow: auto;
     padding-top: 60px;
-    background-color: rgba(0,0,0,0.4); 
+    background-color: rgba(0,0,0,0.4);
 }
 .modal-content {
     background-color: #fefefe;
-    margin: 5% auto 15% auto; 
+    margin: 5% auto 15% auto;
     border: 1px solid #888;
     width: 70%;
 }
@@ -259,14 +259,13 @@ input[type=text], input[type=password] {
     height: 30px;
     background-color: #3c887e;
 }
-
 .process-text {
     margin: 0px;
     position: absolute;
     font-family: "Ubuntu", sans-serif;
     color: #ebe4d8;
     font-size: 15px;
-    left: 40%;
+    left: 50%;
 }
 .report-form {
     padding: 2%;
