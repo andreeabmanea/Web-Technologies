@@ -172,7 +172,8 @@ INSERT INTO `users` (`id`, `username`, `last_name`, `first_name`, `email`, `pass
 (5, 'horia.mihai', 'Horia', 'Mihai', 'mihai.horia@yahoo.com', '12345678', 'operator', '0775937029', 6789123453),
 (6, 'silviu.manolache66', 'Manolache', 'Silviu Constantin', 'silviu.manolache@yahoo.com', '12345678', 'courier', '0776745847', 987654321),
 (7, 'ursachi.ioana45', 'Ursachi', 'Ioana', 'ioana.ursachi@yahoo.com', '12345678', 'client', '0765798937', NULL),
-(8, 'tataru.paul', 'Tataru', 'Paul', 'tataru.paul98@gmail.com', '12345678', 'courier', '0765981031', 4567890123);
+(8, 'tataru.paul', 'Tataru', 'Paul', 'tataru.paul98@gmail.com', '12345678', 'courier', '0765981031', 4567890123),
+(9, 'rares.junica', 'Junica', 'Rares', 'junicarares@gmail.com', '12345678', 'admin', '0756153967', 1234567890);
 
 --
 -- Indexuri pentru tabele eliminate
