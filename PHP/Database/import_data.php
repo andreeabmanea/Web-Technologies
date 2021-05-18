@@ -67,88 +67,92 @@ if (isset($_POST['import-users'])) {
 
 if (isset($_POST['import-orders'])) {
 
-    $fileName = $_FILES["file"]["tmp_name"];
+    $fileNameOrders = $_FILES["file"]["tmp_name"];
 
 
     if ($_FILES['file']['size'] > 0) {
 
-        $file = fopen($fileName, "r");
+        $fileOrders = fopen($fileNameOrders, "r");
 
-        while (($importData = fgetcsv($file, 100000000, ",")) !== FALSE) {
+        while (($importData = fgetcsv($fileOrders, 100000000, ",")) !== FALSE) {
 
             $name = "";
-            if (isset($importData[0])) {
-                $name = mysqli_real_escape_string($mysql, $importData[0]);
+            if (isset($importData[1])) {
+                $name = mysqli_real_escape_string($mysql, $importData[1]);
             }
             $phone_number = "";
-            if (isset($importData[1])) {
-                $phone_number = mysqli_real_escape_string($mysql, $importData[1]);
+            if (isset($importData[2])) {
+                $phone_number = mysqli_real_escape_string($mysql, $importData[2]);
             }
             $address = "";
-            if (isset($importData[2])) {
-                $address = mysqli_real_escape_string($mysql, $importData[2]);
+            if (isset($importData[3])) {
+                $address = mysqli_real_escape_string($mysql, $importData[3]);
             }
             $weight = "";
-            if (isset($importData[3])) {
-                $weight = mysqli_real_escape_string($mysql, $importData[3]);
+            if (isset($importData[4])) {
+                $weight = mysqli_real_escape_string($mysql, $importData[4]);
             }
             $content = "";
-            if (isset($importData[4])) {
-                $content = mysqli_real_escape_string($mysql, $importData[4]);
+            if (isset($importData[5])) {
+                $content = mysqli_real_escape_string($mysql, $importData[5]);
             }
             $type = "";
-            if (isset($importData[5])) {
-                $type = mysqli_real_escape_string($mysql, $importData[5]);
+            if (isset($importData[6])) {
+                $type = mysqli_real_escape_string($mysql, $importData[6]);
             }
             $payment = "";
-            if (isset($importData[6])) {
-                $payment = mysqli_real_escape_string($mysql, $importData[6]);
+            if (isset($importData[7])) {
+                $payment = mysqli_real_escape_string($mysql, $importData[7]);
             }
             $amount = "";
-            if (isset($importData[7])) {
-                $amount = mysqli_real_escape_string($mysql, $importData[7]);
+            if (isset($importData[8])) {
+                $amount = mysqli_real_escape_string($mysql, $importData[8]);
             }
             $area = "";
-            if (isset($importData[8])) {
-                $area = mysqli_real_escape_string($mysql, $importData[8]);
+            if (isset($importData[9])) {
+                $area = mysqli_real_escape_string($mysql, $importData[9]);
             }
             $status = "";
-            if (isset($importData[9])) {
-                $status = mysqli_real_escape_string($mysql, $importData[9]);
+            if (isset($importData[10])) {
+                $status = mysqli_real_escape_string($mysql, $importData[10]);
             }
             $date = "";
-            if (isset($importData[10])) {
-                $date = mysqli_real_escape_string($mysql, $importData[10]);
+            if (isset($importData[11])) {
+                $date = mysqli_real_escape_string($mysql, $importData[11]);
             }
             $hour = "";
-            if (isset($importData[11])) {
-                $hour = mysqli_real_escape_string($mysql, $importData[11]);
+            if (isset($importData[12])) {
+                $hour = mysqli_real_escape_string($mysql, $importData[12]);
             }
             $awb = "";
-            if (isset($importData[12])) {
-                $awb = mysqli_real_escape_string($mysql, $importData[12]);
+            if (isset($importData[13])) {
+                $awb = mysqli_real_escape_string($mysql, $importData[13]);
             }
             $id_client = "";
-            if (isset($importData[13])) {
-                $id_client = mysqli_real_escape_string($mysql, $importData[13]);
+            if (isset($importData[14])) {
+                $id_client = mysqli_real_escape_string($mysql, $importData[14]);
             }
+            $queryOrders = "INSERT INTO `orders` (`name`, `phone_number`, `address`, `weight`, `content`, `standard/express`, `cash/account_reimbursement`, `amount`, `area`, `status`, `delivery_date`, `delivery_hour`, `AWB`, `id_client`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+          //  $queryOrders = "INSERT INTO `orders` (`id`, `name`, `phone_number`, `address`, `weight`, `content`, `standard/express`, `cash/account_reimbursement`, `amount`, `area`, `status`, `delivery_date`, `delivery_hour`, `AWB`, `id_client`) VALUES (NULL, '.$name.','.$phone_number.','.$address.','.$weight.','".$content."','".$type."','".$payment."','".$amount."','".$date."',".$hour."','".$awb."','".$id_client."')";
 
-            $query = "INSERT INTO `orders` VALUES ('', ".$name."','".$phone_number."','".$address."','".$weight."','".$content."','".$type."','".$payment."','".$amount."','".$date."',".$hour."','".$awb."','".$id_client."')";
-
-            $result = mysqli_query($mysql, $query);
-
-            if (!isset($result)) {
-                echo "<script type=\"text/javascript\">
-                              alert(\"Invalid File:Please Upload CSV File.\");
-                              window.location = \"../admin/index.php\"
-                          </script>";
-            }else{
+            if ($stmt = $mysql->prepare($queryOrders)) {
+                $stmt->bind_param('ssssssssssssss', $name, $phone_number, $address, $weight, $content, $type, $payment, $amount, $area, $status, $date, $hour, $awb, $id_client);
+                $stmt->execute();
                 echo "<script type=\"text/javascript\">
                               alert(\"CSV File has been successfully Imported.\");
                               window.location = \"../admin/index.php\"
                           </script>";
             }
+
+
+//            $resultOrders = mysqli_query($mysql, $queryOrders);
+//            if(!$resultOrders)
+//                echo "gresit";
+//            else {echo $phone_number;}
+
+
+
         }
-        fclose($file);
+        fclose($fileOrders);
 }
 }
