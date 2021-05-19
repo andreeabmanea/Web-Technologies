@@ -2,10 +2,15 @@
 $title = 'Admin Account';
 include("../includes/header_for_accounts.php");
 include("../Database/server.php");
+<<<<<<< Updated upstream
 ?>
 
     <!-- Hello message -->
     <div class="middle-box">
+=======
+
+?><div class="middle-box">
+>>>>>>> Stashed changes
     <div class="starter">
         <div class="text-box">
             <p id="title">Hello, <?php echo $_SESSION['username']; ?>!</p>
@@ -36,21 +41,9 @@ include("../Database/server.php");
     <!-- Statistics -->
 <div class="middle-box">
     <div class="starter">
-        <p id="title">Weekly Statistics</p>
+        <p id="title">Area Statistics</p>
         <div class="text-box">
-            <p>Select an area:
-                <select name="area" id="area" class="selector">
-                    <option value="Pacurari">Pacurari</option>
-                    <option value="Bucium">Bucium</option>
-                    <option value="Dacia">Dacia</option>
-                    <option value="Nicolina">Nicolina</option>
-                    <option value="Tudor-Vladimirescu">Tudor-Vladimirescu</option>
-                    <option value="Bularga">Bularga</option>
-                    <option value="Tatarasi">Tatarasi</option>
-                    <option value="CUG">CUG</option>
-                </select>
-            </p>
-            <canvas id="week-statistics"></canvas>
+            <canvas id="week-statistics">See Statistics</canvas>
         </div>
     </div>
     <div class ="starter">
@@ -104,24 +97,27 @@ include("../Database/server.php");
 
 <script>
     var week = document.getElementById('week-statistics').getContext('2d');
-    var weeklyStatistics = new Chart(week, {
-        type: 'bar',
-        data: {
-            labels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-            datasets: [{
-                label: '# of Orders',
-                data: [55, 30, 40, 65, 32, 60, 45],
-                backgroundColor: '#3c887e',
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+    getOrdersByArea().then(res=>{
+        var weeklyStatistics = new Chart(week, {
+                type: 'bar',
+                data: {
+                    labels: res["area"],
+                    datasets: [{
+                        label: '# of Orders',
+                        data: res["number"],
+                        backgroundColor: '#3c887e',
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
                 }
-            }
-        }
-    });
+            });
+
+    })
 
     var month = document.getElementById('month-statistics').getContext('2d');
     var monthlyStatistics = new Chart(month, {
@@ -217,6 +213,19 @@ include("../Database/server.php");
     // for done button
     function closeDetailsWindow() {
         document.getElementById('pop-up').style.display = 'none';
+    }
+
+    async function getOrdersByArea() {
+        try {
+            let res = await fetch("../Database/get_orders.php");
+            console.log(res.body);
+            let resBody = await res.json();
+            return resBody;
+            console.log(resBody);
+
+        }catch (err){
+            console.log(err);
+        }
     }
 </script>
 <?php
