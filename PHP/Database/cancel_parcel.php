@@ -4,8 +4,8 @@ require_once("../Database/server.php");
 global $mysql;
 $awb = "";
 
-if (isset($_POST['fawb']))
-    $awb = $_POST['fawb'];
+if (isset($_POST['awb']))
+    $awb = $_POST['awb'];
 
 // get id of order
 if ($stmt_id = $mysql->prepare("SELECT id FROM orders WHERE awb = ?")) {

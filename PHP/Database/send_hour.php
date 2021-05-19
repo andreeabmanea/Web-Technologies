@@ -5,8 +5,8 @@ global $mysql;
 $awb = "";
 $new = "";
 
-if (isset($_POST['fawb']))
-    $awb = $_POST['fawb'];
+if (isset($_POST['awb']))
+    $awb = $_POST['awb'];
 
 if (isset($_POST['new-hour']))
     $new = $_POST['new-hour'];
@@ -27,7 +27,7 @@ if ($stmt_hour = $mysql->prepare("SELECT delivery_hour FROM orders WHERE awb = ?
     $info_hour = $result_hour->fetch_assoc();
     $stmt_hour->close();
 }
-// insert new hour report
+// insert new delivery hour report
 if ($stmt = $mysql->prepare("INSERT INTO `hour_change` (`id`, `id_order`, `initial_hour`, `new_hour`) VALUES (NULL, ?, ?, ?);")) {
     $stmt->bind_param('iss', $info_id['id'], $info_hour['delivery_hour'], $new);
     $stmt->execute();

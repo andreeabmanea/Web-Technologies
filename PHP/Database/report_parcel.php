@@ -7,8 +7,8 @@ $damage = "";
 $something = "";
 $comment = "";
 
-if (isset($_POST['fawb']))
-    $awb = $_POST['fawb'];
+if (isset($_POST['awb']))
+    $awb = $_POST['awb'];
 
 if (isset($_POST['damage']))
     $damage = $_POST['damage'];

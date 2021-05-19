@@ -2,7 +2,10 @@
 $title = 'Admin Account';
 include("../includes/header_for_accounts.php");
 include("../Database/server.php");
-?><div class="middle-box">
+?>
+
+    <!-- Hello message -->
+    <div class="middle-box">
     <div class="starter">
         <div class="text-box">
             <p id="title">Hello, <?php echo $_SESSION['username']; ?>!</p>
@@ -18,41 +21,19 @@ include("../Database/server.php");
             <a class="button" onclick="getClients()">Clients</a>
         </div>
 
-        <table id="operators-list" class="accounts-list" style="display: none"></table>
-        <table id="couriers-list" class="accounts-list"></table>
-        <table id="clients-list" class="accounts-list"></table>
+        <table id="operators-list" class="accounts-list" style="display: none"><!-- Operators table --></table>
+        <table id="couriers-list" class="accounts-list"><!-- Couriers table --></table>
+        <table id="clients-list" class="accounts-list"><!-- Clients table --></table>
     </div>
 </div>
 
 <div id="pop-up" class="modal details-pop" style="display: none;">
-    <div id="details" class="modal-content"></div>
-</div>
-
-<div class="middle-box">
-    <div class="starter">
-        <p id="title">Import/Export Users</p>
-        <div class="text-box">
-            <form action="../Database/import_data.php" method="POST" enctype="multipart/form-data">
-                <input type="file" name="file" required="">
-                <input type="submit" name="import-users" class="button" value="Upload">
-            </form>
-            <form action="../Database/export_data.php" method="POST">
-                <input type="submit" class="button" name="export-users" value="Export">
-            </form>
-        </div>
-        <br>
-        <p id="title">Import/Export Orders</p>
-        <div class="text-box">
-            <form action="../Database/import_data.php" method="POST" enctype="multipart/form-data">
-                <input type="file" name="file" required="">
-                <input type="submit" name="import-orders" class="button" value="Upload">
-            </form>
-            <form action="../Database/export_data.php" method="POST">
-                <input type="submit" class="button" name="export-orders" value="Export">
-            </form>
-        </div>
+    <div id="details" class="modal-content">
+        <!-- For displaying details about account -->
     </div>
 </div>
+
+    <!-- Statistics -->
 <div class="middle-box">
     <div class="starter">
         <p id="title">Weekly Statistics</p>
@@ -88,6 +69,33 @@ include("../Database/server.php");
                 </select>
             </p>
             <canvas id="month-statistics"></canvas>
+        </div>
+    </div>
+</div>
+
+    <!-- Import and Export options -->
+<div class="middle-box">
+    <div class="starter">
+        <p id="title">Import/Export Users</p>
+        <div class="text-box">
+            <form action="../Database/import_data.php" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" required="">
+                <input type="submit" name="import-users" class="button" value="Upload">
+            </form>
+            <form action="../Database/export_data.php" method="POST">
+                <input type="submit" class="button" name="export-users" value="Export">
+            </form>
+        </div>
+        <br>
+        <p id="title">Import/Export Orders</p>
+        <div class="text-box">
+            <form action="../Database/import_data.php" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" required="">
+                <input type="submit" name="import-orders" class="button" value="Upload">
+            </form>
+            <form action="../Database/export_data.php" method="POST">
+                <input type="submit" class="button" name="export-orders" value="Export">
+            </form>
         </div>
     </div>
 </div>
@@ -135,6 +143,7 @@ include("../Database/server.php");
         }
     });
 
+    // we want operators list
     function getOperators() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -148,6 +157,8 @@ include("../Database/server.php");
         xhttp.open("GET", "../Database/find_accounts.php?role=operator", true);
         xhttp.send();
     }
+
+    // we want couriers list
     function getCouriers() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -161,6 +172,8 @@ include("../Database/server.php");
         xhttp.open("GET", "../Database/find_accounts.php?role=courier", true);
         xhttp.send();
     }
+
+    // we want clients list
     function getClients() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -175,6 +188,7 @@ include("../Database/server.php");
         xhttp.send();
     }
 
+    // removing account
     function removeAccount(id) {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -186,6 +200,8 @@ include("../Database/server.php");
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhttp.send('id=' + id);
     }
+
+    // get details about account
     function detailsAccount(id) {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -198,6 +214,7 @@ include("../Database/server.php");
         xhttp.send();
     }
 
+    // for done button
     function closeDetailsWindow() {
         document.getElementById('pop-up').style.display = 'none';
     }

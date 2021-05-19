@@ -9,6 +9,7 @@ if (isset($_GET['logout'])) {
     header("location: ../public/index.php");
 }
 ?>
+<!-- AWB tracking option -->
 <div class="middle-box">
     <div class="starter">
         <p id="title">Hello <?php echo $_SESSION['username'];?>! Enter your AWB:</p>
@@ -22,8 +23,9 @@ if (isset($_GET['logout'])) {
 
     <div class="starter" id="infos" style="display: none">
         <div id="info-parcel">
-
+            <!-- Details about order -->
         </div>
+        <!-- Change delivery hour, cancel and report order -->
         <div id="problems" style="display: none">
             <table>
                 <tr>
@@ -54,6 +56,7 @@ if (isset($_GET['logout'])) {
     </div>
 </div>
 
+<!-- You sure to cancel option -->
 <div id="cancel-delivery" class="modal">
     <div class="modal-content">
         <p id="title">Are you sure you want to cancel the package?</p>
@@ -64,13 +67,14 @@ if (isset($_GET['logout'])) {
     </div>
 </div>
 
+<!-- Form for reporting order -->
 <div id="report-delivery" class="modal">
     <div class="modal-content">
         <span onclick="document.getElementById('report-delivery').style.display='none'" class="close" title="Close">&times;</span>
         <form class="report-form" id="damage">
             <p id="mini-title">Is the package damaged?</p>
-            <input type="radio" name="damage" id="damage1" value="Yes" required checked>Yes<br>
-            <input type="radio" name="damage" id="damage2" value="No">No<br>
+            <input type="radio" name="damage" id="damage1" value="Yes" required>Yes<br>
+            <input type="radio" name="damage" id="damage2" value="No" checked>No<br>
         </form>
         <form class="report-form" id="something">
             <p id="mini-title">Did you get something other than what you ordered?</p>
@@ -91,7 +95,6 @@ require_once '../includes/footer.php';
 <script>
     // for displaying information about the parcel
     function displayParcelInfo() {
-        // if the AWB is matching with one from our data base
         const awb = document.getElementById('fawb').value;
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -102,7 +105,7 @@ require_once '../includes/footer.php';
             }
         };
 
-        xhttp.open("GET", "../Database/find_my_awb.php?fawb=" + awb, true);
+        xhttp.open("GET", "../Database/find_my_awb.php?awb=" + awb, true);
         xhttp.send();
     }
 
@@ -121,7 +124,7 @@ require_once '../includes/footer.php';
         };
         xhttp.open("POST", "../Database/send_hour.php", true);
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhttp.send('fawb=' + awb + '&new-hour=' + str);
+        xhttp.send('awb=' + awb + '&new-hour=' + str);
     }
 
     // cancel parcel which will be a report too
@@ -135,7 +138,7 @@ require_once '../includes/footer.php';
         };
         xhttp.open("POST", "../Database/cancel_parcel.php", true);
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhttp.send('fawb=' + awb);
+        xhttp.send('awb=' + awb);
     }
 
     // report parcel with the information from the radios and comment
@@ -163,33 +166,8 @@ require_once '../includes/footer.php';
         else
             something = "no";
 
-        // var damage = $('input[name=damage]:checked', '#damage').value;
-        // var something = $('input[name=something]:checked', '#something').value;
-        // var damage = "maybe";
-        // var something = "maybe";
-        //
-        // var ele = document.getElementsByTagName('damage');
-        // document.write(ele[1]);
-        // for(var i = 0; i < ele.length; i++) {
-        //     var damage = "in";
-        //     if(ele[i].type == "radio") {
-        //
-        //         if(ele[i].checked)
-        //             var damage = ele[i].value;
-        //     }
-        // }
-        // ele = document.getElementsByTagName('something');
-        // for(i = 0; i < ele.length; i++) {
-        //     var something = "in";
-        //     if(ele[i].type == "radio") {
-        //
-        //         if(ele[i].checked)
-        //             var something = ele[i].value;
-        //     }
-        // }
-
         xhttp.open("POST", "../Database/report_parcel.php", true);
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhttp.send('fawb=' + awb + '&damage=' + damage + '&something=' + something + '&comment=' + comment);
+        xhttp.send('awb=' + awb + '&damage=' + damage + '&something=' + something + '&comment=' + comment);
     }
 </script>

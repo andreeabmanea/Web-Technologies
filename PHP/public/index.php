@@ -4,6 +4,8 @@ include('../includes/header.php');
 include('../database/server.php');
 require('../public/errors.php');
 ?>
+
+<!-- Text -->
 <div class="middle-box">
     <div class="starter">
         <p id="title">About us</p>
@@ -42,7 +44,7 @@ require('../public/errors.php');
     </div>
 </div>
 
-
+<!-- Login option -->
 <div id="login-account" class="modal">
     <form class="modal-content" method="post">
         <div class="imgcontainer">
@@ -62,6 +64,7 @@ require('../public/errors.php');
     </form>
 </div>
 
+<!-- Sign-up option -->
 <div id="sign-up" class="modal">
     <form class="modal-content" method="post" action="../Database/server.php">
         <div class="imgcontainer">

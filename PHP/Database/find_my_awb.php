@@ -1,13 +1,17 @@
 <?php
 require_once("../Database/server.php");
 global $mysql;
+
+// get information based on awb
 if ($stmt = $mysql->prepare("SELECT status, delivery_date, delivery_hour FROM orders WHERE awb=?")) {
-    $stmt->bind_param('s', $_GET['fawb']);
+    $stmt->bind_param('s', $_GET['awb']);
     $stmt->execute();
     $stmt->store_result();
     $stmt->bind_result($status, $date, $hour);
     $stmt->fetch();
 }
+
+// print the information
 if ($stmt->num_rows!=0) {
     echo '<p id="title">Status:</p>
          <div id="myProgress">';
@@ -45,7 +49,7 @@ if ($stmt->num_rows!=0) {
                 </tr>
             </table>';
     if ($stmt = $mysql->prepare("SELECT users.phone_number FROM users JOIN areas ON areas.id_courier = users.id JOIN orders ON areas.area = orders.area WHERE awb = ?")) {
-        $stmt->bind_param('s', $_GET['fawb']);
+        $stmt->bind_param('s', $_GET['awb']);
         $stmt->execute();
         $stmt->store_result();
         $stmt->bind_result($number);
@@ -63,6 +67,7 @@ if ($stmt->num_rows!=0) {
 }
 
 else {
+    // if the awb is incorrect or blank
     echo '<p id="title">Please enter a valid AWB!</p>';
 }
 $stmt->close();
