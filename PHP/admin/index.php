@@ -7,10 +7,6 @@ include("../Database/server.php");
 
     <!-- Hello message -->
     <div class="middle-box">
-=======
-
-?><div class="middle-box">
->>>>>>> Stashed changes
     <div class="starter">
         <div class="text-box">
             <p id="title">Hello, <?php echo $_SESSION['username']; ?>!</p>
