@@ -2,7 +2,7 @@
 $title = 'Admin Account';
 include("../includes/header_for_accounts.php");
 include("../Database/server.php");
-<<<<<<< Updated upstream
+
 ?>
 
     <!-- Hello message -->
