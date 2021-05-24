@@ -32,8 +32,9 @@
         }
 
         if (count($errors) == 0) {
+            $md5 = md5($password);
             if ($stmt = $mysql->prepare("SELECT role FROM `users` WHERE username=? and password=?")) {
-                $stmt->bind_param('ss', $username, $password);
+                $stmt->bind_param('ss', $username, $md5);
                 $stmt->execute();
                 $stmt->store_result();
                 if ($stmt->num_rows == 1) {
@@ -58,6 +59,8 @@
                             echo 'Wrong';
 
                     }
+                } else {
+                    // TODO: wrong account-password message
                 }
                 $stmt->close();
             }
@@ -92,11 +95,11 @@
         if (count($errors) == 0) {
             if ($stmt = $mysql->prepare("INSERT INTO users (`id`, `username`, `last_name`, `first_name`, `email`, `password`, `role`, `phone_number`, `cnp`) 
                     VALUES (NULL, ?, ?, ?, ?, ?, 'client', ?, NULL)")) {
-                $stmt->bind_param('ssssss', $username, $last_name, $first_name, $email, $password_1, $phone_number);
+                $stmt->bind_param('ssssss', $username, $last_name, $first_name, $email, md5($password_1), $phone_number);
                 $stmt->execute();
             }
             header('location: ../public/index.php');
+            $stmt->close();
         }
-        $stmt->close();
     }
 
