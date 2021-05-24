@@ -27,11 +27,11 @@ if (isset($_GET['logout'])) {
                 <input type="text" placeholder="STANDARD/EXPRESS" id="type" name="type"><br>
                 <input type="text" placeholder="CASH/ACCOUNT REIMBURSEMENT" id="reimbursement" name="reimbursement"><br>
                 <div id="submit-button">
-                    <input type="submit" value="Submit" class="button">
+                    <button onclick=addOrder() type="submit" class="button">SUBMIT</button>
                 </div>
             </form>
             <div id="modify-button">
-                <input type="submit" value="Modify Order" class="button">
+                <a class="button">Modify Order</a>
             </div>
         </div>
     </div>
@@ -39,3 +39,25 @@ if (isset($_GET['logout'])) {
 <?php
 require_once '../includes/footer.php';
 ?>
+<script>
+    function addOrder(){
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+
+            }
+        };
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const adress = document.getElementById('adress').value;
+        const weight = document.getElementById('weight').value;
+        const content = document.getElementById('content').value;
+        const type = document.getElementById('type').value;
+        const reimbursement = document.getElementById('reimbursement').value;
+
+        xhttp.open("POST", "../Database/add_order.php", true);
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhttp.send('$name=' + name + '&phone=' + phone + '&adress=' + adress + '&weight=' + weight + '$content=' + content + '$type=' + type + '$reimbursement=' + reimbursement);
+    }
+</script>

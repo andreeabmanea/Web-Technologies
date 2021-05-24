@@ -20,7 +20,7 @@ body {
     text-decoration: none;
     background:    #3c887e;
     border-radius: 7px;
-    width: 100px;
+    width: 120px;
     height: 40px;
     color: #ebe4d8;
     font: normal normal 17px/40px "Ubuntu", sans-serif;
@@ -192,7 +192,7 @@ span.psw {
     color: #000;
     font-size: 35px;
     font-weight: bold;
-  }
+}
 .close:hover,
 .close:focus {
     cursor: pointer;
@@ -295,6 +295,11 @@ input[type=text], input[type=password] {
     justify-content: center;
     align-items: center;
 }
+#modify-button{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
 .mapouter{
     margin:auto;
 }

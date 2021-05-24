@@ -39,24 +39,12 @@ include("../Database/server.php");
     <div class="starter">
         <p id="title">Area Statistics</p>
         <div class="text-box">
-            <canvas id="week-statistics">See Statistics</canvas>
+            <canvas id="week-statistics"></canvas>
         </div>
     </div>
     <div class ="starter">
         <p id="title">Monthly Statistics</p>
         <div class="text-box">
-            <p>Select an area:
-                <select name="area" id="area" class="selector">
-                    <option value="Pacurari">Pacurari</option>
-                    <option value="Bucium">Bucium</option>
-                    <option value="Dacia">Dacia</option>
-                    <option value="Nicolina">Nicolina</option>
-                    <option value="Tudor-Vladimirescu">Tudor-Vladimirescu</option>
-                    <option value="Bularga">Bularga</option>
-                    <option value="Tatarasi">Tatarasi</option>
-                    <option value="CUG">CUG</option>
-                </select>
-            </p>
             <canvas id="month-statistics"></canvas>
         </div>
     </div>
@@ -116,24 +104,27 @@ include("../Database/server.php");
     })
 
     var month = document.getElementById('month-statistics').getContext('2d');
-    var monthlyStatistics = new Chart(month, {
-        type: 'bar',
-        data: {
-            labels: ['January','February','March','April','May','June', 'July', 'August','September','October','November','December'],
-            datasets: [{
-                label: '# of Orders',
-                data: [1800, 1567, 1987, 1200, 1546, 1928, 1234, 1657, 1345, 1765, 1453, 1506],
-                backgroundColor: '#3c887e',
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+    getOrdersByMonth().then(resMonth=>{
+        var monthStatistics = new Chart(month, {
+            type: 'bar',
+            data: {
+                labels: resMonth["month"],
+                datasets: [{
+                    label: '# of Orders',
+                    data: resMonth["number"],
+                    backgroundColor: '#3c887e',
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
-        }
-    });
+        });
+
+    })
 
     // we want operators list
     function getOperators() {
@@ -213,13 +204,25 @@ include("../Database/server.php");
 
     async function getOrdersByArea() {
         try {
-            let res = await fetch("../Database/get_orders.php");
+            let res = await fetch("../Database/get_orders_by_area.php");
             console.log(res.body);
             let resBody = await res.json();
-            return resBody;
             console.log(resBody);
+            return resBody;
 
         }catch (err){
+            console.log(err);
+        }
+    }
+
+    async function getOrdersByMonth() {
+        try {
+            let resMonth = await fetch("../Database/get_orders_by_month.php");
+            console.log(resMonth.body);
+            let resBodyMonth = await resMonth.json();
+            console.log(resBodyMonth);
+            return resBodyMonth;
+        } catch (err) {
             console.log(err);
         }
     }
