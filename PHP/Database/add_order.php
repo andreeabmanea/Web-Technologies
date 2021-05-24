@@ -29,6 +29,7 @@ if (isset($_POST['type']))
 
 if (isset($_POST['reimbursement']))
     $reimbursement = $_POST['reimbursement'];
+
 // inserting new order
 if ($stmt = $mysql->prepare("INSERT INTO `orders` (`name`, `phone`, `adress`, `weight`, `content`, `type`, `reimbursement`) VALUES (?, ?, ?, ?, ?, ?, ?);")) {
     $stmt->bind_param('sisissi', $name, $phone, $adress, $weight, $content, $type, $reimbursement);
