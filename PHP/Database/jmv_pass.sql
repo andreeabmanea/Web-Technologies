@@ -2,10 +2,10 @@
 -- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Gazdă: 127.0.0.1
--- Timp de generare: mai 24, 2021 la 05:32 PM
--- Versiune server: 10.4.18-MariaDB
--- Versiune PHP: 8.0.3
+-- Host: 127.0.0.1
+-- Generation Time: May 24, 2021 at 10:52 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Bază de date: `jmv_pass`
+-- Database: `jmv_pass`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structură tabel pentru tabel `areas`
+-- Table structure for table `areas`
 --
 
 CREATE TABLE `areas` (
@@ -33,7 +33,7 @@ CREATE TABLE `areas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Eliminarea datelor din tabel `areas`
+-- Dumping data for table `areas`
 --
 
 INSERT INTO `areas` (`id_courier`, `area`) VALUES
@@ -45,7 +45,7 @@ INSERT INTO `areas` (`id_courier`, `area`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structură tabel pentru tabel `courier_requests`
+-- Table structure for table `courier_requests`
 --
 
 CREATE TABLE `courier_requests` (
@@ -56,7 +56,7 @@ CREATE TABLE `courier_requests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Eliminarea datelor din tabel `courier_requests`
+-- Dumping data for table `courier_requests`
 --
 
 INSERT INTO `courier_requests` (`id`, `courier_id`, `order_id`, `request`) VALUES
@@ -70,7 +70,7 @@ INSERT INTO `courier_requests` (`id`, `courier_id`, `order_id`, `request`) VALUE
 -- --------------------------------------------------------
 
 --
--- Structură tabel pentru tabel `hour_change`
+-- Table structure for table `hour_change`
 --
 
 CREATE TABLE `hour_change` (
@@ -81,7 +81,7 @@ CREATE TABLE `hour_change` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Eliminarea datelor din tabel `hour_change`
+-- Dumping data for table `hour_change`
 --
 
 INSERT INTO `hour_change` (`id`, `id_order`, `initial_hour`, `new_hour`) VALUES
@@ -92,7 +92,7 @@ INSERT INTO `hour_change` (`id`, `id_order`, `initial_hour`, `new_hour`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structură tabel pentru tabel `orders`
+-- Table structure for table `orders`
 --
 
 CREATE TABLE `orders` (
@@ -114,7 +114,7 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Eliminarea datelor din tabel `orders`
+-- Dumping data for table `orders`
 --
 
 INSERT INTO `orders` (`id`, `name`, `phone_number`, `address`, `weight`, `content`, `standard/express`, `cash/account_reimbursement`, `amount`, `area`, `status`, `delivery_date`, `delivery_hour`, `AWB`, `id_client`) VALUES
@@ -672,12 +672,57 @@ INSERT INTO `orders` (`id`, `name`, `phone_number`, `address`, `weight`, `conten
 (550, 'Ilinca Varlan', '748496715', 'Bulevardul Tudor Vladimirescu nr. 228', '1kg', 'toys', 'standard', 'cash', 47, 'Tudor_Vladimirescu', 'deposited', '2021-11-25', '13:00-15:00', '7780921633774', 1),
 (551, 'Paul Duruc', '748496715', 'Bulevardul Tudor Vladimirescu nr. 229', '1kg', 'toys', 'standard', 'cash', 31, 'Tudor_Vladimirescu', 'deposited', '2021-06-05', '13:00-15:00', '4431613038886', 1),
 (552, 'Paul Ioan', '748496715', 'Bulevardul Tudor Vladimirescu nr. 230', '1kg', 'toys', 'standard', 'cash', 28, 'Tudor_Vladimirescu', 'deposited', '2021-11-22', '13:00-15:00', '6773284024768', 1),
-(553, 'Paul Alexandru', '748496715', 'Bulevardul Tudor Vladimirescu nr. 231', '1kg', 'toys', 'standard', 'cash', 38, 'Tudor_Vladimirescu', 'deposited', '2021-06-22', '13:00-15:00', '8891465437451', 1);
+(553, 'Paul Alexandru', '748496715', 'Bulevardul Tudor Vladimirescu nr. 231', '1kg', 'toys', 'standard', 'cash', 38, 'Tudor_Vladimirescu', 'deposited', '2021-06-22', '13:00-15:00', '8891465437451', 1),
+(554, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 45', '1kg', 'laptop', 'express', 'cash', 48, 'Podu-Ros', 'deposited', '2021-09-24', '13:00-15:00', '5587789116485', 1),
+(555, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 46', '1kg', 'laptop', 'express', 'cash', 13, 'Podu-Ros', 'deposited', '2021-09-11', '13:00-15:00', '6880637282440', 1),
+(556, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 47', '1kg', 'laptop', 'express', 'cash', 27, 'Podu-Ros', 'deposited', '2021-05-29', '13:00-15:00', '7854713327211', 1),
+(557, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 48', '1kg', 'laptop', 'express', 'cash', 60, 'Podu-Ros', 'deposited', '2021-10-04', '13:00-15:00', '3809369808946', 1),
+(558, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 49', '1kg', 'laptop', 'express', 'cash', 41, 'Podu-Ros', 'deposited', '2021-11-19', '13:00-15:00', '3490612919144', 1),
+(559, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 50', '1kg', 'laptop', 'express', 'cash', 72, 'Podu-Ros', 'deposited', '2021-07-12', '13:00-15:00', '8991653021624', 1),
+(560, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 51', '1kg', 'laptop', 'express', 'cash', 29, 'Podu-Ros', 'deposited', '2021-04-30', '13:00-15:00', '3436762142309', 1),
+(561, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 52', '1kg', 'laptop', 'express', 'cash', 32, 'Podu-Ros', 'deposited', '2021-04-21', '13:00-15:00', '7445315554673', 1),
+(562, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 53', '1kg', 'laptop', 'express', 'cash', 38, 'Podu-Ros', 'deposited', '2021-03-27', '13:00-15:00', '4561464898894', 1),
+(563, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 54', '1kg', 'laptop', 'express', 'cash', 55, 'Podu-Ros', 'deposited', '2021-04-16', '13:00-15:00', '5431112489726', 1),
+(564, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 55', '1kg', 'laptop', 'express', 'cash', 11, 'Podu-Ros', 'deposited', '2021-05-23', '13:00-15:00', '5695227945484', 1),
+(565, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 56', '1kg', 'laptop', 'express', 'cash', 74, 'Podu-Ros', 'deposited', '2021-12-14', '13:00-15:00', '3469416395962', 1),
+(566, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 57', '1kg', 'laptop', 'express', 'cash', 68, 'Podu-Ros', 'deposited', '2021-08-22', '13:00-15:00', '2849283902355', 1),
+(567, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 58', '1kg', 'laptop', 'express', 'cash', 69, 'Podu-Ros', 'deposited', '2021-05-24', '13:00-15:00', '8020387700584', 1),
+(568, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 59', '1kg', 'laptop', 'express', 'cash', 32, 'Podu-Ros', 'deposited', '2021-05-24', '13:00-15:00', '6886623115950', 1),
+(569, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 60', '1kg', 'laptop', 'express', 'cash', 24, 'Podu-Ros', 'deposited', '2021-01-05', '13:00-15:00', '2628943200816', 1),
+(570, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 61', '1kg', 'laptop', 'express', 'cash', 49, 'Podu-Ros', 'deposited', '2021-02-20', '13:00-15:00', '2662900069029', 1),
+(571, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 62', '1kg', 'laptop', 'express', 'cash', 56, 'Podu-Ros', 'deposited', '2021-07-16', '13:00-15:00', '6317911127555', 1),
+(572, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 63', '1kg', 'laptop', 'express', 'cash', 39, 'Podu-Ros', 'deposited', '2021-08-22', '13:00-15:00', '6863426072416', 1),
+(573, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 64', '1kg', 'laptop', 'express', 'cash', 15, 'Podu-Ros', 'deposited', '2021-07-30', '13:00-15:00', '7579968972413', 1),
+(574, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 65', '1kg', 'laptop', 'express', 'cash', 49, 'Podu-Ros', 'deposited', '2021-10-31', '13:00-15:00', '4380173700048', 1),
+(575, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 66', '1kg', 'laptop', 'express', 'cash', 52, 'Podu-Ros', 'deposited', '2021-09-12', '13:00-15:00', '4536749163744', 1),
+(576, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 67', '1kg', 'laptop', 'express', 'cash', 66, 'Podu-Ros', 'deposited', '2021-07-28', '13:00-15:00', '2469434658575', 1),
+(577, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 68', '1kg', 'laptop', 'express', 'cash', 48, 'Podu-Ros', 'deposited', '2021-02-04', '13:00-15:00', '3064156157655', 1),
+(578, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 69', '1kg', 'laptop', 'express', 'cash', 11, 'Podu-Ros', 'deposited', '2021-12-18', '13:00-15:00', '8648456411146', 1),
+(579, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 70', '1kg', 'laptop', 'express', 'cash', 44, 'Podu-Ros', 'deposited', '2021-04-27', '13:00-15:00', '8335666745531', 1),
+(580, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 71', '1kg', 'laptop', 'express', 'cash', 17, 'Podu-Ros', 'deposited', '2021-07-02', '13:00-15:00', '5791939580320', 1),
+(581, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 72', '1kg', 'laptop', 'express', 'cash', 21, 'Podu-Ros', 'deposited', '2021-07-13', '13:00-15:00', '3516210251349', 1),
+(582, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 73', '1kg', 'laptop', 'express', 'cash', 22, 'Podu-Ros', 'deposited', '2021-11-20', '13:00-15:00', '4312402445644', 1),
+(583, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 74', '1kg', 'laptop', 'express', 'cash', 15, 'Podu-Ros', 'deposited', '2021-08-23', '13:00-15:00', '3001112050364', 1),
+(584, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 75', '1kg', 'laptop', 'express', 'cash', 23, 'Podu-Ros', 'deposited', '2021-08-01', '13:00-15:00', '2209778299541', 1),
+(585, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 76', '1kg', 'laptop', 'express', 'cash', 50, 'Podu-Ros', 'deposited', '2021-07-16', '13:00-15:00', '5687298652343', 1),
+(586, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 77', '1kg', 'laptop', 'express', 'cash', 60, 'Podu-Ros', 'deposited', '2021-03-26', '13:00-15:00', '6884654662713', 1),
+(587, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 78', '1kg', 'laptop', 'express', 'cash', 68, 'Podu-Ros', 'deposited', '2021-04-19', '13:00-15:00', '4384221728094', 1),
+(588, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 79', '1kg', 'laptop', 'express', 'cash', 62, 'Podu-Ros', 'deposited', '2021-11-15', '13:00-15:00', '5577689187298', 1),
+(589, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 80', '1kg', 'laptop', 'express', 'cash', 17, 'Podu-Ros', 'deposited', '2021-06-23', '13:00-15:00', '5513282077295', 1),
+(590, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 81', '1kg', 'laptop', 'express', 'cash', 28, 'Podu-Ros', 'deposited', '2021-08-08', '13:00-15:00', '5448163894020', 1),
+(591, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 82', '1kg', 'laptop', 'express', 'cash', 19, 'Podu-Ros', 'deposited', '2021-04-13', '13:00-15:00', '2147385757108', 1),
+(592, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 83', '1kg', 'laptop', 'express', 'cash', 12, 'Podu-Ros', 'deposited', '2021-12-16', '13:00-15:00', '6382509117546', 1),
+(593, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 84', '1kg', 'laptop', 'express', 'cash', 64, 'Podu-Ros', 'deposited', '2021-10-12', '13:00-15:00', '6943918715108', 1),
+(594, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 85', '1kg', 'laptop', 'express', 'cash', 15, 'Podu-Ros', 'deposited', '2021-09-12', '13:00-15:00', '3545901388814', 1),
+(595, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 86', '1kg', 'laptop', 'express', 'cash', 10, 'Podu-Ros', 'deposited', '2021-01-11', '13:00-15:00', '3409083875272', 1),
+(596, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 87', '1kg', 'laptop', 'express', 'cash', 54, 'Podu-Ros', 'deposited', '2021-02-19', '13:00-15:00', '4295622511122', 1),
+(597, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 88', '1kg', 'laptop', 'express', 'cash', 46, 'Podu-Ros', 'deposited', '2021-01-07', '13:00-15:00', '8780248878538', 1),
+(598, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 89', '1kg', 'laptop', 'express', 'cash', 63, 'Podu-Ros', 'deposited', '2021-06-16', '13:00-15:00', '6874459816471', 1);
 
 -- --------------------------------------------------------
 
 --
--- Structură tabel pentru tabel `reports`
+-- Table structure for table `reports`
 --
 
 CREATE TABLE `reports` (
@@ -688,7 +733,7 @@ CREATE TABLE `reports` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Eliminarea datelor din tabel `reports`
+-- Dumping data for table `reports`
 --
 
 INSERT INTO `reports` (`id_order`, `damage`, `other_content`, `comment`) VALUES
@@ -697,7 +742,7 @@ INSERT INTO `reports` (`id_order`, `damage`, `other_content`, `comment`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structură tabel pentru tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -713,7 +758,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Eliminarea datelor din tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `last_name`, `first_name`, `email`, `password`, `role`, `phone_number`, `cnp`) VALUES
@@ -728,99 +773,99 @@ INSERT INTO `users` (`id`, `username`, `last_name`, `first_name`, `email`, `pass
 (9, 'rares.junica', 'Junica', 'Rares', 'junicarares@gmail.com', '25d55ad283aa400af464c76d713c07ad', 'admin', '0756153967', 1234567890);
 
 --
--- Indexuri pentru tabele eliminate
+-- Indexes for dumped tables
 --
 
 --
--- Indexuri pentru tabele `areas`
+-- Indexes for table `areas`
 --
 ALTER TABLE `areas`
   ADD KEY `id_courier` (`id_courier`);
 
 --
--- Indexuri pentru tabele `courier_requests`
+-- Indexes for table `courier_requests`
 --
 ALTER TABLE `courier_requests`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexuri pentru tabele `hour_change`
+-- Indexes for table `hour_change`
 --
 ALTER TABLE `hour_change`
   ADD PRIMARY KEY (`id`),
   ADD KEY `hour_order` (`id_order`);
 
 --
--- Indexuri pentru tabele `orders`
+-- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_client` (`id_client`);
 
 --
--- Indexuri pentru tabele `reports`
+-- Indexes for table `reports`
 --
 ALTER TABLE `reports`
   ADD KEY `id_order` (`id_order`);
 
 --
--- Indexuri pentru tabele `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT pentru tabele eliminate
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pentru tabele `courier_requests`
+-- AUTO_INCREMENT for table `courier_requests`
 --
 ALTER TABLE `courier_requests`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT pentru tabele `hour_change`
+-- AUTO_INCREMENT for table `hour_change`
 --
 ALTER TABLE `hour_change`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT pentru tabele `orders`
+-- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=554;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=599;
 
 --
--- AUTO_INCREMENT pentru tabele `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- Constrângeri pentru tabele eliminate
+-- Constraints for dumped tables
 --
 
 --
--- Constrângeri pentru tabele `areas`
+-- Constraints for table `areas`
 --
 ALTER TABLE `areas`
   ADD CONSTRAINT `id_courier` FOREIGN KEY (`id_courier`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constrângeri pentru tabele `hour_change`
+-- Constraints for table `hour_change`
 --
 ALTER TABLE `hour_change`
   ADD CONSTRAINT `hour_order` FOREIGN KEY (`id_order`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constrângeri pentru tabele `orders`
+-- Constraints for table `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `id_client` FOREIGN KEY (`id_client`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constrângeri pentru tabele `reports`
+-- Constraints for table `reports`
 --
 ALTER TABLE `reports`
   ADD CONSTRAINT `id_order` FOREIGN KEY (`id_order`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
