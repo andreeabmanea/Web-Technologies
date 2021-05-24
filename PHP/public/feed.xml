@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <item>
+            <title>20% off for new customers!</title>
+            <date>03.05.2021</date>
+            <description>Loved ones live far away and you want to surprise them with a gift? We can deliver it by tomorrow!
+                Hurry up and take advantage of our offer ONLY for new customers: 20% off of your first order. What are you waiting for?
+                Sign up!
+            </description>
+            <image>rss_resources/20_off.png</image>
+            <language>en-us</language>
+        </item>
+        <item>
+            <title>Work schedule for Easter</title>
+            <date>25.04.2021</date>
+            <description>Due to Easter, on Monday, May 3th 2021, the JMV courier will be closed to the public.
+The activity of these agencies will resume on, Tuesday, May 4th 2021.
+The parcels picked-up on Saturday, May 1st 2021, will be delivered on Tuesday, May 4th 2021.</description>
+            <image>rss_resources/happy_easter.png</image>
+            <language>en-us</language>
+        </item>
+        <item>
+            <title>Process secure online sales or purchases while ensuring card data protection!</title>
+            <date>18.04.2021</date>
+            <description>Avoid clicking links from unknown senders and make sure you are on an official website before operating any kind of online transaction or payment.
+                To receive money in your account you need the IBAN account number (which has 24 characters), not the card number (which has 16 digits), the expiration date of the card or the CVV code.
+                Immediately report any attempted fraud!
+            </description>
+            <image>rss_resources/data_protection.png</image>
+            <language>en-us</language>
+        </item>
+        <item>
+            <title>We have moved! The Grand Opening is today! Free Champagne for all visitors!</title>
+            <date>01.04.2021</date>
+            <description>We are happy to announce you that our new location is from today ready! We are very excited to welcome you into our new home, situated in a centred location in the city. You can find us near Union Square, on Cuza Voda Street, number 25! Come make us a visit!</description>
+            <image>rss_resources/community.png</image>
+            <language>en-us</language>
+        </item>
+
+  </channel>
+</rss>

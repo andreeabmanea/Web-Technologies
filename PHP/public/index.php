@@ -22,6 +22,26 @@ require('../public/errors.php');
     </div>
 
     <div class="starter">
+        <p id="title">News</p>
+        <div class="grid-box">
+            <?php
+            $feed = simplexml_load_file("feed.xml");
+            foreach ($feed->channel->item as $feed_item) {
+                ?>
+                <div class="text-box">
+                    <?php
+                        echo '<p id="title">'.$feed_item->title.'</h1>';
+                        echo '<p>'."Posted on: ".$feed_item->date.'</p>';
+                        echo '<p>'.$feed_item->description.'</p>';
+                        echo '<img style="margin-left: auto; margin-right: auto; width: 80%" src="'.$feed_item->image.'">';
+                    ?>
+                </div>
+        <?php
+            }
+            ?>
+        </div>
+    </div>
+    <div class="starter">
         <p id="title">FAQ</p>
         <div class="grid-box">
             <div class="text-box">
