@@ -21,7 +21,7 @@
 </body>
 <div class="middle-box">
     <div class="starter">
-        <p id="title">Here are today's reports:</p>
+        <p id="title">HERE ARE TODAY`S REPORTS:</p>
         <table class="operator-reports">
             <tr>
                 <th>AWB</th>
@@ -54,7 +54,16 @@
     </div>
     <div class="starter">
         <div id="plan-order">
-            <p id="title">Place an order:</p>
+            <p id="title">WHAT DO YOU WANT TO DO?</p>
+            <div id="add-order" style="text-align: center;">
+                <a class="button" onclick="displayAddOrder()" style="width: 140px">PLACE ORDER</a>
+                <a class="button" onclick="displayModifyOrder()" style="width: 140px">MODIFY ORDER</a>
+            </div>
+        </div>
+    </div>
+    <div id="new-order" class="modal">
+        <div class="modal-content">
+            <p id="title">Fill in details about the new order:</p>
             <form class="order-form">
                 <input type="text" placeholder="NAME" id="name" name="name"><br>
                 <input type="text" placeholder="PHONE NUMBER" id="phone" name="phone"><br>
@@ -63,15 +72,41 @@
                 <input type="text" placeholder="CONTENT" id="content" name="content"><br>
                 <input type="text" placeholder="STANDARD/EXPRESS" id="type" name="type"><br>
                 <input type="text" placeholder="CASH/ACCOUNT REIMBURSEMENT" id="reimbursement" name="reimbursement"><br>
-                <div id="submit-button">
-                    <input type="submit" value="Submit" class="button">
+                <input type="text" placeholder="AMOUNT" id="AMOUNT" name="AMOUNT"><br>
+                <input type="text" placeholder="PHONE NUMBER/ACCOUNT/EMAIL" id="accountinfo" name="accountinfo"><br>
+                <div id="hourselector" style="margin-left: auto">
+                    <p id="mini-title" STYLE="text-align: left">SELECT DELIVERY HOUR</p>
+                    <select name="shour" class="selector" id="hour">
+                        <option value="9:00-11:00">09:00-11:00</option>
+                        <option value="11:00-13:00">11:00-13:00</option>
+                        <option value="13:00-15:00">13:00-15:00</option>
+                        <option value="15:00-17:00">15:00-17:00</option>
+                    </select>
+                    <p id="mini-title" STYLE="text-align: left">SELECT AREA</p>
+                    <select name="sarea" class="selector" id="area">
+                        <option value="Tatarasi">Tatarasi</option>
+                        <option value="Podu-Ros">Podu-Ros</option>
+                        <option value="Pacurari">Pacurari</option>
+                        <option value="Tudor-Vladimirescu">Tudor-Vladimirescu</option>
+                    </select>
+                    <p id="mini-title" STYLE="text-align: left">SELECT DATE</p>
+                    <input type="date" id="ddate" name="delivery-date"
+                           min="2021-05-25" max="2022-01-01">
                 </div>
+                <a class="button" onclick="addOrder()" class="close" title="Close" style="margin-left: 45%">Submit</a>
             </form>
-            <div id="modify-button">
-                <input type="submit" value="Modify Order" class="button">
-            </div>
         </div>
     </div>
+    <div id="modify-order" class="modal">
+        <div class="modal-content">
+            <p id="title">Edit the details you want to modify:</p>
+
+            <nav class="container">
+                <a class="button" style="margin-left:40%" onclick="modifyOrder()" class="close" title="Close">Submit</a>
+            </nav>
+        </div>
+    </div>
+
 </div>
 <footer>
     <div class="container">
@@ -80,3 +115,11 @@
  </div>
 </footer>
 </html>
+<script>
+    function displayAddOrder(){
+        document.getElementById('new-order').style.display = 'block';
+    }
+    function displayModifyOrder(){
+        document.getElementById('modify-order').style.display = 'block';
+    }
+</script>
