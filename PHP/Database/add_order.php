@@ -55,7 +55,7 @@ if($info_order==FALSE){
 
 $insert = "INSERT INTO `orders` (`id`, `name`, `phone_number`, `address`, `weight`, `content`, `standard/express`, `cash/account_reimbursement`, `amount`, `area`, `status`, `delivery_date`, `delivery_hour`, `AWB`, `id_client`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'deposited', ?, ?, ?, ?)";
 if ($stmt = $mysql->prepare($insert)) {
-    $stmt->bind_param();
+    $stmt->bind_param('sssssssississi', $name, $phone_number, $address, $weight, $content, $type, $reimbursement, $amount, $darea, $ddate, $dhour, $rawb, $info_order);
     $stmt->execute();
     $stmt->close();
 }
