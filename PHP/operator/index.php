@@ -99,14 +99,13 @@ require_once '../includes/footer.php';
         const dhour = document.getElementById('dhour').value;
         const darea = document.getElementById('darea').value;
 
-        xhttp.open("POST", "../Database/add_order.php", true);
-        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     console.log("Message here");
             }
         };
-
+        xhttp.open("POST", "../Database/add_order.php", true);
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhttp.send('$name' + name + '$phone_number' + phone_number + '$address' + address + '$weight' + weight + '$content' + content + '$type' + type + '$reimbursement' + reimbursement + '$amount' + amount + '$accountInfo' + accountInfo + '$ddate' + ddate + '$dhour' + dhour + '$darea' + darea);
     }
 </script>
