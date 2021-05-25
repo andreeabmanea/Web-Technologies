@@ -35,28 +35,25 @@ if (isset($_POST['accountInfo']))
     $accountInfo = $_POST['accountInfo'];
 
 if (isset($_POST['ddate']))
-    $ddate = $_POST['ddate'];
+    $date = $_POST['ddate'];
 
 if (isset($_POST['dhour']))
-    $dhour = $_POST['dhour'];
+    $hour = $_POST['dhour'];
 
 if (isset($_POST['darea']))
-    $darea = $_POST['darea'];
+    $area = $_POST['darea'];
 
 
 $stmt_order = $mysql->prepare("SELECT id FROM users WHERE phone_number=? or email=? or username=?");
-$stmt_order->bind_param('sss',$accountInfo, $accountInfo, $accountInfo);
+$stmt_order->bind_param('sss', $accountInfo,$accountInfo, $accountInfo);
 $stmt_order->execute();
 $result_id = $stmt_order->get_result();
 $info_order = $result_id->fetch_assoc();
 $stmt_order->close();
 
-if($info_order==FALSE){
-    $info_order=null;
-}
 $insert = "INSERT INTO `orders` (`id`, `name`, `phone_number`, `address`, `weight`, `content`, `standard/express`, `cash/account_reimbursement`, `amount`, `area`, `status`, `delivery_date`, `delivery_hour`, `AWB`, `id_client`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'deposited', ?, ?, ?, ?)";
 if ($stmt = $mysql->prepare($insert)) {
-    $stmt->bind_param('sssssssissssi', $name, $phone_number, $address, $weight, $content, $type, $reimbursement, $amount, $darea, $ddate, $dhour, $rawb, $info_order);
+    $stmt->bind_param('sssssssissssi', $name, $phone_number, $address, $weight, $content, $type, $reimbursement, $amount, $area, $date, $hour, $rawb, $info_order['id']);
     $stmt->execute();
     $stmt->close();
 }

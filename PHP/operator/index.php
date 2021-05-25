@@ -69,6 +69,16 @@ if (isset($_GET['logout'])) {
             </form>
         </div>
     </div>
+    <div id="extend-form" class="modal">
+        <div class="modal-content" style="background-color: rgba(235, 228, 216, 1);border-color:  #3c887e;border-style: solid;border-radius: 10px;padding: 4%;margin-bottom: 4%;">
+            <p id="title">Edit info</p>
+            <form class="modify-extend-form">
+                <input type="text" placeholder="" id="getInfoExtend" name="getInfoExtend"><br>
+                <a class="button" onclick="getInfoExtend()" class="close" title="Close" style="margin-left: 45%">Submit</a>
+
+            </form>
+        </div>
+    </div>
 </div>
 <?php
 require_once '../includes/footer.php';
@@ -81,6 +91,9 @@ require_once '../includes/footer.php';
         document.getElementById('modify-order').style.display = 'block';
     }
     function getInfo(){
+        document.getElementById('extend-form').style.display = 'block';
+    }
+    function getInfoExtend(){
 
     }
     function addOrder(){
@@ -101,11 +114,11 @@ require_once '../includes/footer.php';
 
         xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    console.log("Message here");
+                    console.log("succes");
             }
         };
         xhttp.open("POST", "../Database/add_order.php", true);
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhttp.send('$name' + name + '$phone_number' + phone_number + '$address' + address + '$weight' + weight + '$content' + content + '$type' + type + '$reimbursement' + reimbursement + '$amount' + amount + '$accountInfo' + accountInfo + '$ddate' + ddate + '$dhour' + dhour + '$darea' + darea);
+        xhttp.send('name=' + name + '&phone_number=' + phone_number + '&address=' + address + '&weight=' + weight + '&content=' + content + '&type=' + type + '&reimbursement=' + reimbursement + '&amount=' + amount + '&accountInfo=' + accountInfo + '&ddate=' + ddate + '&dhour=' + dhour + '&darea=' + darea);
     }
 </script>
