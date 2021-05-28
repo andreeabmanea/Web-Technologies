@@ -77,19 +77,25 @@
         $password_1 = mysqli_real_escape_string($mysql, $_POST['psw']);
         $password_2 = mysqli_real_escape_string($mysql, $_POST['psw-repeat']);
 
-        // TODO: if passwords are not the same
-//        if ($password_1 != $password_2) {
-//            array_push($errors, "The two passwords do not match");
-//        }
+        $results_1 = array("The two passwords do not match");
+        $results_2 = array("Username or email already exists");
+        $results_3 = array("The two passwords do not match", "Username or email already exists");
 
-        // TODO: check if the mail already exists
-//        if ($stmt = $mysql->prepare("SELECT * FROM users WHERE username = ? OR email = ?")) {
-//            $stmt->bind_param('ss', $username, $email);
-//            $stmt->execute();
-//            if ($stmt->num_rows != 0) {
-//                array_push($errors, "Username or email already exists");
-//            }
-//        }
+        // TODO: if passwords are not the same
+        if ($password_1 != $password_2) {
+            array_push($errors, "The two passwords do not match");
+        }
+
+        // TODO: check if the mail and username already exists
+        if ($stmt = $mysql->prepare("SELECT * FROM users WHERE username = ? OR email = ?")) {
+            $stmt->bind_param('ss', $username, $email);
+            $stmt->execute();
+            $stmt->fetch();
+            if ($stmt->num_rows != 0) {
+                array_push($errors, "Username or email already exists");
+            }
+            $stmt->close();
+        }
 
         // if there are no errors, insert the new user
         if (count($errors) == 0) {
@@ -98,8 +104,22 @@
                 $stmt->bind_param('ssssss', $username, $last_name, $first_name, $email, md5($password_1), $phone_number);
                 $stmt->execute();
             }
-            header('location: ../public/index.php');
+            $_SESSION['username'] = $username;
+            $_SESSION['success'] = "You are now logged in";
+            header('location: ../client/index.php');
             $stmt->close();
+        }
+        // passwords are not the same
+        if (count(array_diff($errors, $results_1)) == 0) {
+            echo "<script type='text/javascript'>alert('Passwords don t match');</script>";
+        } else
+        // username or email already exists
+        if (count(array_diff($errors, $results_2)) == 0) {
+            echo "<script type='text/javascript'>alert('User name or email already in use!');</script>";
+        } else
+        // username, email or password incorrect
+        if (count(array_diff($errors, $results_3)) == 0) {
+            print_r($errors);
         }
     }
 

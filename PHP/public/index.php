@@ -76,7 +76,7 @@ require('../public/errors.php');
             <input type="text" name="username" placeholder="Enter Username" required>
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="password" required>
-            <button type="submit" name="login">Login</button>
+            <button type="submit" name="login" >Login</button>
             <label>
                 <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
@@ -117,7 +117,7 @@ require('../public/errors.php');
             <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
 
             <p class="sign-up-text">By creating an account you agree to our Terms & Privacy.</p>
-            <button type="submit" name="signup">Sign up</button>
+            <button type="submit" name="signup" onclick="attention()">Sign up</button>
 
         </div>
     </form>
@@ -125,8 +125,7 @@ require('../public/errors.php');
 <?php
 require_once '../includes/footer.php';
 ?>
-</body>
-</html>
+<!-- -->
 
 
 
