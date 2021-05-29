@@ -102,53 +102,10 @@ if (isset($_GET['logout'])) {
                                min="2021-05-25" max="2022-01-01">
                     </div>
                 </form>
-                <table style="float:right">
-                    <thead>
-                    </thead>
-                    <tr>
-                        <th>NAME</th>
-                        <th>RARES</th>
-                    </tr>
-                    <tr>
-                        <th>PHONE NUMBER</th>
-                        <th>0756153967</th>
-                    </tr>
-                    <tr>
-                        <th>ADRESS</th>
-                        <th>CANTA</th>
-                    </tr>
-                    <tr>
-                        <th>WEIGHT</th>
-                        <th>50</th>
-                    </tr>
-                    <tr>
-                        <th>CONTENT</th>
-                        <th>ROCKS</th>
-                    </tr>
-                    <tr>
-                        <th>STANDARD/EXPRESS</th>
-                        <th>STANDARD</th>
-                    </tr>
-                    <tr>
-                        <th>CASH/ACCOUNT REIMBURSEMENT</th>
-                        <th>CASH</th>
-                    </tr>
-                    <tr>
-                        <th>AMOUNT</th>
-                        <th>150</th>
-                    </tr>
-                    <tr>
-                        <th>DELIVERY HOUR</th>
-                        <th>15:00</th>
-                    </tr>
-                    <tr>
-                        <th>DELIVERY AREA</th>
-                        <th>PACURARI</th>
-                    </tr>
-                    <tr>
-                        <th>DATE</th>
-                        <th>1.02.2021</th>
-                    </tr>
+            </div>
+            <div id="showInfo">
+                <table id="toModify">
+                    <?php display_existing_orders(document.getElementById('getInfo').value)?>
                 </table>
             </div>
             <a class="button" onclick="getInfoExtend()" class="close" title="Close" style="margin-left: 45%;">Submit</a>
