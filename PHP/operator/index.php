@@ -19,8 +19,8 @@ if (isset($_GET['logout'])) {
         <div id="plan-order">
             <p id="title">WHAT DO YOU WANT TO DO?</p>
             <div id="add-order" style="text-align: center;">
-                <a class="button" onclick="displayAddOrder()" style="width: 140px">PLACE ORDER</a>
-                <a class="button" onclick="displayModifyOrder()" style="width: 140px">MODIFY ORDER</a>
+                <a class="button" onclick="document.getElementById('new-order').style.display='block'" style="width: 140px">PLACE ORDER</a>
+                <a class="button" onclick="document.getElementById('modify-order').style.display='block'" style="width: 140px">MODIFY ORDER</a>
             </div>
         </div>
     </div>
@@ -56,7 +56,11 @@ if (isset($_GET['logout'])) {
                     <input type="date" id="ddate" name="delivery-date"
                            min="2021-05-25" max="2022-01-01">
                 </div>
-                <a class="button" onclick="addOrder()" class="close" title="Close" style="margin-left: 45%">Submit</a>
+                <!-- daca pui inainte asta cu display, ti se inchide cand apesi submit dar nu cred ca mai ajunge
+                la functia addOrder(); daca il pui dupa, nu ti se mai inchide, dar nici nu iti insereaza in baza de date
+                cand apesi submit. cred ca e ceva problema si la addOrder da nu imi pot da seama
+                -->
+                <a class="button" onclick="document.getElementById('new-order').style.display='none'; addOrder()" class="close" title="Close" style="margin-left: 45%">Submit</a>
             </form>
         </div>
     </div>
@@ -117,12 +121,6 @@ if (isset($_GET['logout'])) {
 require_once '../includes/footer.php';
 ?>
 <script>
-    function displayAddOrder(){
-        document.getElementById('new-order').style.display = 'block';
-    }
-    function displayModifyOrder(){
-        document.getElementById('modify-order').style.display = 'block';
-    }
     function getInfo(){
         document.getElementById('extend-form').style.display = 'block';
     }
