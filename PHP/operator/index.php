@@ -52,7 +52,7 @@ if (isset($_GET['logout'])) {
                         <option value="Pacurari">Pacurari</option>
                         <option value="Tudor-Vladimirescu">Tudor-Vladimirescu</option>
                     </select>
-                    <p id="mini-title" STYLE="text-align: left">SELECT DATE</p>
+                    <p id="mini-title" STYLE="text-align: left;">SELECT DATE</p>
                     <input type="date" id="ddate" name="delivery-date"
                            min="2021-05-25" max="2022-01-01">
                 </div>
@@ -69,16 +69,92 @@ if (isset($_GET['logout'])) {
             </form>
         </div>
     </div>
-    <div id="extend-form" class="modal">
+    <div id="extend-form" class="modal" >
         <div class="modal-content" style="background-color: rgba(235, 228, 216, 1);border-color:  #3c887e;border-style: solid;border-radius: 10px;padding: 4%;margin-bottom: 4%;">
             <p id="title">Edit info</p>
-            <form class="modify-extend-form">
-                <input type="text" placeholder="" id="getInfoExtend" name="getInfoExtend"><br>
-                <a class="button" onclick="getInfoExtend()" class="close" title="Close" style="margin-left: 45%">Submit</a>
-
-            </form>
+            <div id="modify-content">
+                <form class="modify-order-form" style="float:left">
+                    <input type="text" placeholder="NAME" id="name" name="name"><br>
+                    <input type="text" placeholder="PHONE NUMBER" id="phone_number" name="phone"><br>
+                    <input type="text" placeholder="ADDRESS" id="address" name="address"><br>
+                    <input type="text" placeholder="WEIGHT" id="weight" name="weight"><br>
+                    <input type="text" placeholder="CONTENT" id="content" name="content"><br>
+                    <input type="text" placeholder="STANDARD/EXPRESS" id="type" name="type"><br>
+                    <input type="text" placeholder="CASH/ACCOUNT REIMBURSEMENT" id="reimbursement" name="reimbursement"><br>
+                    <input type="text" placeholder="AMOUNT" id="amount" name="amount"><br>
+                    <div id="hourselector" style="margin-left: auto">
+                        <p id="mini-title" STYLE="text-align: left">SELECT DELIVERY HOUR</p>
+                        <select name="shour" class="selector" id="dhour">
+                            <option value="9:00-11:00">09:00-11:00</option>
+                            <option value="11:00-13:00">11:00-13:00</option>
+                            <option value="13:00-15:00">13:00-15:00</option>
+                            <option value="15:00-17:00">15:00-17:00</option>
+                        </select>
+                        <p id="mini-title" STYLE="text-align: left">SELECT AREA</p>
+                        <select name="sarea" class="selector" id="darea">
+                            <option value="Tatarasi">Tatarasi</option>
+                            <option value="Podu-Ros">Podu-Ros</option>
+                            <option value="Pacurari">Pacurari</option>
+                            <option value="Tudor-Vladimirescu">Tudor-Vladimirescu</option>
+                        </select>
+                        <p id="mini-title" STYLE="text-align:left">SELECT DATE</p>
+                        <input type="date" id="ddate" name="delivery-date"
+                               min="2021-05-25" max="2022-01-01">
+                    </div>
+                </form>
+                <table style="float:right">
+                    <thead>
+                    </thead>
+                    <tr>
+                        <th>NAME</th>
+                        <th>RARES</th>
+                    </tr>
+                    <tr>
+                        <th>PHONE NUMBER</th>
+                        <th>0756153967</th>
+                    </tr>
+                    <tr>
+                        <th>ADRESS</th>
+                        <th>CANTA</th>
+                    </tr>
+                    <tr>
+                        <th>WEIGHT</th>
+                        <th>50</th>
+                    </tr>
+                    <tr>
+                        <th>CONTENT</th>
+                        <th>ROCKS</th>
+                    </tr>
+                    <tr>
+                        <th>STANDARD/EXPRESS</th>
+                        <th>STANDARD</th>
+                    </tr>
+                    <tr>
+                        <th>CASH/ACCOUNT REIMBURSEMENT</th>
+                        <th>CASH</th>
+                    </tr>
+                    <tr>
+                        <th>AMOUNT</th>
+                        <th>150</th>
+                    </tr>
+                    <tr>
+                        <th>DELIVERY HOUR</th>
+                        <th>15:00</th>
+                    </tr>
+                    <tr>
+                        <th>DELIVERY AREA</th>
+                        <th>PACURARI</th>
+                    </tr>
+                    <tr>
+                        <th>DATE</th>
+                        <th>1.02.2021</th>
+                    </tr>
+                </table>
+            </div>
+            <a class="button" onclick="getInfoExtend()" class="close" title="Close" style="margin-left: 45%;">Submit</a>
         </div>
     </div>
+
 </div>
 <?php
 require_once '../includes/footer.php';
