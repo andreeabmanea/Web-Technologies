@@ -1,6 +1,6 @@
 <?php
 require_once("../Database/server.php");
-function display_existing_orders($info){
+function display_existing_orders(){
     global $mysql;
     $stmt_order = $mysql->prepare("SELECT `name`, `phone_number`, `address`, `weight`, `content`, `standard/express`, `cash/account_reimbursement`, `amount`, `area`, `status`, `delivery_date`, `delivery_hour` from orders WHERE AWB=? OR phone_number=? OR username=?");
     $stmt_order->bind_param('sss', $info,$info, $info);

@@ -19,8 +19,8 @@ if (isset($_GET['logout'])) {
         <div id="plan-order">
             <p id="title">WHAT DO YOU WANT TO DO?</p>
             <div id="add-order" style="text-align: center;">
-                <a class="button" onclick="document.getElementById('new-order').style.display='block'" style="width: 140px">PLACE ORDER</a>
-                <a class="button" onclick="document.getElementById('modify-order').style.display='block'" style="width: 140px">MODIFY ORDER</a>
+                <a class="button" onclick="displayAddOrder()" style="width: 140px">PLACE ORDER</a>
+                <a class="button" onclick="displayModifyOrder()" style="width: 140px">MODIFY ORDER</a>
             </div>
         </div>
     </div>
@@ -52,15 +52,11 @@ if (isset($_GET['logout'])) {
                         <option value="Pacurari">Pacurari</option>
                         <option value="Tudor-Vladimirescu">Tudor-Vladimirescu</option>
                     </select>
-                    <p id="mini-title" STYLE="text-align: left;">SELECT DATE</p>
+                    <p id="mini-title" STYLE="text-align: left">SELECT DATE</p>
                     <input type="date" id="ddate" name="delivery-date"
                            min="2021-05-25" max="2022-01-01">
                 </div>
-                <!-- daca pui inainte asta cu display, ti se inchide cand apesi submit dar nu cred ca mai ajunge
-                la functia addOrder(); daca il pui dupa, nu ti se mai inchide, dar nici nu iti insereaza in baza de date
-                cand apesi submit. cred ca e ceva problema si la addOrder da nu imi pot da seama
-                -->
-                <a class="button" onclick="document.getElementById('new-order').style.display='none'; addOrder()" class="close" title="Close" style="margin-left: 45%">Submit</a>
+                <a class="button" onclick="addOrder()" style="margin-left: 45%">Submit</a>
             </form>
         </div>
     </div>
@@ -69,62 +65,62 @@ if (isset($_GET['logout'])) {
             <p id="title">Please enter AWB/Phone Number/Username:</p>
             <form class="modify-form">
                 <input type="text" placeholder="" id="getInfo" name="getInfo"><br>
-                <a class="button" onclick="getInfo()" class="close" title="Close" style="margin-left: 45%">Submit</a>
+                <a class="button" onclick="getInfo()" style="margin-left: 45%">Submit</a>
             </form>
         </div>
     </div>
-    <div id="extend-form" class="modal" >
+    <div id="extend-form" class="modal">
         <div class="modal-content" style="background-color: rgba(235, 228, 216, 1);border-color:  #3c887e;border-style: solid;border-radius: 10px;padding: 4%;margin-bottom: 4%;">
             <p id="title">Edit info</p>
-            <div id="modify-content">
-                <form class="modify-order-form" style="float:left">
-                    <input type="text" placeholder="NAME" id="name" name="name"><br>
-                    <input type="text" placeholder="PHONE NUMBER" id="phone_number" name="phone"><br>
-                    <input type="text" placeholder="ADDRESS" id="address" name="address"><br>
-                    <input type="text" placeholder="WEIGHT" id="weight" name="weight"><br>
-                    <input type="text" placeholder="CONTENT" id="content" name="content"><br>
-                    <input type="text" placeholder="STANDARD/EXPRESS" id="type" name="type"><br>
-                    <input type="text" placeholder="CASH/ACCOUNT REIMBURSEMENT" id="reimbursement" name="reimbursement"><br>
-                    <input type="text" placeholder="AMOUNT" id="amount" name="amount"><br>
-                    <div id="hourselector" style="margin-left: auto">
-                        <p id="mini-title" STYLE="text-align: left">SELECT DELIVERY HOUR</p>
-                        <select name="shour" class="selector" id="dhour">
-                            <option value="9:00-11:00">09:00-11:00</option>
-                            <option value="11:00-13:00">11:00-13:00</option>
-                            <option value="13:00-15:00">13:00-15:00</option>
-                            <option value="15:00-17:00">15:00-17:00</option>
-                        </select>
-                        <p id="mini-title" STYLE="text-align: left">SELECT AREA</p>
-                        <select name="sarea" class="selector" id="darea">
-                            <option value="Tatarasi">Tatarasi</option>
-                            <option value="Podu-Ros">Podu-Ros</option>
-                            <option value="Pacurari">Pacurari</option>
-                            <option value="Tudor-Vladimirescu">Tudor-Vladimirescu</option>
-                        </select>
-                        <p id="mini-title" STYLE="text-align:left">SELECT DATE</p>
-                        <input type="date" id="ddate" name="delivery-date"
-                               min="2021-05-25" max="2022-01-01">
+            <form class="modify-extend-form">
+                <input type="text" placeholder="NAME" id="name" name="name"><br>
+                <input type="text" placeholder="PHONE NUMBER" id="phone_number" name="phone"><br>
+                <input type="text" placeholder="ADDRESS" id="address" name="address"><br>
+                <input type="text" placeholder="WEIGHT" id="weight" name="weight"><br>
+                <input type="text" placeholder="CONTENT" id="content" name="content"><br>
+                <input type="text" placeholder="STANDARD/EXPRESS" id="type" name="type"><br>
+                <input type="text" placeholder="CASH/ACCOUNT REIMBURSEMENT" id="reimbursement" name="reimbursement"><br>
+                <input type="text" placeholder="AMOUNT" id="amount" name="amount"><br>
+                <div id="hourselector" style="margin-left: auto">
+                    <p id="mini-title" STYLE="text-align: left">SELECT DELIVERY HOUR</p>
+                    <select name="shour" class="selector" id="dhour">
+                        <option value="9:00-11:00">09:00-11:00</option>
+                        <option value="11:00-13:00">11:00-13:00</option>
+                        <option value="13:00-15:00">13:00-15:00</option>
+                        <option value="15:00-17:00">15:00-17:00</option>
+                    </select>
+                    <p id="mini-title" STYLE="text-align: left">SELECT AREA</p>
+                    <select name="sarea" class="selector" id="darea">
+                        <option value="Tatarasi">Tatarasi</option>
+                        <option value="Podu-Ros">Podu-Ros</option>
+                        <option value="Pacurari">Pacurari</option>
+                        <option value="Tudor-Vladimirescu">Tudor-Vladimirescu</option>
+                    </select>
+                    <p id="mini-title" STYLE="text-align:left">SELECT DATE</p>
+                    <input type="date" id="ddate" name="delivery-date"
+                           min="2021-05-25" max="2022-01-01">
+                    <div id="showInfo">
+
                     </div>
-                </form>
-            </div>
-            <div id="showInfo">
-                <table id="toModify">
-                    <?php display_existing_orders(document.getElementById('getInfo').value)?>
-                </table>
-            </div>
-            <a class="button" onclick="getInfoExtend()" class="close" title="Close" style="margin-left: 45%;">Submit</a>
+                <a class="button" onclick="modifyOrder()" style="margin-left: 45%">Submit</a>
+            </form>
         </div>
     </div>
-
 </div>
 <?php
 require_once '../includes/footer.php';
 ?>
 <script>
+    function displayAddOrder(){
+        document.getElementById('new-order').style.display = 'block';
+    }
+    function displayModifyOrder(){
+        document.getElementById('modify-order').style.display = 'block';
+    }
     function getInfo(){
         document.getElementById('extend-form').style.display = 'block';
     }
-    function getInfoExtend(){
+    function modifyOrder(){
 
     }
     function addOrder(){
@@ -144,8 +140,8 @@ require_once '../includes/footer.php';
         const darea = document.getElementById('darea').value;
 
         xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    console.log("succes");
+            if (this.readyState == 4 && this.status == 200) {
+                console.log("succes");
             }
         };
         xhttp.open("POST", "../Database/add_order.php", true);
