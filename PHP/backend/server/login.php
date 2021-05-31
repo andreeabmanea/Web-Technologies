@@ -28,8 +28,8 @@ if (isset($_POST['login'])) {
                 if($remember_me == true)
                 {
                     $hour = time() + 3600 * 24 * 30;
-                    setcookie('username', $username, $hour);
-                    setcookie('password', $password, $hour);
+                    setcookie('USER_NAME', $username, $hour);
+                    setcookie('PASSWORD', $password, $hour);
                 }
                 $_SESSION['username'] = $username;
                 $_SESSION['success'] = "You have logged in";
