@@ -23,6 +23,7 @@
     if (isset($_POST['login'])) {
         $username = mysqli_real_escape_string($mysql, $_POST['username']);
         $password = mysqli_real_escape_string($mysql, $_POST['password']);
+        $remember_me = mysqli_real_escape_string($mysql, $_POST['remember_me']);
 
         if (empty($username)) {
             array_push($errors, "Please enter your username");
@@ -38,6 +39,12 @@
                 $stmt->execute();
                 $stmt->store_result();
                 if ($stmt->num_rows == 1) {
+                    if($remember_me == true)
+                    {
+                        $hour = time() + 3600 * 24 * 30;
+                        setcookie('username', $username, $hour);
+                        setcookie('password', $password, $hour);
+                    }
                     $_SESSION['username'] = $username;
                     $_SESSION['success'] = "You have logged in";
                     $stmt->bind_result($role);
@@ -60,7 +67,12 @@
 
                     }
                 } else {
-                    // TODO: wrong account-password message
+                    ?>
+                    <script type = "text/Javascript">
+                        alert("Sorry , wrong username or password");
+                        setTimeout("location.href = '../public/index.php';");
+                    </script>
+                    <?php
                 }
                 $stmt->close();
             }
@@ -111,15 +123,30 @@
         }
         // passwords are not the same
         if (count(array_diff($errors, $results_1)) == 0) {
-            echo "<script type='text/javascript'>alert('Passwords don t match');</script>";
+            ?>
+            <script type = "text/Javascript">
+                alert("Sorry, passwords are not the same!");
+                setTimeout("location.href = '../public/index.php';");
+            </script>
+            <?php
         } else
         // username or email already exists
         if (count(array_diff($errors, $results_2)) == 0) {
-            echo "<script type='text/javascript'>alert('User name or email already in use!');</script>";
+            ?>
+            <script type = "text/Javascript">
+                alert("Sorry, username or email already in use!");
+                setTimeout("location.href = '../public/index.php';");
+            </script>
+            <?php
         } else
         // username, email or password incorrect
         if (count(array_diff($errors, $results_3)) == 0) {
-            print_r($errors);
+            ?>
+            <script type = "text/Javascript">
+                alert("Sorry, passwords are not the same or email/username already in use!");
+                setTimeout("location.href = '../public/index.php';");
+            </script>
+            <?php
         }
     }
 

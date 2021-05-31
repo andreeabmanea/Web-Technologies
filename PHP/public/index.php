@@ -78,7 +78,7 @@ require('../public/errors.php');
             <input type="password" placeholder="Enter Password" name="password" required>
             <button type="submit" name="login" >Login</button>
             <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
+                <input type="checkbox" checked="checked" name="remember_me" id="remember_me"> Remember me
             </label>
         </div>
     </form>
