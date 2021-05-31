@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2021 at 10:52 PM
+-- Generation Time: May 31, 2021 at 10:53 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -61,11 +61,7 @@ CREATE TABLE `courier_requests` (
 
 INSERT INTO `courier_requests` (`id`, `courier_id`, `order_id`, `request`) VALUES
 (1, 6, 2, 'postpone delivery by one day'),
-(18, 0, 0, 'ok'),
-(26, 2147483647, 2147483647, '2233489997454'),
-(27, 2147483647, 2147483647, '2233489997454'),
-(28, 2147483647, 2147483647, '2233489997454'),
-(29, 2147483647, 2147483647, '2233489997454');
+(30, 6, 223, 'i have to postpone delivery for 8661965600019 due to a traffic jam');
 
 -- --------------------------------------------------------
 
@@ -340,7 +336,7 @@ INSERT INTO `orders` (`id`, `name`, `phone_number`, `address`, `weight`, `conten
 (220, 'Ilinca Varlan', '748496715', 'Str. Tatarasi nr. 111', '1kg', 'clothes', 'standard', 'cash', 29, 'Tatarasi', 'deposited', '2021-02-08', '13:00-15:00', '8876940417692', 1),
 (221, 'Paul Duruc', '748496715', 'Str. Tatarasi nr. 112', '1kg', 'clothes', 'standard', 'cash', 26, 'Tatarasi', 'deposited', '2021-02-09', '13:00-15:00', '6108243672612', 1),
 (222, 'Paul Ioan', '748496715', 'Str. Tatarasi nr. 113', '1kg', 'clothes', 'standard', 'cash', 23, 'Tatarasi', 'deposited', '2021-07-03', '13:00-15:00', '6627512764888', 1),
-(223, 'Paul Alexandru', '748496715', 'Str. Tatarasi nr. 114', '1kg', 'clothes', 'standard', 'cash', 39, 'Tatarasi', 'deposited', '2021-05-29', '13:00-15:00', '8661965600019', 1),
+(223, 'Paul Alexandru', '748496715', 'Str. Tatarasi nr. 114', '1kg', 'clothes', 'standard', 'cash', 39, 'Tatarasi', 'arrived', '2021-05-29', '13:00-15:00', '8661965600019', 1),
 (224, 'Andreea Simon', '748496715', 'Str. Tatarasi nr. 115', '1kg', 'clothes', 'standard', 'cash', 17, 'Tatarasi', 'deposited', '2021-01-13', '13:00-15:00', '4395524578138', 1),
 (225, 'Ioana Blanaru', '748496715', 'Str. Tatarasi nr. 116', '1kg', 'clothes', 'standard', 'cash', 26, 'Tatarasi', 'deposited', '2021-05-01', '13:00-15:00', '5328109794301', 1),
 (226, 'Ilinca Varlan', '748496715', 'Str. Tatarasi nr. 117', '1kg', 'clothes', 'standard', 'cash', 26, 'Tatarasi', 'deposited', '2021-02-24', '13:00-15:00', '7765647251232', 1),
@@ -717,7 +713,10 @@ INSERT INTO `orders` (`id`, `name`, `phone_number`, `address`, `weight`, `conten
 (595, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 86', '1kg', 'laptop', 'express', 'cash', 10, 'Podu-Ros', 'deposited', '2021-01-11', '13:00-15:00', '3409083875272', 1),
 (596, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 87', '1kg', 'laptop', 'express', 'cash', 54, 'Podu-Ros', 'deposited', '2021-02-19', '13:00-15:00', '4295622511122', 1),
 (597, 'Bianca Prodan', '732395842', 'Str. Sfantul Lazar nr. 88', '1kg', 'laptop', 'express', 'cash', 46, 'Podu-Ros', 'deposited', '2021-01-07', '13:00-15:00', '8780248878538', 1),
-(598, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 89', '1kg', 'laptop', 'express', 'cash', 63, 'Podu-Ros', 'deposited', '2021-06-16', '13:00-15:00', '6874459816471', 1);
+(598, 'Ioana Alexia', '732395842', 'Str. Sfantul Lazar nr. 89', '1kg', 'laptop', 'express', 'cash', 63, 'Podu-Ros', 'deposited', '2021-06-16', '13:00-15:00', '6874459816471', 1),
+(599, '', '', '', '', '', '', '', 0, 'Tatarasi', 'deposited', '0000-00-00', '9:00-11:00', '6623286242540', NULL),
+(600, '', '', '', '', '', '', '', 0, 'Tatarasi', 'deposited', '0000-00-00', '9:00-11:00', '8107865776929', NULL),
+(601, '', '', '', '', '', '', '', 0, 'Tatarasi', 'deposited', '0000-00-00', '9:00-11:00', '5256234081274', NULL);
 
 -- --------------------------------------------------------
 
@@ -738,6 +737,31 @@ CREATE TABLE `reports` (
 
 INSERT INTO `reports` (`id_order`, `damage`, `other_content`, `comment`) VALUES
 (3, 'no', 'yes', 'I found toys in my parcel!');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rss`
+--
+
+CREATE TABLE `rss` (
+  `id` int(50) NOT NULL,
+  `title` varchar(500) NOT NULL,
+  `description` text NOT NULL,
+  `author` varchar(100) NOT NULL,
+  `date_time` datetime NOT NULL,
+  `image` varchar(9000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `rss`
+--
+
+INSERT INTO `rss` (`id`, `title`, `description`, `author`, `date_time`, `image`) VALUES
+(1, '20% off for new customers!', 'Loved ones live far away and you want to surprise them with a gift? We can deliver it by tomorrow! Hurry up and take advantage of our offer ONLY for new customers: 20% off of your first order. What are you waiting for? Sign up!', 'Andreea Manea', '2021-05-31 09:04:46', '20_off.png'),
+(2, 'Work schedule for Easter', 'Due to Easter, on Monday, May 3th 2021, the JMV courier will be closed to the public.\r\nThe activity of these agencies will resume on, Tuesday, May 4th 2021.\r\nThe parcels picked-up on Saturday, May 1st 2021, will be delivered on Tuesday, May 4th 2021.', 'Andreea Manea', '2021-04-28 11:37:53', 'happy_easter.png'),
+(3, 'Process secure online sales or purchases while ensuring card data protection!', 'Avoid clicking links from unknown senders and make sure you are on an official website before operating any kind of online transaction or payment.\r\nTo receive money in your account you need the IBAN account number (which has 24 characters), not the card number (which has 16 digits), the expiration date of the card or the CVV code. Immediately report any attempted fraud!', 'Andreea Manea', '2021-05-12 16:22:53', 'data_protection.png'),
+(4, 'We have moved! The Grand Opening is today! Free Champagne for all visitors!', 'We are happy to announce you that our new location is from today ready! We are very excited to welcome you into our new home, situated in a centred location in the city. You can find us near Union Square, on Cuza Voda Street, number 25! Come make us a visit!', 'Andreea Manea', '2021-04-12 08:00:00', 'community.png');
 
 -- --------------------------------------------------------
 
@@ -809,6 +833,12 @@ ALTER TABLE `reports`
   ADD KEY `id_order` (`id_order`);
 
 --
+-- Indexes for table `rss`
+--
+ALTER TABLE `rss`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -822,7 +852,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `courier_requests`
 --
 ALTER TABLE `courier_requests`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `hour_change`
@@ -834,7 +864,13 @@ ALTER TABLE `hour_change`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=599;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=602;
+
+--
+-- AUTO_INCREMENT for table `rss`
+--
+ALTER TABLE `rss`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
