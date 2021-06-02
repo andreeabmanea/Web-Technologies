@@ -1,38 +1,50 @@
 <?php
 require_once("../server/connection.php");
-function display_existing_orders(){
     global $mysql;
-    $stmt_order = $mysql->prepare("SELECT `name`, `phone_number`, `address`, `weight`, `content`, `standard/express`, `cash/account_reimbursement`, `amount`, `area`, `status`, `delivery_date`, `delivery_hour` from orders WHERE AWB=? OR phone_number=? OR username=?");
-    $stmt_order->bind_param('sss', $info,$info, $info);
-    $stmt_order->execute();
-    $stmt_order->bind_result($name,$phone_number, $address, $weight, $content, $type, $cash_account, $amount, $area, $ddate, $dhour);
-    echo
-    '<th>
-            <tr style = "padding:10px">NAME</tr>
-            <tr style = "padding:10px">PHONE</tr>
-            <tr style = "padding:10px">ADDRESS</tr>
-            <tr style = "padding:10px">WEIGHT</tr>
-            <tr style = "padding:10px">CONTENT</tr>
-            <tr style = "padding:10px">STANDARD/EXPRESS</tr>
-            <tr style = "padding:10px">CASH/ACCOUNT REIMBURSEMENT</tr>
-            <tr style = "padding:10px">AMOUNT</tr>
-            <tr style = "padding:10px">AREA</tr>
-            <tr style = "padding:10px">DELIVERY DATE</tr>
-            <tr style = "padding:10px">DELIERY HOUR</tr>
-        </th>';
-    while ($stmt_order->fetch()) {
-        echo '<td>';
-        echo '<tr style = "padding:10px">' . $name . '</tr>';
-        echo '<tr style = "padding:10px">' . $phone_number . '</tr>';
-        echo '<tr style = "padding:10px">' . $address . '</tr>';
-        echo '<tr style = "padding:10px">' . $weight . '</tr>';
-        echo '<tr style = "padding:10px">' . $content. '</tr>';
-        echo '<tr style = "padding:10px">' . $type . '</tr>';
-        echo '<tr style = "padding:10px">' . $cash_account . '</tr>';
-        echo '<tr style = "padding:10px">' . $amount . '</tr>';
-        echo '<tr style = "padding:10px">' . $area . '</tr>';
-        echo '<tr style = "padding:10px">' . $ddate . '</tr>';
-        echo '<tr style = "padding:10px">' . $dhour . '</tr>';
-        echo '</td>';
-    }
-}
+    if (isset($_POST['getAWB']))
+        $info = $_POST['getAWB'];
+$stmt_order = $mysql->prepare("select * from orders where awb = ?");
+$stmt_order->bind_param('s', $info);
+$stmt_order->execute();
+$result_order = $stmt_order->get_result();
+$info_order = $result_order->fetch_assoc();
+echo
+    '
+    <table>
+        <tr>
+            <td style = "padding:10px">NAME</td>
+            <td style = "padding:10px">' . $info_order['name'] . '</td>
+        </tr>
+        <tr>
+            <td style = "padding:2px">PHONE</td>
+        </tr>
+        <tr>
+            <td style = "padding:2px">ADDRESS</td>
+        </tr>
+        <tr>
+            <td style = "padding:2px">WEIGHT</td>
+        </tr>
+        <tr>
+            <td style = "padding:2px">CONTENT</td>
+        </tr>
+        <tr>
+            <td style = "padding:2px">STANDARD/EXPRESS</td>
+        </tr>
+        <tr>
+            <td style = "padding:2px">CASH/ACCOUNT REIMBURSEMENT</td>
+        </tr>
+        <tr>
+            <td style = "padding:2px">AMOUNT</td>
+        </tr>
+        <tr>
+            <td style = "padding:2px">STATUS</td>
+        </tr>
+        <tr>
+            <td style = "padding:10px">AREA</td>
+        </tr>
+        <tr>
+            <td style = "padding:10px">DELIVERY DATE</td>
+        </tr>
+        <tr>
+            <td style = "padding:10px">DELIERY HOUR</td>
+        </tr>';

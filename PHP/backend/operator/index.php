@@ -2,6 +2,8 @@
 $title = 'Operator Account';
 require_once '../includes/header_for_accounts.php';
 include("display_operator_reports.php");
+include "../server/login.php";
+include "../server/sign_up.php";
 
 if (isset($_GET['logout'])) {
     session_destroy();
@@ -65,13 +67,20 @@ if (isset($_GET['logout'])) {
         <div class="modal-content" style="background-color: rgba(235, 228, 216, 1);border-color:  #3c887e;border-style: solid;border-radius: 10px;padding: 4%;margin-bottom: 4%;">
             <p id="title">Please enter AWB/Phone Number/Username:</p>
             <form class="modify-form">
-                <input type="text" placeholder="" id="getInfo" name="getInfo"><br>
-                <a class="button" onclick="getInfo()" style="margin-left: 45%">Submit</a>
+                <input type="text" placeholder="" id="getAWB" name="getAWB"><br>
+                <a class="button" onclick="getInfoSubmit()" style="margin-left: 45%">Submit</a>
             </form>
         </div>
     </div>
+</div>
++   <div id="extend-form-left" class="modal">
+    <div class="modal-content" style="background-color: rgba(235, 228, 216, 1);border-color:  #3c887e;border-style: solid;border-radius: 10px;padding: 4%;margin-bottom: 4%; width: 40%; float:right">
+        <table id="showInfo" style="display:inline-block; float: right">
+        </table>
+    </div>
+</div>
     <div id="extend-form" class="modal">
-        <div class="modal-content" style="background-color: rgba(235, 228, 216, 1);border-color:  #3c887e;border-style: solid;border-radius: 10px;padding: 4%;margin-bottom: 4%;">
+        <div class="modal-content" style="background-color: rgba(235, 228, 216, 1);border-color:  #3c887e;border-style: solid;border-radius: 10px;padding: 4%;margin-bottom: 4%; width: 40%; float:left">
             <p id="title">Edit info</p>
             <form class="modify-extend-form">
                 <input type="text" placeholder="NAME" id="name" name="name"><br>
@@ -100,13 +109,9 @@ if (isset($_GET['logout'])) {
                     <p id="mini-title" STYLE="text-align:left">SELECT DATE</p>
                     <input type="date" id="ddate" name="delivery-date"
                            min="2021-05-25" max="2022-01-01">
-                    <div id="showInfo">
-
-                    </div>
-                <a class="button" onclick="modifyOrder()" style="margin-left: 45%">Submit</a>
             </form>
+            <a class="button" onclick="modifyOrder()" style="margin-left: 25%">Submit</a>
         </div>
-    </div>
 </div>
 <?php
 require_once '../includes/footer.php';
@@ -115,14 +120,60 @@ require_once '../includes/footer.php';
     function displayAddOrder(){
         document.getElementById('new-order').style.display = 'block';
     }
+
     function displayModifyOrder(){
+        const getAWB = document.getElementById('getAWB').value;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+
+            }
+        };
+        xhttp.open("POST", "display_existing_order.php", true);
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhttp.send('getAWB=' + getAWB);
         document.getElementById('modify-order').style.display = 'block';
     }
+
     function getInfo(){
+        document.getElementById('extend-form-left').style.display = 'block';
         document.getElementById('extend-form').style.display = 'block';
+        var xhttp;
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200){
+                console.log(this.responseText);
+                document.getElementById("showInfo").innerHTML = this.responseText;
+            }
+        }
+        xhttp.open("GET", "display_existing_order.php", true);
+        xhttp.send();
     }
     function modifyOrder(){
+        var xhttp = new XMLHttpRequest();
 
+        const name = document.getElementById('name').value;
+        const phone_number = document.getElementById('phone_number').value;
+        const address = document.getElementById('address').value;
+        const weight = document.getElementById('weight').value;
+        const content = document.getElementById('content').value;
+        const type = document.getElementById('type').value;
+        const reimbursement = document.getElementById('reimbursement').value;
+        const amount = document.getElementById('amount').value;
+        const accountInfo = document.getElementById('accountInfo').value;
+        const ddate = document.getElementById('ddate').value;
+        const dhour = document.getElementById('dhour').value;
+        const darea = document.getElementById('darea').value;
+
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log("succes");
+            }
+        };
+        xhttp.open("POST", "add_order.php", true);
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhttp.send('name=' + name + '&phone_number=' + phone_number + '&address=' + address + '&weight=' + weight + '&content=' + content + '&type=' + type + '&reimbursement=' + reimbursement + '&amount=' + amount + '&accountInfo=' + accountInfo + '&ddate=' + ddate + '&dhour=' + dhour + '&darea=' + darea);
+    }
     }
     function addOrder(){
         var xhttp = new XMLHttpRequest();
@@ -148,5 +199,9 @@ require_once '../includes/footer.php';
         xhttp.open("POST", "add_order.php", true);
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhttp.send('name=' + name + '&phone_number=' + phone_number + '&address=' + address + '&weight=' + weight + '&content=' + content + '&type=' + type + '&reimbursement=' + reimbursement + '&amount=' + amount + '&accountInfo=' + accountInfo + '&ddate=' + ddate + '&dhour=' + dhour + '&darea=' + darea);
+    }
+    function getInfoSubmit(){
+        displayModifyOrder();
+        getInfo();
     }
 </script>
