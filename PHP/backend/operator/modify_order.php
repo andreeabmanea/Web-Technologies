@@ -48,6 +48,3 @@ if ($stmt = $mysql->prepare($update)) {
     $stmt->close();
 }
 
-//UPDATE `orders` SET `name`=?, `phone_number`?, `address`=?, `weight`=?, `content`=?, `standard/express`=?, `cash/account_reimbursement`=?, `amount`?, `area`=?, `status`=?, `delivery_date`=?, `delivery_hour`=? where AWB=$info;
-
-

@@ -83,31 +83,31 @@ if (isset($_GET['logout'])) {
     <div class="modal-content" style="background-color: rgba(235, 228, 216, 1);border-color:  #3c887e;border-style: solid;border-radius: 10px;padding: 4%;margin-bottom: 4%; width: 40%; float:left">
         <p id="title">Edit info</p>
         <form class="modify-extend-form">
-            <input type="text" placeholder="NAME" id="name" name="name"><br>
-            <input type="text" placeholder="PHONE NUMBER" id="phone_number" name="phone"><br>
-            <input type="text" placeholder="ADDRESS" id="address" name="address"><br>
-            <input type="text" placeholder="WEIGHT" id="weight" name="weight"><br>
-            <input type="text" placeholder="CONTENT" id="content" name="content"><br>
-            <input type="text" placeholder="STANDARD/EXPRESS" id="type" name="type"><br>
-            <input type="text" placeholder="CASH/ACCOUNT REIMBURSEMENT" id="reimbursement" name="reimbursement"><br>
-            <input type="text" placeholder="AMOUNT" id="amount" name="amount"><br>
+            <input type="text" placeholder="NAME" id="mname" name="name"><br>
+            <input type="text" placeholder="PHONE NUMBER" id="mphone_number" name="phone"><br>
+            <input type="text" placeholder="ADDRESS" id="maddress" name="address"><br>
+            <input type="text" placeholder="WEIGHT" id="mweight" name="weight"><br>
+            <input type="text" placeholder="CONTENT" id="mcontent" name="content"><br>
+            <input type="text" placeholder="STANDARD/EXPRESS" id="mtype" name="type"><br>
+            <input type="text" placeholder="CASH/ACCOUNT REIMBURSEMENT" id="mreimbursement" name="reimbursement"><br>
+            <input type="text" placeholder="AMOUNT" id="mamount" name="amount"><br>
             <div id="hourselector" style="margin-left: auto">
                 <p id="mini-title" STYLE="text-align: left">SELECT DELIVERY HOUR</p>
-                <select name="dhour" class="selector" id="dhour">
+                <select name="dhour" class="selector" id="mdhour">
                     <option value="9:00-11:00">09:00-11:00</option>
                     <option value="11:00-13:00">11:00-13:00</option>
                     <option value="13:00-15:00">13:00-15:00</option>
                     <option value="15:00-17:00">15:00-17:00</option>
                 </select>
                 <p id="mini-title" STYLE="text-align: left">SELECT AREA</p>
-                <select name="darea" class="selector" id="darea">
+                <select name="darea" class="selector" id="mdarea">
                     <option value="Tatarasi">Tatarasi</option>
                     <option value="Podu-Ros">Podu-Ros</option>
                     <option value="Pacurari">Pacurari</option>
                     <option value="Tudor-Vladimirescu">Tudor-Vladimirescu</option>
                 </select>
                 <p id="mini-title" STYLE="text-align:left">SELECT DATE</p>
-                <input type="date" id="ddate" name="ddate"
+                <input type="date" id="mddate" name="ddate"
                        min="2021-05-25" max="2022-01-01">
         </form>
         <a class="button" onclick="modifyOrder()" style="margin-left: 25%">Submit</a>
@@ -154,18 +154,17 @@ require_once '../includes/footer.php';
         var xhttp = new XMLHttpRequest();
 
         const toModify = document.getElementById('getAWB').value;
-
-        const name = document.getElementById('name').value;
-        const phone_number = document.getElementById('phone_number').value;
-        const address = document.getElementById('address').value;
-        const weight = document.getElementById('weight').value;
-        const content = document.getElementById('content').value;
-        const type = document.getElementById('type').value;
-        const reimbursement = document.getElementById('reimbursement').value;
-        const amount = document.getElementById('amount').value;
-        const ddate = document.getElementById('ddate').value;
-        const dhour = document.getElementById('dhour').value;
-        const darea = document.getElementById('darea').value;
+        const name = document.getElementById('mname').value;
+        const phone_number = document.getElementById('mphone_number').value;
+        const address = document.getElementById('maddress').value;
+        const weight = document.getElementById('mweight').value;
+        const content = document.getElementById('mcontent').value;
+        const type = document.getElementById('mtype').value;
+        const reimbursement = document.getElementById('mreimbursement').value;
+        const amount = document.getElementById('mamount').value;
+        const ddate = document.getElementById('mddate').value;
+        const dhour = document.getElementById('mdhour').value;
+        const darea = document.getElementById('mdarea').value;
 
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
