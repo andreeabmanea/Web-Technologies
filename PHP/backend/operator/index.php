@@ -79,39 +79,39 @@ if (isset($_GET['logout'])) {
         </table>
     </div>
 </div>
-    <div id="extend-form" class="modal">
-        <div class="modal-content" style="background-color: rgba(235, 228, 216, 1);border-color:  #3c887e;border-style: solid;border-radius: 10px;padding: 4%;margin-bottom: 4%; width: 40%; float:left">
-            <p id="title">Edit info</p>
-            <form class="modify-extend-form">
-                <input type="text" placeholder="NAME" id="name" name="name"><br>
-                <input type="text" placeholder="PHONE NUMBER" id="phone_number" name="phone"><br>
-                <input type="text" placeholder="ADDRESS" id="address" name="address"><br>
-                <input type="text" placeholder="WEIGHT" id="weight" name="weight"><br>
-                <input type="text" placeholder="CONTENT" id="content" name="content"><br>
-                <input type="text" placeholder="STANDARD/EXPRESS" id="type" name="type"><br>
-                <input type="text" placeholder="CASH/ACCOUNT REIMBURSEMENT" id="reimbursement" name="reimbursement"><br>
-                <input type="text" placeholder="AMOUNT" id="amount" name="amount"><br>
-                <div id="hourselector" style="margin-left: auto">
-                    <p id="mini-title" STYLE="text-align: left">SELECT DELIVERY HOUR</p>
-                    <select name="shour" class="selector" id="dhour">
-                        <option value="9:00-11:00">09:00-11:00</option>
-                        <option value="11:00-13:00">11:00-13:00</option>
-                        <option value="13:00-15:00">13:00-15:00</option>
-                        <option value="15:00-17:00">15:00-17:00</option>
-                    </select>
-                    <p id="mini-title" STYLE="text-align: left">SELECT AREA</p>
-                    <select name="sarea" class="selector" id="darea">
-                        <option value="Tatarasi">Tatarasi</option>
-                        <option value="Podu-Ros">Podu-Ros</option>
-                        <option value="Pacurari">Pacurari</option>
-                        <option value="Tudor-Vladimirescu">Tudor-Vladimirescu</option>
-                    </select>
-                    <p id="mini-title" STYLE="text-align:left">SELECT DATE</p>
-                    <input type="date" id="ddate" name="delivery-date"
-                           min="2021-05-25" max="2022-01-01">
-            </form>
-            <a class="button" onclick="modifyOrder()" style="margin-left: 25%">Submit</a>
-        </div>
+<div id="extend-form" class="modal">
+    <div class="modal-content" style="background-color: rgba(235, 228, 216, 1);border-color:  #3c887e;border-style: solid;border-radius: 10px;padding: 4%;margin-bottom: 4%; width: 40%; float:left">
+        <p id="title">Edit info</p>
+        <form class="modify-extend-form">
+            <input type="text" placeholder="NAME" id="name" name="name"><br>
+            <input type="text" placeholder="PHONE NUMBER" id="phone_number" name="phone"><br>
+            <input type="text" placeholder="ADDRESS" id="address" name="address"><br>
+            <input type="text" placeholder="WEIGHT" id="weight" name="weight"><br>
+            <input type="text" placeholder="CONTENT" id="content" name="content"><br>
+            <input type="text" placeholder="STANDARD/EXPRESS" id="type" name="type"><br>
+            <input type="text" placeholder="CASH/ACCOUNT REIMBURSEMENT" id="reimbursement" name="reimbursement"><br>
+            <input type="text" placeholder="AMOUNT" id="amount" name="amount"><br>
+            <div id="hourselector" style="margin-left: auto">
+                <p id="mini-title" STYLE="text-align: left">SELECT DELIVERY HOUR</p>
+                <select name="dhour" class="selector" id="dhour">
+                    <option value="9:00-11:00">09:00-11:00</option>
+                    <option value="11:00-13:00">11:00-13:00</option>
+                    <option value="13:00-15:00">13:00-15:00</option>
+                    <option value="15:00-17:00">15:00-17:00</option>
+                </select>
+                <p id="mini-title" STYLE="text-align: left">SELECT AREA</p>
+                <select name="darea" class="selector" id="darea">
+                    <option value="Tatarasi">Tatarasi</option>
+                    <option value="Podu-Ros">Podu-Ros</option>
+                    <option value="Pacurari">Pacurari</option>
+                    <option value="Tudor-Vladimirescu">Tudor-Vladimirescu</option>
+                </select>
+                <p id="mini-title" STYLE="text-align:left">SELECT DATE</p>
+                <input type="date" id="ddate" name="ddate"
+                       min="2021-05-25" max="2022-01-01">
+        </form>
+        <a class="button" onclick="modifyOrder()" style="margin-left: 25%">Submit</a>
+    </div>
 </div>
 <?php
 require_once '../includes/footer.php';
@@ -149,8 +149,11 @@ require_once '../includes/footer.php';
         xhttp.open("GET", "display_existing_order.php", true);
         xhttp.send();
     }
+
     function modifyOrder(){
         var xhttp = new XMLHttpRequest();
+
+        const toModify = document.getElementById('getAWB').value;
 
         const name = document.getElementById('name').value;
         const phone_number = document.getElementById('phone_number').value;
@@ -160,7 +163,6 @@ require_once '../includes/footer.php';
         const type = document.getElementById('type').value;
         const reimbursement = document.getElementById('reimbursement').value;
         const amount = document.getElementById('amount').value;
-        const accountInfo = document.getElementById('accountInfo').value;
         const ddate = document.getElementById('ddate').value;
         const dhour = document.getElementById('dhour').value;
         const darea = document.getElementById('darea').value;
@@ -170,10 +172,9 @@ require_once '../includes/footer.php';
                 console.log("succes");
             }
         };
-        xhttp.open("POST", "add_order.php", true);
+        xhttp.open("POST", "modify_order.php", true);
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhttp.send('name=' + name + '&phone_number=' + phone_number + '&address=' + address + '&weight=' + weight + '&content=' + content + '&type=' + type + '&reimbursement=' + reimbursement + '&amount=' + amount + '&accountInfo=' + accountInfo + '&ddate=' + ddate + '&dhour=' + dhour + '&darea=' + darea);
-    }
+        xhttp.send('toModify=' + toModify + '&name=' + name + '&phone_number=' + phone_number + '&address=' + address + '&weight=' + weight + '&content=' + content + '&type=' + type + '&reimbursement=' + reimbursement + '&amount=' + amount + '&ddate=' + ddate + '&dhour=' + dhour + '&darea=' + darea);
     }
     function addOrder(){
         var xhttp = new XMLHttpRequest();
@@ -200,6 +201,7 @@ require_once '../includes/footer.php';
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhttp.send('name=' + name + '&phone_number=' + phone_number + '&address=' + address + '&weight=' + weight + '&content=' + content + '&type=' + type + '&reimbursement=' + reimbursement + '&amount=' + amount + '&accountInfo=' + accountInfo + '&ddate=' + ddate + '&dhour=' + dhour + '&darea=' + darea);
     }
+
     function getInfoSubmit(){
         displayModifyOrder();
         getInfo();
