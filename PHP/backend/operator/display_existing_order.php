@@ -47,4 +47,4 @@ echo
         </tr>
         <tr>
             <td style = "padding:10px">DELIERY HOUR</td>
-        </tr>'
+        </tr>';

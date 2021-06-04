@@ -175,6 +175,24 @@ require_once '../includes/footer.php';
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhttp.send('toModify=' + toModify + '&name=' + name + '&phone_number=' + phone_number + '&address=' + address + '&weight=' + weight + '&content=' + content + '&type=' + type + '&reimbursement=' + reimbursement + '&amount=' + amount + '&ddate=' + ddate + '&dhour=' + dhour + '&darea=' + darea);
     }
+
+    function sendMailModify(){
+        var xhttp = new XMLHttpRequest();
+
+        const name = document.getElementById('mname').value;
+        const phone_number = document.getElementById('mphone_number').value;
+        const ddate = document.getElementById('mddate').value;
+        const dhour = document.getElementById('mdhour').value;
+
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log("succes");
+            }
+        };
+        xhttp.open("POST", "updateOrder.php", true);
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhttp.send('name=' + name + '&phone_number=' + phone_number + '&ddate=' + ddate + '&dhour=' + dhour);
+    }
     function addOrder(){
         var xhttp = new XMLHttpRequest();
 
@@ -204,5 +222,6 @@ require_once '../includes/footer.php';
     function getInfoSubmit(){
         displayModifyOrder();
         getInfo();
+        sendMailModify();
     }
 </script>
