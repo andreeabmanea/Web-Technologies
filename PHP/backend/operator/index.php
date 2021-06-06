@@ -191,7 +191,7 @@ require_once '../includes/footer.php';
                 console.log(name);
             }
         };
-        xhttp.open("POST", "updateOrderMail.php", true);
+        xhttp.open("POST", "../mailer/updateOrderMail.php", true);
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhttp.send('name=' + name + '&phone_number=' + phone_number + '&ddate=' + ddate + '&dhour=' + dhour);
     }
@@ -235,7 +235,7 @@ require_once '../includes/footer.php';
                 console.log("succes-mail-add");
             }
         };
-        xhttp.open("POST", "newOrderMail.php", true);
+        xhttp.open("POST", "../mailer/newOrderMail.php", true);
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhttp.send('name=' + name + '&phone_number=' + phone_number + '&ddate=' + ddate + '&dhour=' + dhour);
     }

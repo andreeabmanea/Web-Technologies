@@ -27,7 +27,7 @@ if (isset($_POST['ddate']))
 if (isset($_POST['dhour']))
     $hour = $_POST['dhour'];
 
-$stmt_order = $mysql->prepare("select email from users where phone_number='0756153967'");
+$stmt_order = $mysql->prepare("select email from users where phone_number=$phone_number");
 $stmt_order->execute();
 $result_id = $stmt_order->get_result();
 $info_order = $result_id->fetch_assoc();
@@ -46,12 +46,12 @@ try {
 
     //Recipients
     $mail->setFrom('jmvcourier@gmail.com', 'JMVCourier');
-    $mail->addAddress('junicarares2014@gmail.com', 'RARES');     //Add a recipient
+    $mail->addAddress($result_id, $name);     //Add a recipient
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Order Update';
-    $mail->Body    = $name . ' your order has been updated.';
+    $mail->Body    =' your order has been updated.';
     $mail->AltBody = 'It will be delivered in ' . $date . ' at ' . $hour . '.';
 
     $mail->send();
