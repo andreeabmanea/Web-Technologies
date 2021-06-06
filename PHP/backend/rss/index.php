@@ -1,5 +1,5 @@
 <?php
-include("../../server/connection.php");
+include("../server/connection.php");
 global $mysql;
 $query = "SELECT * FROM rss ORDER BY date_time DESC";
 if ($stmt = $mysql->prepare($query)) {
