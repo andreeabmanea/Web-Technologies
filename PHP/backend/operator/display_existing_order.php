@@ -1,13 +1,16 @@
 <?php
 require_once("../server/connection.php");
-    global $mysql;
-    if (isset($_POST['getAWB']))
-        $info = $_POST['getAWB'];
+global $mysql;
+
+if (isset($_POST['getAWB']))
+    $getAWB = $_POST['getAWB'];
+
 $stmt_order = $mysql->prepare("select * from orders where awb = ?");
-$stmt_order->bind_param('s', $info);
+$stmt_order->bind_param('s', $getAWB);
 $stmt_order->execute();
 $result_order = $stmt_order->get_result();
 $info_order = $result_order->fetch_assoc();
+
 echo
     '
     <table>

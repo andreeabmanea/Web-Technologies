@@ -51,8 +51,8 @@ try {
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Order Update';
-//    $mail->Body    = $name . ' your order has been updated.';
-//    $mail->AltBody = 'It will be delivered in ' . $date . ' at ' . $hour . '.';
+    $mail->Body    = $name . ' your order has been updated.';
+    $mail->AltBody = 'It will be delivered in ' . $date . ' at ' . $hour . '.';
 
     $mail->send();
     echo 'Message has been sent';

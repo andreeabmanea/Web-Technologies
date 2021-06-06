@@ -126,7 +126,8 @@ require_once '../includes/footer.php';
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-
+                console.log('succes-awb-sent')
+                console.log(getAWB);
             }
         };
         xhttp.open("POST", "display_existing_order.php", true);
@@ -194,6 +195,7 @@ require_once '../includes/footer.php';
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhttp.send('name=' + name + '&phone_number=' + phone_number + '&ddate=' + ddate + '&dhour=' + dhour);
     }
+
     function addOrder(){
         var xhttp = new XMLHttpRequest();
 
@@ -237,14 +239,17 @@ require_once '../includes/footer.php';
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhttp.send('name=' + name + '&phone_number=' + phone_number + '&ddate=' + ddate + '&dhour=' + dhour);
     }
+
     function getInfoSubmit(){
         displayModifyOrder();
         getInfo();
     }
+
     function Modify(){
         modifyOrder()
         sendMailModify();
     }
+
     function Add(){
         addOrder();
         sendMailAdd();
