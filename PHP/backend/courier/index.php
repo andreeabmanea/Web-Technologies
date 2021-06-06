@@ -69,9 +69,23 @@ require_once '../includes/footer.php';
         xhttp.open("GET", "update_courier_schedule.php", true);
         xhttp.send();
     }
+    function markAsDoneMail(){
+        var xhttp = new XMLHttpRequest();
 
+        var awb = document.getElementById('fawb').value;
+
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log("succes-mail-mark-as-done");
+            }
+        };
+        xhttp.open("POST", "../mailer/shippedOrderMail.php", true);
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhttp.send('fawb=' + awb);
+    }
     function markAsDoneSubmit() {
         markAsDone();
+        markAsDoneMail();
         updateCourierSchedule();
     }
 

@@ -41,7 +41,7 @@ if (isset($_POST['dhour']))
 if (isset($_POST['darea']))
     $area = $_POST['darea'];
 
-$update = "UPDATE orders SET `name`=?, `phone_number`=?, `address`=?, `weight`=?, `content`=?, `standard/express`=?, `cash/account_reimbursement`=?, `amount`=?, `area`=?, `delivery_date`=?, `delivery_hour`=? where AWB=$toModify;";
+$update = "UPDATE orders SET `name`=?, `phone_number`=?, `address`=?, `weight`=?, `content`=?, `standard/express`=?, `cash/account_reimbursement`=?, `amount`=?, `area`=?, `delivery_date`=?, `delivery_hour`=? where AWB=$toModify";
 if ($stmt = $mysql->prepare($update)) {
     $stmt->bind_param('sssssssisss', $name, $phone_number, $address, $weight, $content, $type, $reimbursement, $amount, $area, $date, $hour);
     $stmt->execute();

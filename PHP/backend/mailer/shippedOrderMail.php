@@ -15,24 +15,16 @@ require '../mailer/MAILER/vendor/autoload.php';
 //Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
-if (isset($_POST['name']))
-    $name = $_POST['name'];
+if (isset($_POST['fawb']))
+    $awb = $_POST['fawb'];
 
-if (isset($_POST['phone_number']))
-    $phone_number = $_POST['phone_number'];
-
-if (isset($_POST['ddate']))
-    $date = $_POST['ddate'];
-
-if (isset($_POST['dhour']))
-    $hour = $_POST['dhour'];
-
-$stmt_order = $mysql->prepare("select email from users where phone_number='0756153967'");
-$stmt_order->execute();
-$result_id = $stmt_order->get_result();
-$info_order = $result_id->fetch_assoc();
-$stmt_order->close();
-
+global $mysql;
+$query = "select * from users JOIN orders On users.id=orders.id_client where AWB=$awb";
+if ($stmt = $mysql->prepare($query)) {
+    $stmt->execute();
+    $result_order = $stmt->get_result();
+    $info_order = $result_order->fetch_assoc();
+}
 try {
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
@@ -46,13 +38,12 @@ try {
 
     //Recipients
     $mail->setFrom('jmvcourier@gmail.com', 'JMVCourier');
-    $mail->addAddress('junicarares2014@gmail.com', 'RARES');     //Add a recipient
+    $mail->addAddress($info_order['email'], $info_order['name']);     //Add a recipient
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Order Update';
-    $mail->Body    = $name . ' your order has been updated.';
-    $mail->AltBody = 'It will be delivered in ' . $date . ' at ' . $hour . '.';
+    $mail->Subject = 'Order Shipped';
+    $mail->Body    = 'An order with the following AWB has been shipped: ' . $awb . '. It has been delivered in ' . date('d/m/Y') . ' at ' . date('H:i');
 
     $mail->send();
     echo 'Message has been sent';

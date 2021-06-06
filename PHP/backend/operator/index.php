@@ -65,7 +65,7 @@ if (isset($_GET['logout'])) {
     </div>
     <div id="modify-order" class="modal">
         <div class="modal-content" style="background-color: rgba(235, 228, 216, 1);border-color:  #3c887e;border-style: solid;border-radius: 10px;padding: 4%;margin-bottom: 4%;">
-            <p id="title">Please enter AWB/Phone Number/Username:</p>
+            <p id="title">Please enter AWB:</p>
             <form class="modify-form">
                 <input type="text" placeholder="" id="getAWB" name="getAWB"><br>
                 <a class="button" onclick="getInfoSubmit()" style="margin-left: 45%">Submit</a>

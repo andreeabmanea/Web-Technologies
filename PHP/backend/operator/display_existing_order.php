@@ -3,7 +3,7 @@ require_once("../server/connection.php");
 global $mysql;
 
 if (isset($_POST['awb']))
-    $getAWB = $_POST['awb'];
+    $awb = $_POST['awb'];
 
 $stmt_order = $mysql->prepare("select * from orders where awb = ?");
 $stmt_order->bind_param('s', $getAWB);
@@ -16,7 +16,7 @@ echo
     <table>
         <tr>
             <td style = "padding:10px">NAME</td>
-            <td style = "padding:10px">' . $getAWB . '</td>
+            <td style = "padding:10px">' . $info_order['name'] . '</td>
         </tr>
         <tr>
             <td style = "padding:2px">PHONE</td>
