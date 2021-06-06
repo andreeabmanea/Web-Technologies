@@ -122,17 +122,17 @@ require_once '../includes/footer.php';
     }
 
     function displayModifyOrder(){
-        const getAWB = document.getElementById('getAWB').value;
+        const awb = document.getElementById('getAWB').value;
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 console.log('succes-awb-sent')
-                console.log(getAWB);
+                console.log(awb);
             }
         };
         xhttp.open("POST", "display_existing_order.php", true);
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhttp.send('getAWB=' + getAWB);
+        xhttp.send('awb=' + awb);
         document.getElementById('modify-order').style.display = 'block';
     }
 
