@@ -59,7 +59,7 @@ if (isset($_GET['logout'])) {
                     <input type="date" id="ddate" name="delivery-date"
                            min="2021-05-25" max="2022-01-01">
                 </div>
-                <a class="button" onclick="Add()" style="margin-left: 45%">Submit</a>
+                <a class="button" onclick="Add(); document.getElementById('new-order').style.display='none'" style="margin-left: 45%">Submit</a>
             </form>
         </div>
     </div>
@@ -68,7 +68,7 @@ if (isset($_GET['logout'])) {
             <p id="title">Please enter AWB:</p>
             <form class="modify-form">
                 <input type="text" placeholder="" id="getAWB" name="getAWB"><br>
-                <a class="button" onclick="getInfoSubmit()" style="margin-left: 45%">Submit</a>
+                <a class="button" onclick="getInfoSubmit(); document.getElementById('modify-order').style.display='none'" style="margin-left: 45%">Submit</a>
             </form>
         </div>
     </div>
@@ -110,7 +110,7 @@ if (isset($_GET['logout'])) {
                 <input type="date" id="mddate" name="ddate"
                        min="2021-05-25" max="2022-01-01">
         </form>
-        <a class="button" onclick="Modify()" style="margin-left: 25%">Submit</a>
+        <a class="button" onclick="Modify(); document.getElementById('extend-form').style.display='none'; document.getElementById('extend-form-left').style.display='none'" style="margin-left: 25%">Submit</a>
     </div>
 </div>
 <?php
