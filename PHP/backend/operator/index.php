@@ -59,7 +59,7 @@ if (isset($_GET['logout'])) {
                     <input type="date" id="ddate" name="delivery-date"
                            min="2021-05-25" max="2022-01-01">
                 </div>
-                <a class="button" onclick="addOrder()" style="margin-left: 45%">Submit</a>
+                <a class="button" onclick="Add()" style="margin-left: 45%">Submit</a>
             </form>
         </div>
     </div>
@@ -110,7 +110,7 @@ if (isset($_GET['logout'])) {
                 <input type="date" id="mddate" name="ddate"
                        min="2021-05-25" max="2022-01-01">
         </form>
-        <a class="button" onclick="modifyOrder()" style="margin-left: 25%">Submit</a>
+        <a class="button" onclick="Modify()" style="margin-left: 25%">Submit</a>
     </div>
 </div>
 <?php
@@ -168,7 +168,7 @@ require_once '../includes/footer.php';
 
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                console.log("succes");
+                console.log("succes-modify");
             }
         };
         xhttp.open("POST", "modify_order.php", true);
@@ -186,10 +186,11 @@ require_once '../includes/footer.php';
 
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                console.log("succes");
+                console.log("succes-mail-modify");
+                console.log(name);
             }
         };
-        xhttp.open("POST", "updateOrder.php", true);
+        xhttp.open("POST", "updateOrderMail.php", true);
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhttp.send('name=' + name + '&phone_number=' + phone_number + '&ddate=' + ddate + '&dhour=' + dhour);
     }
@@ -211,7 +212,7 @@ require_once '../includes/footer.php';
 
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                console.log("succes");
+                console.log("succes-add");
             }
         };
         xhttp.open("POST", "add_order.php", true);
@@ -219,9 +220,33 @@ require_once '../includes/footer.php';
         xhttp.send('name=' + name + '&phone_number=' + phone_number + '&address=' + address + '&weight=' + weight + '&content=' + content + '&type=' + type + '&reimbursement=' + reimbursement + '&amount=' + amount + '&accountInfo=' + accountInfo + '&ddate=' + ddate + '&dhour=' + dhour + '&darea=' + darea);
     }
 
+    function sendMailAdd(){
+        var xhttp = new XMLHttpRequest();
+
+        const name = document.getElementById('name').value;
+        const phone_number = document.getElementById('phone_number').value;
+        const ddate = document.getElementById('ddate').value;
+        const dhour = document.getElementById('dhour').value;
+
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log("succes-mail-add");
+            }
+        };
+        xhttp.open("POST", "newOrderMail.php", true);
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhttp.send('name=' + name + '&phone_number=' + phone_number + '&ddate=' + ddate + '&dhour=' + dhour);
+    }
     function getInfoSubmit(){
         displayModifyOrder();
         getInfo();
+    }
+    function Modify(){
+        modifyOrder()
         sendMailModify();
+    }
+    function Add(){
+        addOrder();
+        sendMailAdd();
     }
 </script>

@@ -5,6 +5,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+require_once("../server/connection.php");
+
 global $mysql;
 
 //Load Composer's autoloader
@@ -44,13 +46,13 @@ try {
     $mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
     //Recipients
-    $mail->setFrom('jmvcourier@gmail.com', 'localhost');
+    $mail->setFrom('jmvcourier@gmail.com', 'JMVCourier');
     $mail->addAddress($result_id, $name);     //Add a recipient
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Order Update';
-    $mail->Body    = ' Your order has been updated!</b>';
+    $mail->Subject = 'New Order';
+    $mail->Body    =$name . ' you have a new order!b>';
     $mail->AltBody = 'It will be delivered in ' . $date . ' at ' . $hour . '.';
 
     $mail->send();

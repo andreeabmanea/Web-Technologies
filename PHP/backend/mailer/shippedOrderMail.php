@@ -4,15 +4,16 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+require_once("../server/connection.php");
 
 global $mysql;
 
 //Load Composer's autoloader
-require 'vendor/autoload.php';
+
+require '../mailer/MAILER/vendor/autoload.php';
 
 //Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer(true);
-
 
 if (isset($_POST['name']))
     $name = $_POST['name'];
@@ -26,7 +27,7 @@ if (isset($_POST['ddate']))
 if (isset($_POST['dhour']))
     $hour = $_POST['dhour'];
 
-$stmt_order = $mysql->prepare("select email from users where phone_number=$phone_number");
+$stmt_order = $mysql->prepare("select email from users where phone_number='0756153967'");
 $stmt_order->execute();
 $result_id = $stmt_order->get_result();
 $info_order = $result_id->fetch_assoc();
@@ -38,20 +39,20 @@ try {
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = EMAIL;                     //SMTP username
-    $mail->Password   = PASS;                               //SMTP password
+    $mail->Username   = 'jmvcourier@gmail.com';                     //SMTP username
+    $mail->Password   = 'jmvcourier12345678';                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
     $mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
     //Recipients
-    $mail->setFrom(EMAIL, 'localhost');
-    $mail->addAddress($result_id, $name);     //Add a recipient
+    $mail->setFrom('jmvcourier@gmail.com', 'JMVCourier');
+    $mail->addAddress('junicarares2014@gmail.com', 'RARES');     //Add a recipient
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Order Update';
-    $mail->Body    = ' Your order has been updated!</b>';
-    $mail->AltBody = 'It will be delivered in ' . $date . ' at ' . $hour . '.';
+//    $mail->Body    = $name . ' your order has been updated.';
+//    $mail->AltBody = 'It will be delivered in ' . $date . ' at ' . $hour . '.';
 
     $mail->send();
     echo 'Message has been sent';
