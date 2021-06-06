@@ -14,7 +14,7 @@ function display_courier_schedule($username)
                 <th style = "padding:10px">Name</th>
                 <th style = "padding:10px">Address</th>
                 <th style = "padding:10px">Contact Number</th>
-                <th style = "padding:10px">Delivery Number</th>
+                <th style = "padding:10px">AWB</th>
                 <th style = "padding:10px">Anything to pay?</th>
             </tr>';
     while ($stmt->fetch()) {

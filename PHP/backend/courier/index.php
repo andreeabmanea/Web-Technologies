@@ -1,7 +1,7 @@
 <?php
 $title = 'Courier Account';
 require_once "../includes/header_for_accounts.php";
-include("functions.php");
+include("display_schedule.php");
 
 if (isset($_GET['logout'])) {
     session_destroy();
@@ -18,7 +18,7 @@ if (isset($_GET['logout'])) {
     </div>
 
     <div class="starter">
-        <p id="title">Enter Delivery Number:</p>
+        <p id="title">Enter AWB:</p>
         <div class="courier-awb">
             <form method = "post" action="">
             <input type="text" placeholder="AWB" id="fawb" name="fawb">
