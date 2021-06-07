@@ -1,6 +1,8 @@
 <?php
 $title = 'Map';
 include('../includes/header.php');
+include('../server/login.php');
+include('../server/sign_up.php');
 ?>
 <p id="title">Where we deliver?</p>
 <div class="middle-box">

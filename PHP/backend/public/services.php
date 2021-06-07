@@ -1,7 +1,8 @@
 <?php
 $title = 'Services';
 include('../includes/header.php');
-include('../server/connection.php');
+include('../server/login.php');
+include('../server/sign_up.php');
 
 ?>
 
