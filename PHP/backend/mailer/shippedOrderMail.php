@@ -17,7 +17,7 @@ $mail = new PHPMailer(true);
 
 if (isset($_POST['fawb']))
     $awb = $_POST['fawb'];
-
+//cu ajutorul awb-ului trimis selectam din baza de date informatii necesare pentru email
 global $mysql;
 $query = "select * from users JOIN orders On users.id=orders.id_client where AWB=$awb";
 if ($stmt = $mysql->prepare($query)) {
