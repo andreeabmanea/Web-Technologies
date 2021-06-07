@@ -19,8 +19,9 @@ if (isset($_POST['fawb']))
     $awb = $_POST['fawb'];
 //cu ajutorul awb-ului trimis selectam din baza de date informatii necesare pentru email
 global $mysql;
-$query = "select * from users JOIN orders On users.id=orders.id_client where AWB=$awb";
+$query = "select * from users JOIN orders On users.id=orders.id_client where AWB=?";
 if ($stmt = $mysql->prepare($query)) {
+    $stmt->bind_param('s', $awb);
     $stmt->execute();
     $result_order = $stmt->get_result();
     $info_order = $result_order->fetch_assoc();

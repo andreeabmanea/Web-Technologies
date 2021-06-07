@@ -27,7 +27,8 @@ if (isset($_POST['ddate']))
 if (isset($_POST['dhour']))
     $hour = $_POST['dhour'];
 
-$stmt_order = $mysql->prepare("select email from users where phone_number=$phone_number");
+$stmt_order = $mysql->prepare("select email from users where phone_number=?");
+$stmt_order->bind_param('s', $phone_number);
 $stmt_order->execute();
 $result_id = $stmt_order->get_result();
 $info_order = $result_id->fetch_assoc();
