@@ -40,7 +40,7 @@ try {
     //Recipients
     $mail->setFrom($email, $name);
     $mail->addAddress('jmvcourier@gmail.com', 'JMV CONTACT');     //Add a recipient
-    $mail->addReplyTo($email $name);
+    $mail->addReplyTo($email, $name);
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
