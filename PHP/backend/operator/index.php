@@ -114,14 +114,15 @@ if (isset($_GET['logout'])) {
 require_once '../includes/footer.php';
 ?>
 <script>
+    //functie pentru afisarea blocului de comanda noua
     function displayAddOrder(){
         document.getElementById('new-order').style.display = 'block';
     }
-
+    //functie pentru afisarea blocului de modificare comanda
     function displayModifyOrder(){
         document.getElementById('modify-order').style.display = 'block';
     }
-
+    //functie pentru trimiterea awb-ului
     function sendAWB(){
         const getAWB = document.getElementById('getAWB').value;
         var xhttp = new XMLHttpRequest();
@@ -134,7 +135,7 @@ require_once '../includes/footer.php';
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhttp.send('getAWB=' + getAWB);
     }
-
+    //functie ce returneaza tabelul cu o comanda deja existenta pentru a fi modificata
     function getInfo(){
         document.getElementById('extend-form-left').style.display = 'block';
         document.getElementById('extend-form').style.display = 'block';
@@ -149,7 +150,7 @@ require_once '../includes/footer.php';
         xhttp.open("GET", "display_existing_order.php", true);
         xhttp.send();
     }
-
+    //functie ce trimite parametrii ce trebuie modificati
     function modifyOrder(){
         var xhttp = new XMLHttpRequest();
 
@@ -176,6 +177,7 @@ require_once '../includes/footer.php';
         xhttp.send('toModify=' + toModify + '&name=' + name + '&phone_number=' + phone_number + '&address=' + address + '&weight=' + weight + '&content=' + content + '&type=' + type + '&reimbursement=' + reimbursement + '&amount=' + amount + '&ddate=' + ddate + '&dhour=' + dhour + '&darea=' + darea);
     }
 
+    //odata cu modificarea comenzii clientul este anuntat printr-un email
     function sendMailModify(){
         var xhttp = new XMLHttpRequest();
 
@@ -195,6 +197,7 @@ require_once '../includes/footer.php';
         xhttp.send('name=' + name + '&phone_number=' + phone_number + '&ddate=' + ddate + '&dhour=' + dhour);
     }
 
+    //functie pentru crearea unei noi comenzi
     function addOrder(){
         var xhttp = new XMLHttpRequest();
 
@@ -221,6 +224,7 @@ require_once '../includes/footer.php';
         xhttp.send('name=' + name + '&phone_number=' + phone_number + '&address=' + address + '&weight=' + weight + '&content=' + content + '&type=' + type + '&reimbursement=' + reimbursement + '&amount=' + amount + '&accountInfo=' + accountInfo + '&ddate=' + ddate + '&dhour=' + dhour + '&darea=' + darea);
     }
 
+    //odata cu crearea unei noi comenzi clientul este anuntat prin email
     function sendMailAdd(){
         var xhttp = new XMLHttpRequest();
 
