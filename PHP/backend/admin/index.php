@@ -9,12 +9,12 @@ include("../server/login.php");
     <div class="middle-box">
     <div class="starter">
         <div class="text-box">
-            <p id="title">Hello, <?php echo $_SESSION['username']; ?>!</p>
-            <p id="title">Glad to have you back. Here you can manage your company's relevant information and see the orders' flow.</p>
+            <p class="title">Hello, <?php echo $_SESSION['username']; ?>!</p>
+            <p class="title">Glad to have you back. Here you can manage your company's relevant information and see the orders' flow.</p>
         </div>
     </div>
     <div class="starter">
-        <p id="title">Manage accounts</p>
+        <p class="title">Manage accounts</p>
 
         <div class="text-buttons">
             <a class="button" onclick="getOperators()">Operators</a>
@@ -37,13 +37,13 @@ include("../server/login.php");
     <!-- Statistics -->
 <div class="middle-box">
     <div class="starter">
-        <p id="title">Area Statistics</p>
+        <p class="title">Area Statistics</p>
         <div class="text-box">
             <canvas id="week-statistics"></canvas>
         </div>
     </div>
     <div class ="starter">
-        <p id="title">Monthly Statistics</p>
+        <p class="title">Monthly Statistics</p>
         <div class="text-box">
             <canvas id="month-statistics"></canvas>
         </div>
@@ -53,7 +53,7 @@ include("../server/login.php");
     <!-- Import and Export options -->
 <div class="middle-box">
     <div class="starter">
-        <p id="title">Import/Export Users</p>
+        <p class="title">Import/Export Users</p>
         <div class="text-box">
             <form action="import_data.php" method="POST" enctype="multipart/form-data">
                 <input type="file" name="file" required="">
@@ -64,7 +64,7 @@ include("../server/login.php");
             </form>
         </div>
         <br>
-        <p id="title">Import/Export Orders</p>
+        <p class="title">Import/Export Orders</p>
         <div class="text-box">
             <form action="import_data.php" method="POST" enctype="multipart/form-data">
                 <input type="file" name="file" required="">

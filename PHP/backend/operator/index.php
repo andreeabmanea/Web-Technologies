@@ -13,7 +13,7 @@ if (isset($_GET['logout'])) {
 ?>
 <div class="middle-box">
     <div class="starter">
-        <p id="title">Hello, <?php echo $_SESSION['username'];?>. Here are today's reports:</p>
+        <p class="title">Hello, <?php echo $_SESSION['username'];?>. Here are today's reports:</p>
         <table id="operator-reports">
             <?php display_operator_reports($_SESSION['username'])?>
         </table>
@@ -21,17 +21,17 @@ if (isset($_GET['logout'])) {
 </div>
 
 <div class="middle-box">
-    <div class="starter"
-    <p id="title">WHAT DO YOU WANT TO DO?</p>
-    <div id="add-order" style="text-align: center;">
-        <a class="button" onclick="displayAddOrder()" style="width: 140px">PLACE ORDER</a>
-        <a class="button" onclick="displayModifyOrder()" style="width: 140px">MODIFY ORDER</a>
+    <div class="starter">
+        <p class="title">WHAT DO YOU WANT TO DO?</p>
+        <div id="add-order" style="text-align: center;">
+            <a class="button" onclick="displayAddOrder()" style="width: 140px">PLACE ORDER</a>
+            <a class="button" onclick="displayModifyOrder()" style="width: 140px">MODIFY ORDER</a>
+        </div>
     </div>
-</div>
 </div>
 
 <div id="new-order" class="starter" style="display: none">
-    <p id="title">Fill in details about the new order:</p>
+    <p class="title">Fill in details about the new order:</p>
     <form class="order-form">
         <input type="text" placeholder="NAME" id="name" name="name"><br>
         <input type="text" placeholder="PHONE NUMBER" id="phone_number" name="phone"><br>
@@ -44,21 +44,21 @@ if (isset($_GET['logout'])) {
         <input type="text" placeholder="PHONE NUMBER/ACCOUNT/EMAIL" id="accountInfo" name="accountinfo"><br>
     </form>
     <div id="hourselector">
-        <p id="mini-title" STYLE="text-align: center">SELECT DELIVERY HOUR</p>
+        <p class="mini-title" STYLE="text-align: center">SELECT DELIVERY HOUR</p>
         <select name="shour" class="selector" id="dhour" style="margin-left: 47%">
             <option value="9:00-11:00">09:00-11:00</option>
             <option value="11:00-13:00">11:00-13:00</option>
             <option value="13:00-15:00">13:00-15:00</option>
             <option value="15:00-17:00">15:00-17:00</option>
         </select>
-        <p id="mini-title" STYLE="text-align: center">SELECT AREA</p>
+        <p class="mini-title" STYLE="text-align: center">SELECT AREA</p>
         <select name="sarea" class="selector" id="darea" style="margin-left: 46%">
             <option value="Tatarasi">Tatarasi</option>
             <option value="Podu-Ros">Podu-Ros</option>
             <option value="Pacurari">Pacurari</option>
             <option value="Tudor-Vladimirescu">Tudor-Vladimirescu</option>
         </select>
-        <p id="mini-title" STYLE="text-align: center">SELECT DATE</p>
+        <p class="mini-title" STYLE="text-align: center">SELECT DATE</p>
         <input type="date" id="ddate" name="delivery-date" style="margin-left: 46%"
                min="2021-05-25" max="2022-01-01">
     </div>
@@ -66,7 +66,7 @@ if (isset($_GET['logout'])) {
 </div>
 
 <div id="modify-order" class="starter" style="display: none">
-    <p id="title">Please enter AWB:</p>
+    <p class="title">Please enter AWB:</p>
     <form class="modify-form">
         <input type="text" placeholder="" id="getAWB" name="getAWB"><br>
         <a class="button" onclick="getInfoSubmit(); document.getElementById('modify-order').style.display='none'" style="margin-left: 46.4%">Submit</a>
@@ -79,7 +79,7 @@ if (isset($_GET['logout'])) {
 </div>
 
 <div id="extend-form" class="starter" style="float: left; width: 40%; display: none">
-    <p id="title">Edit info</p>
+    <p class="title">Edit info</p>
     <form class="modify-extend-form">
         <input type="text" placeholder="NAME" id="mname" name="name"><br>
         <input type="text" placeholder="PHONE NUMBER" id="mphone_number" name="phone"><br>
@@ -90,23 +90,24 @@ if (isset($_GET['logout'])) {
         <input type="text" placeholder="CASH/ACCOUNT REIMBURSEMENT" id="mreimbursement" name="reimbursement"><br>
         <input type="text" placeholder="AMOUNT" id="mamount" name="amount"><br>
         <div id="hourselector" style="margin-left: auto">
-            <p id="mini-title" STYLE="text-align: center">SELECT DELIVERY HOUR</p>
+            <p class="mini-title" STYLE="text-align: center">SELECT DELIVERY HOUR</p>
             <select name="dhour" class="selector" id="mdhour" style="margin-left: 44%">
                 <option value="9:00-11:00">09:00-11:00</option>
                 <option value="11:00-13:00">11:00-13:00</option>
                 <option value="13:00-15:00">13:00-15:00</option>
                 <option value="15:00-17:00">15:00-17:00</option>
             </select>
-            <p id="mini-title" STYLE="text-align: center">SELECT AREA</p>
+            <p class="mini-title" STYLE="text-align: center">SELECT AREA</p>
             <select name="darea" class="selector" id="mdarea" style="margin-left: 41.7%">
                 <option value="Tatarasi">Tatarasi</option>
                 <option value="Podu-Ros">Podu-Ros</option>
                 <option value="Pacurari">Pacurari</option>
                 <option value="Tudor-Vladimirescu">Tudor-Vladimirescu</option>
             </select>
-            <p id="mini-title" STYLE="text-align: center">SELECT DATE</p>
+            <p class="mini-title" STYLE="text-align: center">SELECT DATE</p>
             <input type="date" id="mddate" name="ddate" style="margin-left: 42.1%"
                    min="2021-05-25" max="2022-01-01">
+        </div>
     </form>
     <a class="button" onclick="Modify(); document.getElementById('extend-form').style.display='none'; document.getElementById('extend-form-left').style.display='none'" style="margin-left: 42.5%; margin-top: 10px">Submit</a>
 </div>

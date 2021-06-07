@@ -8,7 +8,7 @@ include('../server/sign_up.php');
 <!-- Text -->
 <div class="middle-box">
     <div class="starter">
-        <p id="title">About us</p>
+        <p class="title">About us</p>
         <div class="grid-box">
             <div class="text-box">Our company is a premium, all-inclusive service which collects and delivers your parcels in the shortest possible time frame.
                 <p>We define ourselves by the motto “Always on time. Everytime.”</p></div>
@@ -21,7 +21,7 @@ include('../server/sign_up.php');
         </div>
     </div>
     <div class="starter">
-        <p id="title">FAQ</p>
+        <p class="title">FAQ</p>
         <div class="grid-box">
             <div class="text-box">
                 <strong>How should I pack? Do you offer packaging?</strong>
@@ -51,10 +51,10 @@ include('../server/sign_up.php');
             <img src="../../resources/User.png" alt="Avatar" class="avatar">
         </div>
         <div class="container">
-            <label for="uname"><b>Username</b></label>
-            <input type="text" name="username" placeholder="Enter Username" required>
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" required>
+            <label for="username"><b>Username</b></label>
+            <input type="text" id="username" name="username" placeholder="Enter Username" required>
+            <label for="psw1"><b>Password</b></label>
+            <input type="password" id="psw1" placeholder="Enter Password" name="password" required>
             <button type="submit" name="login" >Login</button>
             <label>
                 <input type="checkbox" checked="checked" name="remember_me" id="remember_me"> Remember me
@@ -75,25 +75,25 @@ include('../server/sign_up.php');
             <p class="sign-up-text">Please fill in your information.</p>
 
             <label for="first_name"><b>First name</b></label>
-            <input type="text" placeholder="First name" name="first-name" required>
+            <input type="text" placeholder="First name" id="first_name" name="first-name" required>
 
             <label for="last_name"><b>Last name</b></label>
-            <input type="text" placeholder="Last name" name="last-name" required>
+            <input type="text" placeholder="Last name" id="last_name" name="last-name" required>
 
-            <label for="username"><b>Username</b></label>
-            <input type="text" placeholder="Username" name="username" required>
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Username" id="uname" name="username" required>
 
             <label for="phone-number"><b>Phone number</b></label>
-            <input type="text" placeholder="Phone number" name="phone-number" required>
+            <input type="text" placeholder="Phone number" id="phone-number" name="phone-number" required>
 
             <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" name="email" required>
+            <input type="text" placeholder="Enter Email" id="email" name="email" required>
 
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+            <label for="psw2"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" id="psw2" name="psw" required>
 
             <label for="psw-repeat"><b>Repeat Password</b></label>
-            <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+            <input type="password" placeholder="Repeat Password" id="psw-repeat" name="psw-repeat" required>
 
             <p class="sign-up-text">By creating an account you agree to our Terms & Privacy.</p>
             <button type="submit" name="signup" onclick="attention()">Sign up</button>

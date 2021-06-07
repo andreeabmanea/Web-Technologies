@@ -70,7 +70,7 @@ body {
     padding: 4%;
     margin-bottom: 4%;
 }
-#title {
+.title {
     font: normal normal 17px/40px "Ubuntu", sans-serif;
     font-size: 30px;
     text-align: center;
@@ -270,7 +270,7 @@ input[type=text], input[type=password] {
 .report-form {
     padding: 2%;
 }
-#mini-title {
+.mini-title {
     font-size: 25px;
     color: #3c887e;
     font-family: "Ubuntu", sans-serif;
@@ -296,10 +296,10 @@ input[type=text], input[type=password] {
     align-items: center;
 }
 #modify-button{
-     display: flex;
-     justify-content: center;
-     align-items: center;
- }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .mapouter{
     margin:auto;
 }

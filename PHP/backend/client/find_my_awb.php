@@ -13,7 +13,7 @@ if ($stmt = $mysql->prepare("SELECT status, delivery_date, delivery_hour FROM or
 
 // print the information
 if ($stmt->num_rows!=0) {
-    echo '<p id="title">Status:</p>
+    echo '<p class="title">Status:</p>
          <div id="myProgress">';
     switch ($status) {
         case "deposited":
@@ -37,7 +37,7 @@ if ($stmt->num_rows!=0) {
     }
     echo '</div>
             <table>
-                <caption id="title">Details about your package:</caption>
+                <caption class="title">Details about your package:</caption>
                 <tr>
                     <th>Date</th>
                     <th>Hours</th>
@@ -61,13 +61,13 @@ if ($stmt->num_rows!=0) {
                     <th>' . $number . '</th>
                 </tr>
             </table>
-        <p id="title" style="margin-top: 2%">Change hours, cancel or report?</p>
+        <p class="title" style="margin-top: 2%">Change hours, cancel or report?</p>
         <a class="button" style="margin-left: 45%" onclick="displayReport()">Please click!</a>';
 
 }
 
 else {
     // if the awb is incorrect or blank
-    echo '<p id="title">Please enter a valid AWB!</p>';
+    echo '<p class="title">Please enter a valid AWB!</p>';
 }
 $stmt->close();

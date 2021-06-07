@@ -13,7 +13,7 @@ if (isset($_GET['logout'])) {
 <!-- AWB tracking option -->
 <div class="middle-box">
     <div class="starter">
-        <p id="title">Hello <?php echo $_SESSION['username']; ?>! Enter your AWB:</p>
+        <p class="title">Hello <?php echo $_SESSION['username']; ?>! Enter your AWB:</p>
         <form class="awb-form">
             <input type="text" placeholder="AWB" id="fawb" name="fawb"><br>
             <div id="submit-button">
@@ -60,10 +60,10 @@ if (isset($_GET['logout'])) {
 <!-- You sure to cancel option -->
 <div id="cancel-delivery" class="modal">
     <div class="modal-content">
-        <p id="title">Are you sure you want to cancel the package?</p>
+        <p class="title">Are you sure you want to cancel the package?</p>
         <nav class="container">
-            <a class="button" style="margin-left:40%" onclick="document.getElementById('cancel-delivery').style.display='none', reportParcel()" class="close" title="Close">Yes!</a>
-            <a class="button" onclick="document.getElementById('cancel-delivery').style.display='none'" class="close" title="Close">No!</a>
+            <a class="button close" style="margin-left:40%" onclick="document.getElementById('cancel-delivery').style.display='none', reportParcel()" title="Close">Yes!</a>
+            <a class="button close" onclick="document.getElementById('cancel-delivery').style.display='none'" title="Close">No!</a>
         </nav>
     </div>
 </div>
@@ -73,19 +73,19 @@ if (isset($_GET['logout'])) {
     <div class="modal-content">
         <span onclick="document.getElementById('report-delivery').style.display='none'" class="close" title="Close">&times;</span>
         <form class="report-form" id="damage">
-            <p id="mini-title">Is the package damaged?</p>
+            <p class="mini-title">Is the package damaged?</p>
             <input type="radio" name="damage" id="damage1" value="Yes" required>Yes<br>
             <input type="radio" name="damage" id="damage2" value="No" checked>No<br>
         </form>
         <form class="report-form" id="something">
-            <p id="mini-title">Did you get something other than what you ordered?</p>
+            <p class="mini-title">Did you get something other than what you ordered?</p>
             <input type="radio" name="something" id="something1" value="Yes" required>Yes<br>
             <input type="radio" name="something" id="something2" value="No" checked>No<br>
         </form>
         <form class="report-form" id="comments">
-            <p id="mini-title">Any another comments?</p>
+            <p class="mini-title">Any another comments?</p>
             <input type="text" id="comment" name="comment" placeholder="Your comment" style="text-align: left"><br>
-            <a class="button" onclick="document.getElementById('report-delivery').style.display='none', submitReportParcel()" class="close" title="Close">Submit</a>
+            <a class="button close" onclick="document.getElementById('report-delivery').style.display='none', submitReportParcel()" title="Close">Submit</a>
         </form>
     </div>
 </div>

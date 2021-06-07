@@ -143,15 +143,6 @@ if (isset($_POST['import-orders'])) {
                               window.location = \"index.php\"
                           </script>";
             }
-
-
-//            $resultOrders = mysqli_query($mysql, $queryOrders);
-//            if(!$resultOrders)
-//                echo "gresit";
-//            else {echo $phone_number;}
-
-
-
         }
         fclose($fileOrders);
 }
