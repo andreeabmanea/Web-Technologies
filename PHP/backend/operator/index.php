@@ -1,6 +1,7 @@
 <?php
 $title = 'Operator Account';
 require_once '../includes/header_for_accounts.php';
+require_once '../includes/footer.php';
 include("display_operator_reports.php");
 include "../server/login.php";
 include "../server/sign_up.php";
@@ -18,122 +19,118 @@ if (isset($_GET['logout'])) {
             <?php display_operator_reports($_SESSION['username'])?>
         </table>
     </div>
-    <div class="starter">
-        <div id="plan-order">
-            <p id="title">WHAT DO YOU WANT TO DO?</p>
-            <div id="add-order" style="text-align: center;">
-                <a class="button" onclick="displayAddOrder()" style="width: 140px">PLACE ORDER</a>
-                <a class="button" onclick="displayModifyOrder()" style="width: 140px">MODIFY ORDER</a>
-            </div>
-        </div>
-    </div>
-    <div id="new-order" class="modal">
-        <div class="modal-content" style="background-color: rgba(235, 228, 216, 1);border-color:  #3c887e;border-style: solid;border-radius: 10px;padding: 4%;margin-bottom: 4%;">
-            <p id="title">Fill in details about the new order:</p>
-            <form class="order-form">
-                <input type="text" placeholder="NAME" id="name" name="name"><br>
-                <input type="text" placeholder="PHONE NUMBER" id="phone_number" name="phone"><br>
-                <input type="text" placeholder="ADDRESS" id="address" name="address"><br>
-                <input type="text" placeholder="WEIGHT" id="weight" name="weight"><br>
-                <input type="text" placeholder="CONTENT" id="content" name="content"><br>
-                <input type="text" placeholder="STANDARD/EXPRESS" id="type" name="type"><br>
-                <input type="text" placeholder="CASH/ACCOUNT REIMBURSEMENT" id="reimbursement" name="reimbursement"><br>
-                <input type="text" placeholder="AMOUNT" id="amount" name="amount"><br>
-                <input type="text" placeholder="PHONE NUMBER/ACCOUNT/EMAIL" id="accountInfo" name="accountinfo"><br>
-                <div id="hourselector" style="margin-left: auto">
-                    <p id="mini-title" STYLE="text-align: left">SELECT DELIVERY HOUR</p>
-                    <select name="shour" class="selector" id="dhour">
-                        <option value="9:00-11:00">09:00-11:00</option>
-                        <option value="11:00-13:00">11:00-13:00</option>
-                        <option value="13:00-15:00">13:00-15:00</option>
-                        <option value="15:00-17:00">15:00-17:00</option>
-                    </select>
-                    <p id="mini-title" STYLE="text-align: left">SELECT AREA</p>
-                    <select name="sarea" class="selector" id="darea">
-                        <option value="Tatarasi">Tatarasi</option>
-                        <option value="Podu-Ros">Podu-Ros</option>
-                        <option value="Pacurari">Pacurari</option>
-                        <option value="Tudor-Vladimirescu">Tudor-Vladimirescu</option>
-                    </select>
-                    <p id="mini-title" STYLE="text-align: left">SELECT DATE</p>
-                    <input type="date" id="ddate" name="delivery-date"
-                           min="2021-05-25" max="2022-01-01">
-                </div>
-                <a class="button" onclick="Add(); document.getElementById('new-order').style.display='none'" style="margin-left: 45%">Submit</a>
-            </form>
-        </div>
-    </div>
-    <div id="modify-order" class="modal">
-        <div class="modal-content" style="background-color: rgba(235, 228, 216, 1);border-color:  #3c887e;border-style: solid;border-radius: 10px;padding: 4%;margin-bottom: 4%;">
-            <p id="title">Please enter AWB:</p>
-            <form class="modify-form">
-                <input type="text" placeholder="" id="getAWB" name="getAWB"><br>
-                <a class="button" onclick="getInfoSubmit(); document.getElementById('modify-order').style.display='none'" style="margin-left: 45%">Submit</a>
-            </form>
-        </div>
+</div>
+
+<div class="middle-box">
+    <div class="starter"
+    <p id="title">WHAT DO YOU WANT TO DO?</p>
+    <div id="add-order" style="text-align: center;">
+        <a class="button" onclick="displayAddOrder()" style="width: 140px">PLACE ORDER</a>
+        <a class="button" onclick="displayModifyOrder()" style="width: 140px">MODIFY ORDER</a>
     </div>
 </div>
-+   <div id="extend-form-left" class="modal">
-    <div class="modal-content" style="background-color: rgba(235, 228, 216, 1);border-color:  #3c887e;border-style: solid;border-radius: 10px;padding: 4%;margin-bottom: 4%; width: 40%; float:right">
-        <table id="showInfo" style="display:inline-block; float: right">
-        </table>
-    </div>
 </div>
-<div id="extend-form" class="modal">
-    <div class="modal-content" style="background-color: rgba(235, 228, 216, 1);border-color:  #3c887e;border-style: solid;border-radius: 10px;padding: 4%;margin-bottom: 4%; width: 40%; float:left">
-        <p id="title">Edit info</p>
-        <form class="modify-extend-form">
-            <input type="text" placeholder="NAME" id="mname" name="name"><br>
-            <input type="text" placeholder="PHONE NUMBER" id="mphone_number" name="phone"><br>
-            <input type="text" placeholder="ADDRESS" id="maddress" name="address"><br>
-            <input type="text" placeholder="WEIGHT" id="mweight" name="weight"><br>
-            <input type="text" placeholder="CONTENT" id="mcontent" name="content"><br>
-            <input type="text" placeholder="STANDARD/EXPRESS" id="mtype" name="type"><br>
-            <input type="text" placeholder="CASH/ACCOUNT REIMBURSEMENT" id="mreimbursement" name="reimbursement"><br>
-            <input type="text" placeholder="AMOUNT" id="mamount" name="amount"><br>
-            <div id="hourselector" style="margin-left: auto">
-                <p id="mini-title" STYLE="text-align: left">SELECT DELIVERY HOUR</p>
-                <select name="dhour" class="selector" id="mdhour">
-                    <option value="9:00-11:00">09:00-11:00</option>
-                    <option value="11:00-13:00">11:00-13:00</option>
-                    <option value="13:00-15:00">13:00-15:00</option>
-                    <option value="15:00-17:00">15:00-17:00</option>
-                </select>
-                <p id="mini-title" STYLE="text-align: left">SELECT AREA</p>
-                <select name="darea" class="selector" id="mdarea">
-                    <option value="Tatarasi">Tatarasi</option>
-                    <option value="Podu-Ros">Podu-Ros</option>
-                    <option value="Pacurari">Pacurari</option>
-                    <option value="Tudor-Vladimirescu">Tudor-Vladimirescu</option>
-                </select>
-                <p id="mini-title" STYLE="text-align:left">SELECT DATE</p>
-                <input type="date" id="mddate" name="ddate"
-                       min="2021-05-25" max="2022-01-01">
-        </form>
-        <a class="button" onclick="Modify(); document.getElementById('extend-form').style.display='none'; document.getElementById('extend-form-left').style.display='none'" style="margin-left: 25%">Submit</a>
+
+<div id="new-order" class="starter" style="display: none">
+    <p id="title">Fill in details about the new order:</p>
+    <form class="order-form">
+        <input type="text" placeholder="NAME" id="name" name="name"><br>
+        <input type="text" placeholder="PHONE NUMBER" id="phone_number" name="phone"><br>
+        <input type="text" placeholder="ADDRESS" id="address" name="address"><br>
+        <input type="text" placeholder="WEIGHT" id="weight" name="weight"><br>
+        <input type="text" placeholder="CONTENT" id="content" name="content"><br>
+        <input type="text" placeholder="STANDARD/EXPRESS" id="type" name="type"><br>
+        <input type="text" placeholder="CASH/ACCOUNT REIMBURSEMENT" id="reimbursement" name="reimbursement"><br>
+        <input type="text" placeholder="AMOUNT" id="amount" name="amount"><br>
+        <input type="text" placeholder="PHONE NUMBER/ACCOUNT/EMAIL" id="accountInfo" name="accountinfo"><br>
+    </form>
+    <div id="hourselector">
+        <p id="mini-title" STYLE="text-align: center">SELECT DELIVERY HOUR</p>
+        <select name="shour" class="selector" id="dhour" style="margin-left: 47%">
+            <option value="9:00-11:00">09:00-11:00</option>
+            <option value="11:00-13:00">11:00-13:00</option>
+            <option value="13:00-15:00">13:00-15:00</option>
+            <option value="15:00-17:00">15:00-17:00</option>
+        </select>
+        <p id="mini-title" STYLE="text-align: center">SELECT AREA</p>
+        <select name="sarea" class="selector" id="darea" style="margin-left: 46%">
+            <option value="Tatarasi">Tatarasi</option>
+            <option value="Podu-Ros">Podu-Ros</option>
+            <option value="Pacurari">Pacurari</option>
+            <option value="Tudor-Vladimirescu">Tudor-Vladimirescu</option>
+        </select>
+        <p id="mini-title" STYLE="text-align: center">SELECT DATE</p>
+        <input type="date" id="ddate" name="delivery-date" style="margin-left: 46%"
+               min="2021-05-25" max="2022-01-01">
     </div>
+    <a class="button" onclick="Add(); document.getElementById('new-order').style.display='none'" style="margin-left: 46.4%; margin-top:10px">Submit</a>
 </div>
-<?php
-require_once '../includes/footer.php';
-?>
+
+<div id="modify-order" class="starter" style="display: none">
+    <p id="title">Please enter AWB:</p>
+    <form class="modify-form">
+        <input type="text" placeholder="" id="getAWB" name="getAWB"><br>
+        <a class="button" onclick="getInfoSubmit(); document.getElementById('modify-order').style.display='none'" style="margin-left: 46.4%">Submit</a>
+    </form>
+</div>
+</div>
+
+<div id="extend-form-left" class="starter" style="float:right; width: 40%; display: none">
+    <table id="showInfo" style="display:inline-block; float: right"></table>
+</div>
+
+<div id="extend-form" class="starter" style="float: left; width: 40%; display: none">
+    <p id="title">Edit info</p>
+    <form class="modify-extend-form">
+        <input type="text" placeholder="NAME" id="mname" name="name"><br>
+        <input type="text" placeholder="PHONE NUMBER" id="mphone_number" name="phone"><br>
+        <input type="text" placeholder="ADDRESS" id="maddress" name="address"><br>
+        <input type="text" placeholder="WEIGHT" id="mweight" name="weight"><br>
+        <input type="text" placeholder="CONTENT" id="mcontent" name="content"><br>
+        <input type="text" placeholder="STANDARD/EXPRESS" id="mtype" name="type"><br>
+        <input type="text" placeholder="CASH/ACCOUNT REIMBURSEMENT" id="mreimbursement" name="reimbursement"><br>
+        <input type="text" placeholder="AMOUNT" id="mamount" name="amount"><br>
+        <div id="hourselector" style="margin-left: auto">
+            <p id="mini-title" STYLE="text-align: center">SELECT DELIVERY HOUR</p>
+            <select name="dhour" class="selector" id="mdhour" style="margin-left: 44%">
+                <option value="9:00-11:00">09:00-11:00</option>
+                <option value="11:00-13:00">11:00-13:00</option>
+                <option value="13:00-15:00">13:00-15:00</option>
+                <option value="15:00-17:00">15:00-17:00</option>
+            </select>
+            <p id="mini-title" STYLE="text-align: center">SELECT AREA</p>
+            <select name="darea" class="selector" id="mdarea" style="margin-left: 41.7%">
+                <option value="Tatarasi">Tatarasi</option>
+                <option value="Podu-Ros">Podu-Ros</option>
+                <option value="Pacurari">Pacurari</option>
+                <option value="Tudor-Vladimirescu">Tudor-Vladimirescu</option>
+            </select>
+            <p id="mini-title" STYLE="text-align: center">SELECT DATE</p>
+            <input type="date" id="mddate" name="ddate" style="margin-left: 42.1%"
+                   min="2021-05-25" max="2022-01-01">
+    </form>
+    <a class="button" onclick="Modify(); document.getElementById('extend-form').style.display='none'; document.getElementById('extend-form-left').style.display='none'" style="margin-left: 42.5%; margin-top: 10px">Submit</a>
+</div>
 <script>
     function displayAddOrder(){
         document.getElementById('new-order').style.display = 'block';
     }
 
     function displayModifyOrder(){
-        const awb = document.getElementById('getAWB').value;
+        document.getElementById('modify-order').style.display = 'block';
+    }
+
+    function sendAWB(){
+        const getAWB = document.getElementById('getAWB').value;
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 console.log('succes-awb-sent')
-                console.log(awb);
             }
         };
         xhttp.open("POST", "display_existing_order.php", true);
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhttp.send('awb=' + awb);
-        document.getElementById('modify-order').style.display = 'block';
+        xhttp.send('getAWB=' + getAWB);
     }
 
     function getInfo(){
@@ -241,7 +238,7 @@ require_once '../includes/footer.php';
     }
 
     function getInfoSubmit(){
-        displayModifyOrder();
+        sendAWB();
         getInfo();
     }
 
