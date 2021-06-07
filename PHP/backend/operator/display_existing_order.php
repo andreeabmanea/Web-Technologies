@@ -2,11 +2,11 @@
 require_once("../server/connection.php");
 global $mysql;
 
-if (isset($_POST['awb']))
-    $awb = $_POST['awb'];
+if (isset($_POST['getAWB']))
+    $awb = $_POST['getAWB'];
 
 $stmt_order = $mysql->prepare("select * from orders where awb = ?");
-$stmt_order->bind_param('s', $getAWB);
+$stmt_order->bind_param('s', $awb);
 $stmt_order->execute();
 $result_order = $stmt_order->get_result();
 $info_order = $result_order->fetch_assoc();
