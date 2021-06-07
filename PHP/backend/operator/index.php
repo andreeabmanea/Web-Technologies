@@ -1,7 +1,6 @@
 <?php
 $title = 'Operator Account';
 require_once '../includes/header_for_accounts.php';
-require_once '../includes/footer.php';
 include("display_operator_reports.php");
 include "../server/login.php";
 include "../server/sign_up.php";
@@ -111,6 +110,9 @@ if (isset($_GET['logout'])) {
     </form>
     <a class="button" onclick="Modify(); document.getElementById('extend-form').style.display='none'; document.getElementById('extend-form-left').style.display='none'" style="margin-left: 42.5%; margin-top: 10px">Submit</a>
 </div>
+<?php
+require_once '../includes/footer.php';
+?>
 <script>
     function displayAddOrder(){
         document.getElementById('new-order').style.display = 'block';
